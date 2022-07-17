@@ -2,14 +2,14 @@
   "manifest_version": 3,
  
   "name": "MyAnimeList Dark Mode",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "MAL Dark Mode",
  
   "content_scripts": [
     {
       "matches": ["*://myanimelist.net/*"],
       "css": ["MAIN.css"],
-      "js": ["jquery-2.2.0.min.js", "MAIN.js", "CONTENT.js"]
+      "js": ["jquery-2.2.0.min.js", "CONTENT.js"]
     },
     {
       "matches": ["*://myanimelist.net/*"],
