@@ -1,0 +1,1785 @@
+/*
+ * MyAnimeList Dark Mode originally by Valerio Lyndon
+ * 
+ * 
+ * https://github.com/ValerioLyndon
+ * https://myanimelist.net/profile/Valerio_Lyndon
+ * 
+ * 
+ * TABLE OF CONTENTS
+ * 
+ * RESOURCES             : resources loaded from outside sources
+ * 
+ * VARIABLES             : set the theme's colours, images, etcetera
+ * 
+ * PAGE-BASE             : basic site-wide page layout
+ * 
+ * PAGE-HEADER           : site-wide page navigation
+ * 
+ * FOOTER                : site-wide footer
+ * 
+ * CONTENT               : generic, re-used parts of code
+ * Headings
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+/*==============================*\
+  !RESOURCES
+\*==============================*/
+:root {
+	/* Base Colours */
+	--page: hsl(30, 0%, 10%);
+	--content: hsl(30, 0%, 19%);
+	--content-rgb: 49, 48, 47;
+	--content-dim: hsl(30, 0%, 16%);
+	--content-dim-rgb: 42, 41, 40;
+	--content-dimmer: hsl(30, 0%, 13%);
+	--content-dimmest: hsl(30, 0%, 10%);
+	--border: var(--content-dimmer);
+	
+	--accent-bright: hsl(46, 63%, 46%); /*unused as of yet*/
+	--accent: hsl(46, 49%, 44%);
+	--accent-rgb: 166, 140, 57;
+	--accent-dim: hsl(46, 32%, 28%);
+	--accent-dimmer: hsl(46, 35%, 20%);
+	--accent-dimmest: hsl(46, 25%, 18%);
+	--notif: hsl(223, 49%, 60%);
+	--notif-rgb: 102, 130, 202;
+	
+	--text: hsl(0, 0%, 86%);
+	--text-dim: hsl(0, 0%, 74%);
+	--text-dimmer: hsl(0, 0%, 60%);
+	--text-dimmest: hsl(0, 0%, 50%);
+	--text-heading: hsl(0, 0%, 89%);
+	--text-lnk: hsl(0, 0%, 98%);
+	--text-lnk: hsl(45, 76%, 59%);
+	--text-lnk-hov: hsl(45, 100%, 60%);
+	
+	--icon: hsl(0, 0%, 69%);
+	
+	--return-bad: hsl(0, 85%, 59%);
+	
+	--page-shadow: 3px 1.5px 5px hsla(0,0%,0%,25%);
+	
+	/* Header Colours */
+	--header: hsl(0, 0%, 13%);
+	--header-rgb: 34, 34, 34;
+	--header-dim: hsl(0, 0%, 25%);
+	--header-hov: hsl(0, 0%, 26%);
+	--header-border: hsl(0, 0%, 6.6667%);
+	--header-border-alt: hsl(0, 0%, 3.3334%);
+	--header-text: hsl(0, 0%, 96%);
+	--header-text-dim: hsl(0, 0%, 86%);
+	--header-icon: hsl(0, 0%, 89%);
+	
+	/*	Specific Colours */
+	--quotebox-bg: #2c2b2a;
+	--quotebox-bg: rgba(15,10,10,0.1);
+	--codebox-bg: #3c402f;
+	--codebox-bg: #2a2b2b;
+	--codebox-text: #96af1d;
+	--codebox-text: #99b6c2;
+	
+	/* Status Colours */
+/* 	--allanime: #ff00de; */
+	--watching: #c28639;
+	--completed: #364e88;
+	--onhold: #ccb050;
+	--dropped: #c84e50;
+	--planned: #454545;
+	
+	/* Timings */
+/* 	REMOVE THESE DEFUNCT ONES */
+	--time-long: 0.3s;
+	--time-medium: 0.24s;
+	--time-short: 0.12s;
+	
+	--time-img: 0.24s;
+	--time-btn-large: 0.2s;
+	--time-btn-small: 0.12s;
+	
+	--time-function-bounce: cubic-bezier(0.5, 0, 0.25, 1.2);
+}
+/* BLUE THEME */
+:root {
+    --header: #2a2a2a;
+	--header-icon: #1d439b;
+	--page: #2a2a2a;
+	--content: #303030;
+	
+	--accent: #7994bc;
+	--accent-dim: #4e678d;
+	--accent-dimmer: #344969;
+	--accent-dimmest: #28384f;
+	--notif: #df6464;
+	--notif-0: #df646400;
+	
+	--text-lnk: #99b0d3;
+	--text-lnk-hov:hsl(223, 49%, 60%);
+	
+	--watching: #bbbbdd;
+	--completed: #9999bb;
+	--onhold: #777799;
+	--dropped: #555577;
+	--planned: #444455;
+	--ptwidth: 200px;
+}
+/*==============================*\
+  !PAGE-BASE
+\*==============================*/
+.user-profile .user-image img {
+	width: var(--ptwidth);
+}
+body:not(.ownlist) {
+	background: var(--page) !important;
+	color: var(--text);
+}
+.page-common #contentWrapper {
+	background: var(--content);
+	box-shadow: var(--page-shadow);
+}
+.page-common #content {
+	background: var(--content);
+	box-shadow: var(--page-shadow);
+}
+.page-common .watch-state-icon.watched {
+    color: var(--text-lnk-hov);
+}
+body.news h2, .page-common .mb16, .page-common .pt16, body.news .news-container .title, body.news .news-container .summary, .featured-article-body p, .news-list .comment-list .text, .news-list .news-unit .text {
+    color:#FFF !important;
+}
+body.news .news-container .tags, body.news .news-container .news-info-block, body.news .news-container .information {
+   	background: var(--content) !important;
+	box-shadow: var(--page-shadow) !important; 
+}
+/*==============================*\
+  !PAGE-HEADER
+\*==============================*/
+.page-common #headerSmall {
+	background: var(--header) !important;
+}
+#menu:before {
+	border-bottom: 1px solid var(--header-border);
+	box-shadow: var(--page-shadow);
+}
+.page-common #menu ,.page-common #menu:hover{
+	background: var(--content) !important;
+}
+/* ACCOUNT */
+.page-common #header-menu {
+	box-shadow: var(--header-border);
+    border-bottom: 1px solid var(--header-border);
+}
+/* ACCOUNT ICONS */
+.page-common #header-menu .header-menu-unit:not(.header-profile) > a,
+.page-common #header-menu .header-notification .header-notification-button {
+	color: var(--header-icon) !important;
+}
+.page-common #header-menu .header-menu-unit:not(.header-profile) > a:hover,
+.page-common #header-menu .header-notification:hover .header-notification-button:hover {
+	background: var(--header-hov) !important;
+}
+/* ACCOUNT LIST DROPDOWN */
+.page-common .header-list .header-list-dropdown {
+	background: var(--header);
+	border: 1px solid var(--header-border);
+}
+.page-common .header-list .header-list-dropdown ul li a {
+	color: var(--header-text-dim);
+}
+.page-common .header-list .header-list-dropdown ul li a:hover {
+	background: var(--header-hov);
+}
+/* ACCOUNT NOTIFICATIONS */
+/* Base */
+.page-common #header-menu .header-notification-button.has-unread:after, .page-common #header-menu .header-message-button.has-unread:after {
+ 	background: var(--notif);
+	color: var(--header-text);
+}
+.page-common .header-notification-dropdown .arrow_box {
+	background: var(--header);
+	border-color: var(--header-border);
+}
+/* Links */
+.page-common .header-notification-item-list a { color: var(--text-lnk) !important; }
+.page-common .header-notification-item-list a:hover { color: var(--text-lnk-hov) !important; }
+/* Top Bar */
+.page-common .header-notification-dropdown-inner h3 {
+	background: var(--header-border);
+	color: var(--header-text);
+}
+.page-common .header-notification-dropdown-inner h3 a,
+.page-common .header-notification-dropdown-inner h3 .mark-all {
+	color: var(--header-text-dim) !important;
+}
+.page-common .header-notification-dropdown-inner h3 a:hover,
+.page-common .header-notification-dropdown-inner h3 .mark-all:not(.disabled):hover {
+	background: var(--header-border-alt);
+}
+.page-common .header-notification-dropdown-inner h3 .mark-all.disabled { color: var(--text-dimmest) !important; }
+/* Items */
+.page-common .header-notification-item:hover {
+	background: var(--header-hov) !important;
+}
+.page-common .header-notification-item {
+	border-bottom: 1px solid var(--header-border) !important;
+}
+/* .page-common .header-notification-item .inner:not(.is-read):before {
+	background: linear-gradient(to right, rgba(var(--notif-rgb), 0.3), rgba(var(--notif-rgb), 0));
+} */
+.page-common .header-notification-item .inner:not(.is-read) {
+	border-left: 4px solid var(--notif);
+	color: var(--text-dim);
+}
+.page-common .header-notification-item .inner.is-read { color: var(--text-dimmest); }
+/* Checkmark */
+.page-common .header-notification-item .inner:not(.is-read) .is-read {
+	background: var(--header-border);
+	color: var(--text);
+}
+.page-common .header-notification-item .inner:not(.is-read) .is-read:not(.checked) .fa-check:hover { background: rgba(var(--notif-rgb), 0.5); }
+.page-common .header-notification-item-header .is-read.checked .fa-check {
+	background: var(--notif);
+}
+.page-common .header-notification-item-header .category { color: var(--text) !important; }
+.page-common .is-read .header-notification-item-header .category { color: var(--text-dimmer) !important; }
+.page-common .header-notification-item-header .time { color: var(--text-dimmer) !important; }
+.page-common .is-read .header-notification-item-header .time { color: var(--text-dimmest) !important; }
+/* Friend Requests */
+#myanimelist .actions .result, #myanimelist .actions .action-button {
+	background: var(--header-border);
+	color: var(--text);
+}
+#myanimelist .actions .result:hover, #myanimelist .actions .action-button:hover { background: var(--notif) !important; }
+#myanimelist .actions .action-button.deny { background: var(--header-border); }
+#myanimelist .actions .action-button.accept { background: var(--accent-dim); }
+#myanimelist .actions .result { background: var(--notif); }
+/* Bottom Bar */
+.page-common .header-notification-view-all a {
+	background: var(--header);
+	border-top: 1px solid var(--header-border);
+}
+.page-common .header-notification-view-all a:hover {
+	background: var(--header-hov);
+}
+/* ACCOUNT PROFILE */
+.page-common .header-profile.link-bg {
+	background-color: var(--header);
+}
+.page-common #header-menu .header-profile .header-profile-link {
+	color: var(--header-text);
+}
+.page-common #header-menu .header-profile .header-profile-link:hover {
+	background: var(--header-hov) !important;
+}
+/* PROFILE DROPDOWN */
+.page-common .header-profile .header-profile-dropdown {
+	background: var(--header);
+	border-color: var(--header-border);
+}
+.page-common .header-profile .header-profile-dropdown ul li a {
+	color: var(--header-text-dim);
+}
+.page-common .header-profile .header-profile-dropdown ul li a:hover { background: var(--header-hov); }
+/* Dividers */
+.page-common .header-profile .header-profile-dropdown ul li:last-child:before,
+.page-common .header-profile .header-profile-dropdown ul li:nth-child(8):after {
+	background: var(--header-border);
+}
+/* HEADER - PROFILE PICTURE */
+.header-profile-button:before {
+	background: var(--header);
+}
+/* ===============================================
+HEADER / NAV
+=============================================== */
+.page-common #header-menu .header-menu-login .btn-login, .page-common #header-menu .header-menu-login .btn-signup {
+	color: var(--header-text) !important;
+}
+.page-common #header-menu .header-menu-login .btn-signup { background: rgba(var(--notif-rgb), 0.5); }
+.page-common #header-menu .header-menu-login .btn-login:hover { background: var(--header-hov); }
+.page-common #header-menu .header-menu-login .btn-signup:hover { background: rgb(var(--notif-rgb)); }
+.page-common #header-menu .header-menu-login .btn-login:after {
+	color: var(--header-icon);
+}
+.page-common #header-menu .header-menu-login .btn-signup:after {
+	color: var(--header-icon);
+}
+/* LINKS */
+
+.page-common #nav li:hover {
+	background: var(--header-hov) !important;
+}
+.page-common #nav li a:hover {
+	background: var(--header-hov) !important;
+}
+.page-common #nav > li > .non-link {
+	color: var(--header-text) !important;
+}
+.page-common #nav li.hover a.non-link {
+	background: var(--header-hov) !important;
+}
+.page-common #nav > li > ul {
+	border-color: var(--header-border);
+}
+}
+
+.page-common #nav > li > ul > li > a {
+	background: var(--header) !important;
+	color: var(--header-text-dim) !important;
+}
+.page-common #nav > li > ul > li > a:hover {
+	background: var(--header-hov) !important;
+}
+/* ===============================================
+HEADER / NAV / SEARCH
+=============================================== */
+#top-search-bar #searchBar {
+	background: var(--header-dim);
+}
+.page-common #searchBar.searchBar #topSearchValue {
+	color: var(--text-dim);
+}
+.page-common #searchBar.searchBar #topSearchValue:focus { 
+	background-color: var(--header-hov) !important;
+}
+.page-common #searchBar.searchBar #topSearchText {
+	color: var(--text-dim);
+}
+.page-common #searchBar.searchBar #topSearchButon {
+	color: var(--header-text-dim) !important;
+}
+.page-common #searchBar.searchBar #topSearchButon:not(.notActive):hover { background: var(--header-hov) !important; }
+/* Results */
+.page-common #topSearchResultList {
+	background: var(--header);
+	border-color: var(--header-border);
+}
+#topSearchResultList .list.focus { background: var(--header-hov); }
+#topSearchResultList .list .image { border: 2px solid var(--header-border); }
+#topSearchResultList .list .name { color: var(--text-dim) !important; }
+#topSearchResultList .list .media-type { color: var(--text-dimmest) !important; }
+#topSearchResultList .list .extra-info { color: var(--text-dimmer) !important; }
+#topSearchResultList .list.separator {
+	background: var(--header-border);
+}
+#topSearchResultList .list.separator span {
+	color: var(--text);
+}
+#topSearchResultList .list-bottom {
+	background: var(--content-dim) !important;
+}
+#topSearchResultList .list-bottom.focus {
+	background: var(--accent) !important;
+}
+#topSearchResultList .list.list-bottom a { color: var(--header-text); }
+#topSearchResultList .list.list-bottom.focus a { color: var(--header); }
+/* ===============================================
+!FOOTER
+=============================================== */
+footer {
+	box-shadow: var(--page-shadow);
+}
+.page-common #footer-block {
+	background-color: var(--content);
+}
+.page-common #footer-block .footer-link a {
+	color: var(--text-heading);
+}
+/* First Div */
+.page-common #footer-block .footer-link-block:after {
+	background: linear-gradient(to right, rgba(var(--accent-rgb), 0), rgba(var(--accent-rgb), 1), rgba(var(--accent-rgb), 0));
+}
+.page-common #footer-block .footer-link { border-color: var(--accent-dim) !important; }
+/* Second Div */
+.page-common #footer-block .footer-social-media:before { background: var(--accent-dim); }
+.page-common #footer-block .footer-social-media .icon-sns {
+	background-image: var(--img-socials-alt); /*/images/footer/footer-icon-sns.png?v=150421001*/
+}
+.page-common #footer-block .footer-recommended .icon-recommended {
+	color: var(--text-heading);
+}
+.page-common #footer-block div:after,
+.page-common #footer-block #copyright {
+	color: var(--accent) !important;
+}
+#copyright:after {
+	content: "MAL Dark Mode by ShaggyZE | Version 0.0.1";
+}
+/*==============================*\
+  !GENERIC
+\*==============================*/
+/* Scrollbar - Firefox */
+* {
+  scrollbar-color: var(--accent-dimmer) var(--content-dimmer);
+/*   scrollbar-width: thin; */
+}
+/* Scrollbar - Chrome/Webkit */
+*::-webkit-scrollbar {
+	background: var(--content-dimmest);
+}
+*::-webkit-scrollbar-track { 
+	background: var(--content-dimmer);
+}
+*::-webkit-scrollbar-thumb {
+	background: var(--accent-dimmer);
+}
+*::-webkit-scrollbar-thumb:hover { background: var(--accent-dim); }
+*::-webkit-scrollbar-button, *::-webkit-scrollbar-corner { background: var(--content-dimmest); }
+*::-webkit-scrollbar-button:vertical:decrement { background: transparent var(--img-icon-arrow-up) no-repeat center / 8px auto; }
+*::-webkit-scrollbar-button:vertical:increment { background: transparent var(--img-icon-arrow-dn) no-repeat center / 8px auto; }
+*::-webkit-scrollbar-button:horizontal:decrement { background: transparent var(--img-icon-arrow-lt) no-repeat center / auto 8px; }
+*::-webkit-scrollbar-button:horizontal:increment { background: transparent var(--img-icon-arrow-rt) no-repeat center / auto 8px; }
+*::-webkit-resizer { background: transparent var(--img-icon-resize) no-repeat right bottom / 12px 12px; }
+html::-webkit-scrollbar, body::-webkit-scrollbar { width: 17px; }
+html::-webkit-scrollbar-track, body::-webkit-scrollbar-track {
+	background: var(--content-dimmer);
+}
+html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb {
+	background: var(--accent-dim);
+}
+html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+/* Divs */
+/* .page-common .pt24 { padding-top: 20px !important; }
+.page-common .pb24 { padding-bottom: 20px !important; }
+.page-common .mt8 { margin-top: 7px !important; }
+.page-common .mt12 { margin-top: 10px !important; }
+.page-common .mt24 { margin-top: 20px !important; }
+.page-common .mr8 { margin-right: 7px !important; }
+.page-common .mb8 { margin-bottom: 7px !important; }
+.page-common .mb12 { margin-bottom: 10px !important; }
+.page-common .mb24 { margin-bottom: 20px !important; }
+.page-common .ml8 { margin-left: 7px !important; } */
+/* Text Colours */
+.page-common .lightLink, .page-common .lightLink:link, .page-common .lightLink:visited, .page-common .lightLink:active,
+.page-common .dark_text, .page-common .dark_text:hover, .page-common .dark_text:visited {
+	color: var(--text-dimmer);
+}
+.page-common .fn-grey1, .page-common .fn-grey6 { color: var(--text-dimmer) !important; }
+.page-common .fn-grey2, .page-common .fn-grey5 { color: var(--text-dimmest) !important; }
+.page-common a, .page-common a:visited { color: var(--text-lnk); }
+.page-common a:hover { color: var(--text-lnk-hov); }
+.page-common .fn-blue1 { color: var(--text-lnk) !important; }
+.page-common a.fn-blue1:hover { color: var(--text-lnk-hov) !important; }
+
+/* Text Headers */
+.page-common .h1, .page-common .h2, .page-common .h3, .page-common .h4, .page-common .h5, .page-common .h6,
+.page-common h1, .page-common h2, .page-common h3, .page-common h4, .page-common h5, .page-common h6 {
+	background-color: var(--header);
+	color: var(--text);
+}
+.page-common .badresult-text { color: var(--return-bad) }
+/* Borders & Containers */
+:focus { outline-color: var(--accent); }
+.wrapper > div > div *:not(img) {
+    border-color: var(--border);
+}
+.page-common .bgColor1 { background: var(--content-dim); }
+.page-common .bgColor2 { background: var(--content-dim); }
+.page-common .bgbdrContainer,
+.page-common .border_top,
+#dialog,
+.page-common .normal_header,
+.page-common .borderClass {
+	border-color: var(--border);
+}
+.page-common .bgbdrContainer {
+	background: var(--content-dim);
+}
+/* Images */
+.page-common div.picSurround {
+	background: var(--border);
+	border: 2px solid var(--border);
+}
+.icon-watch:before, .icon-watch-pv:before {
+	color: var(--icon);
+}
+/* Buttons - Generic */
+#myanimelist textarea, #myanimelist input, #Size, #Colour, .page-common .textarea {
+	background-color: var(--content-dim);
+	border-color: var(--border);
+	color: var(--text);
+}
+input:disabled, textarea:disabled {
+	color: var(--text-dimmest);
+}
+.page-common .textarea, .page-common textarea {
+	min-width: 15em;
+	min-height: 6em;
+	
+	resize: both;
+}
+/* .page-common .textarea {
+	background: var(--content-dim) var(--img-icon-resize) no-repeat right bottom / 12px 12px !important;
+} */
+/* Buttons - Inputs */
+#myanimelist .inputButton, .page-common .btn-form-submit,
+.page-common.ownlist_style_theme .inputButton {
+	height: 24px;
+	padding: 4px 10px;
+	background-color: var(--accent);
+	
+	color: var(--border);
+	font: bold 1rem/16px var(--fontset-basic);
+	
+}
+#myanimelist .inputButton:not(:disabled):hover, .page-common .btn-form-submit:not(:disabled):hover {
+	background: var(--accent-dim);
+	
+	color: var(--text-lnk-hov);
+}
+.inputButton ~ .inputButton { margin-left: 5px; }
+#myanimelist .inputButton:disabled {
+	background-color: var(--content-dimmer);
+	color: var(--text-dimmest);
+	
+	
+}
+/* Patches - Ownlist-style */
+.page-common .inputButton.btn-middle:active {
+	background: var(--accent);
+	color: var(--border);
+}
+.page-common.ownlist_style_theme .inputButton:hover { color: var(--text-lnk-hov) !important; }
+/* Patches -  page */
+.page-common .btn-form-submit.js-btn-support-form {
+	height: 32px;
+	padding: 8px 30px !important;
+	
+}
+.page-support #myanimelist #content p, .page-support #myanimelist #content li, .page-support #myanimelist #content h3, .page-support #myanimelist #content h4 {
+    color: var(--header-text)
+}
+/* #myanimelist .inputButton[value*="Delete"] { background-color: var(--return-bad); } */
+/* Buttons - Nav */
+.page-common .pagination {
+	background: var(--content-dim);
+	border-radius: 12px;
+}
+.page-common .pagination .link {
+	height: 18px;
+	margin: 0;
+	
+	color: var(--text);
+	line-height: 18px;
+	
+}
+.page-common .pagination .link:hover { background: var(--content-dimmer); }
+.page-common .pagination .link + .link { border-left: 2px solid var(--border); }
+.page-common .pagination .link.current { background: var(--accent-dim) }
+.page-common .pagination .link.current:hover { background: var(--accent) }
+/* Unknown Anime Images */
+img[src*="qm_50.gif"] {
+
+	background: var(--border) var(--img-missing) no-repeat center / cover !important;
+}
+/* ========== */
+ul.ignored-user-list li:nth-child(2n) {
+	background: var(--content-dim);
+}
+.page-common .goodresult, .page-common .successQuery {
+	background: var(--content-dim);
+	border-color: var(--border);
+}
+.page-common .goodresult a:link, .page-common .goodresult a:active, .page-common .goodresult a:visited {
+	color: var(--text-lnk);
+}
+.page-common .goodresult a:hover {
+	color: var(--text-lnk-hov);
+}
+.page-common .badresult {
+	background-color: var(--return-bad);
+	border-color: var(--border);
+}
+/* Random Pages that should really f****** use simple site-wide classes but instead use singular CSS rules for no HECKing reason  */
+h1.term-header1,
+h1[data="EULA"], h1[data="TermsOfUse"], .mal-address {
+	border-bottom: 2px solid var(--border);
+}
+/* GENERIC @HEADINGS */
+/*General*/
+.page-common .normal_header,
+/*Panel*/
+body.index .widget .widget-header,
+body.index .ranking-digest .ranking-header,
+/*Profile*/
+.profile .content-container .container-right h2,
+/*Forums*/
+.forum .forum-header,
+.forum .forum-side-block .header,
+/*Anime Search*/
+.anime-manga-search .normal_header,
+/*Notifications*/
+body.notification .notification-header,
+/*Ownlist-Style*/
+.ownlist_style_theme .customize-content-left .header,
+.ownlist_style_theme .customize-content-left h2.theme-custom-header
+{
+	background: var(--content-dimmer);
+	margin: 0;
+	
+	color: var(--text);
+}
+/*General*/
+.page-common .normal_header .floatRightHeader,
+/*Panel*/
+body.index .widget .widget-header > span,
+/*Profile*/
+.profile .content-container .user-comments h2 .floatRightHeader,
+/*Notifications*/
+body.notification .notification-header .right-menu
+{
+	
+	color: var(--text);
+	font: normal 0.9rem/13px var(--fontset-heading);
+}
+/*General*/
+.page-common .normal_header a,
+/*Panel*/
+body.index .widget .widget-header > span a,
+.ranking-digest .ranking-header .btn-view_more,
+/*Profile*/
+.profile .content-container .container-right h2.mb12 .floatRightHeader,
+.profile .content-container .user-comments h2 .floatRightHeader a,
+/*Forums*/
+.forum .forum-header a, .forum .forum-side-block .header a,
+/*Anime Search*/
+.anime-manga-search .normal_header .floatRightHeader,
+/*Notifications*/
+body.notification .notification-header .right-menu .item
+{
+	margin: -10px -10px 0 10px;
+	
+	color: var(--text-dim);
+	font: bold 0.9rem/13px var(--fontset-heading);
+	
+}
+/*General*/
+.page-common .normal_header .floatRightHeader a:hover,
+/*Panel*/
+body.index .widget .widget-header > span a:hover,
+.ranking-digest .ranking-header .btn-view_more:hover,
+/*Profile*/
+.profile .content-container .container-right h2.mb12 .floatRightHeader:hover,
+.profile .content-container .user-comments h2 .floatRightHeader a:hover,
+/*Forums*/
+.forum .forum-header a:hover, .forum .forum-side-block .header a:hover,
+/*Anime Search*/
+.anime-manga-search .normal_header .floatRightHeader:hover
+{
+	background: var(--content-dimmest);
+}
+/* - - - - - - - - - - - - - - -*\
+  Patches
+\*- - - - - - - - - - - - - - - */
+/* Patches - General */
+.page-common .normal_header.pt24 { padding-top: 10px !important; }
+.floatRightHeader a:only-of-type { margin-left: 0 !important; }
+.normal_header small { font-size: 0.9rem; }
+.profile .content-container .user-comments h2 .floatRightHeader,
+.normal_header.club-information-header ~ .normal_header .floatRightHeader { font-size: 0; }
+/* Patches - Panel */
+body.index .widget .widget-header > span a {
+	
+	font-weight: bold !important;
+}
+/* Patches - Advertising */
+.page-advertising #ad_menu {
+    margin-left: 16.5%;
+}
+.page-advertising .ad-contents .ad-text-head3 {
+    color: var(--header-text);
+}
+    
+/* Patches - Forum */
+.forum-table-header .normal_header a {
+	margin: 0;
+}
+.forum-table-header .normal_header > a {
+	color: var(--text);
+}
+.forum-table-header .normal_header > a:after {
+	content: " \f0dc";
+}
+/* Patches - Clubs */
+.normal_header.club-information-header,
+.normal_header.club-information-header ~ .normal_header,
+.normal_header.club-information-header ~ * .normal_header {
+	margin: 10px 0;
+}
+.normal_header.club-information-header ~ .normal_header .floatRightHeader a { font-weight: bold !important; }
+/* Patches - Notifications */
+body.notification .notification-section .notification-header h3 {
+	
+	color: inherit;
+	font: inherit;
+}
+body.notification .notification-header .right-menu .item.disabled {
+	color: var(--text-dimmest);
+}
+/* Patches - Quickadd */
+.normal_header.quickAdd-result-header { text-align: left; }
+/* Patches - Ownlist-Style */
+.ownlist_style_theme .customize-content-left .header .header-text {
+	
+	color: inherit;
+	font: inherit;
+}
+/* - - - - - - - - - - - - - - -*\
+  Icon About Recommendations
+\*- - - - - - - - - - - - - - - */
+/* Recommendations Info Icon */
+.page-common .icon-about-recommendations {
+	
+	color: var(--accent);
+	
+	cursor: help;
+}
+.page-common .icon-about-recommendations:after {
+	right: auto;
+	top: -5px;
+	
+	padding: 5px 10px;
+	background: var(--content-dimmest);
+	
+	color: var(--text);
+	font: 1rem/13px var(--fontset-basic);
+	letter-spacing: 0;
+	text-transform: none;
+	
+	z-index: 5;
+}
+@media (max-width: 1629px) {
+	.page-common .quickadd-content .icon-about-recommendations.right:after {
+	
+		right: -300px;
+	}
+}
+/*------------------------------*\
+  GENERIC @Sub-Headings
+\*------------------------------*/
+.profile .content-container .container-right h5,
+.ownlist_style_theme .customize-content-left h3.theme-custom-header {
+	border-bottom: 2px solid var(--border);
+	
+	color: var(--text);
+}
+.profile .content-container .container-right h5 a {
+	
+	color: var(--text-dim);
+	font: bold 0.9rem/13px var(--fontset-heading);
+}
+/* Patches - Profile */
+.profile .content-container .container-right h5 { margin-bottom: 7px !important; }
+/* Patches - Ownlist-style */
+.ownlist_style_theme .customize-content-left h3.theme-custom-header.js-theme-custom-header:active {  }
+/*------------------------------*\
+  GENERIC @Sidebar-Headings
+\*------------------------------*/
+.page-common .user-profile h4 /*Profile*/
+{
+	background: var(--content-dimmer);
+	margin: 0;
+	
+	color: var(--text);
+}
+.page-common .user-profile h4 a /*Profile*/
+{
+	padding: 6px 10px;
+	margin: -6px -10px 0 10px;
+	
+	color: var(--text-dim);
+	font: bold 0.9rem/14px var(--fontset-heading) !important;
+	
+}
+.page-common .user-profile h4 a:hover /*Profile*/
+{
+	background: var(--content-dimmest);
+}
+/* Patches - Profile */
+.page-common .user-profile h4 { margin: 6px 0; }
+.user-profile h4.icon-rss:after {
+	
+	
+	width: 13px;
+	background-size: 13px 13px;
+	
+	float: left;
+}
+/* GENERIC @HOVERINFO */
+.page-common .hoverinfo[style*="none"] {
+	
+	
+}
+.page-common .hoverinfo:hover {
+	
+}
+.page-common .hoverinfo {
+	background: var(--header);
+	border: 1px solid var(--header-border);
+	border-radius: 4px;
+	margin-left: -15px;
+	
+	color: var(--text-dim);
+	
+	
+}
+.page-common .hoverinfo .hoverinfo-contaniner {
+}
+.page-common .hoverinfo:after {
+	left: -20px;
+	
+	width: 0;
+	height: 0;
+	border-width: 15px 10px;
+	border-color: var(--header-border) var(--header-border) transparent transparent;
+	
+	transform: skewY(15deg);
+}
+.page-common .hoverinfo.left.top:after {
+	left: -20px;
+}
+.page-common .hovertitle { color: var(--text) !important }
+.page-common .hovertitle:hover { color: var(--text-heading) !important }
+.page-common .hoverinfo .dark_text { color: var(--text-dim); }
+/* ANIME STATUS BUTTONS (add, edit, etc) */
+#myanimelist a.button_add:not(.Lightbox_AddEdit), #myanimelist a.button_edit:not(.Lightbox_AddEdit),
+#myanimelist a.Lightbox_AddEdit[class*="button_"]:not(.btn-addEdit-large),
+.page-common .quickadd-content .btn-status-add {
+	padding: 0 5px;
+	background: var(--content-dim);
+	border: 2px solid var(--content-dim);
+	
+	color: var(--text-dim);
+	font: 0.9rem/16px var(--fontset-basic);
+	
+}
+#myanimelist a.button_add:not(.Lightbox_AddEdit):hover, #myanimelist a.button_edit:not(.Lightbox_AddEdit):hover,
+#myanimelist a.Lightbox_AddEdit[class*="button_"]:not(.btn-addEdit-large):hover,
+.page-common .quickadd-content .btn-status-add:hover {
+	background: var(--border);
+	border-color: var(--border);
+	
+	color: var(--text-lnk-hov);
+	
+	
+}
+#myanimelist a.button_add.watching, #myanimelist a.button_edit.watching,
+#myanimelist a.button_add.reading, #myanimelist a.button_edit.reading,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large.watching,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large.reading
+/* Watching */ { border-color: var(--watching) }
+#myanimelist a.button_add.completed, #myanimelist a.button_edit.completed,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large.completed
+/* Completed */ { border-color: var(--completed) }
+#myanimelist a.button_add.on-hold, #myanimelist a.button_edit.on-hold,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large.on-hold
+/* On Hold */ { border-color: var(--onhold) }
+#myanimelist a.button_add.dropped, #myanimelist a.button_edit.dropped,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large.dropped
+/* Dropped */ { border-color: var(--dropped) }
+#myanimelist a.button_add.plantowatch, #myanimelist a.button_edit.plantowatch,
+#myanimelist a.button_add.plantoread, #myanimelist a.button_edit.plantoread,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large.plantowatch,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large.plantoread
+/* Planned */ { border-color: var(--planned) }
+/* Buttons - Add/Edit */
+#myanimelist a.button_add:not(.Lightbox_AddEdit), #myanimelist a.button_edit:not(.Lightbox_AddEdit) {
+}
+.page-common a.button_add.button_add:hover, .page-common a.button_add.button_edit:hover, .page-common a.button_edit.button_add:hover, .page-common a.button_edit.button_edit:hover {
+	color: var(--text);
+}
+/* Buttons - Large */
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large {
+	min-width: 70px;
+	height: 22px;
+	padding: 0 6px;
+	background: var(--content-dim);
+	border: 2px solid var(--border);
+	
+	color: var(--text);
+	font: 0.9rem/22px var(--fontset-basic);
+	
+}
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large:hover {
+	background: var(--border);
+	border-color: var(--border);
+	
+	color: var(--text-lnk-hov);
+}
+/*==============================*\
+  !PAGE-TITLE
+\*==============================*/
+/* .page-common .wrapper:after {
+	
+	
+	height: 200px;
+	background: url(https://i.imgur.com/HheYL00.jpg) no-repeat center / cover fixed;
+	background: url(https://i.imgur.com/4KgeXwW.png) no-repeat center / cover;
+	
+	flex: 1 1 100%;
+}
+.page-common #contentWrapper {
+	margin-top: 200px;
+}
+.page-common .wrapper:before {
+	top: 69px;
+	top: 254px;
+	
+	height: 32px;
+	background: var(--border);
+	border-bottom: 2px solid var(--accent);
+	
+	z-index: 850;
+} */
+/* Left */
+#contentWrapper > div:first-of-type:not(#content) {
+	
+	height: 34px;
+	padding: 7px 0 7px 10px;
+	background: var(--content-dimmer) !important;
+	
+	z-index: 900;
+}
+#contentWrapper > div:first-of-type:not(#content):after {
+	
+	height: 2px;
+	background: linear-gradient(to right, var(--accent), var(--accent-dim) 25%, var(--accent-dim) 75%, var(--accent));
+}
+#contentWrapper > div:first-of-type:not(#content) .h1 {
+	max-width: 49%;
+	
+	color: var(--text-heading) !important;
+	font-size: 1.1rem;
+	line-height: 18px !important;
+	text-overflow: ellipsis;
+	
+	z-index: 13;
+}
+#contentWrapper > div .h1 span.h1-title {
+	max-width: 49%;
+	line-height: 28px;
+	margin-top: -5px;
+}
+#contentWrapper > div:first-of-type:not(#content) .h1:only-child {
+	max-width: initial;
+
+}
+#contentWrapper > div .h1 span.h1-title br {
+}
+.page-common .h1 .title-english {
+	margin-left: 3px;
+	color: var(--text-dimmer);
+} .title-english::before {
+	content: '(';
+} .title-english::after {
+	content: ')';
+}
+/* Right */
+#contentWrapper > div:first-of-type:not(#content) .header-right {
+	
+	width: max-content;
+	max-width: 49%;
+	margin: 0 !important;
+	float: right;
+}
+#contentWrapper > div:first-of-type:not(#content) .header-right a,
+#contentWrapper > div:first-of-type:not(#content) a.header-right,
+#contentWrapper > div:first-of-type:not(#content) .h1 [style*="float: right"] a {
+	max-width: 100%;
+	height: 34px;
+	padding: 7px 10px !important;
+	margin: -7px 0 0 !important;
+	float: right;
+	
+	font: 700 1rem/18px var(--fontset-basic) !important;
+	text-overflow: ellipsis;
+	
+}
+#contentWrapper > div:first-of-type:not(#content) .header-right a:hover,
+#contentWrapper > div:first-of-type:not(#content) a.header-right:hover,
+#contentWrapper > div:first-of-type:not(#content) .h1 [style*="float: right"] a:hover {
+	background: var(--accent-dimmest);
+}
+#contentWrapper > div:first-of-type:not(#content) .header-right.divider {  }
+#contentWrapper > div:first-of-type:not(#content) .h1 [style*="float: right"] a {
+	font: inherit;
+}
+/* .page-common .header-right i {
+} */
+/* .page-common .header-right:before {
+	content: "\f013 ";
+	
+	font: 1.1rem/16.5px Font Awesome 6 Pro;
+	vertical-align: top;
+	
+}
+.page-common .header-right:before {
+	margin-right: 5px;
+} */
+.header-right #editdiv {
+	top: 34px;
+	
+	background: var(--header);
+	border: var(--header-border);
+}
+/* User Banners (moderators, etc) */
+.profile-team-title {
+}
+.icon-team-title {
+	padding: 3px 5px !important;
+	background-color: var(--content-dim);
+	border-radius: 2px;
+	margin-top: -15px;
+	margin-left: 7px;
+	
+	font: bold 1rem/14px var(--fontset-basic);
+	vertical-align: top;
+	
+}
+/* .icon-team-title.site_administrator {  }
+.icon-team-title.site_administrator:hover {  }
+.icon-team-title.database_administrator {  }
+.icon-team-title.database_administrator:hover {  }
+.icon-team-title.anime_db_moderator {  }
+.icon-team-title.anime_db_moderator:hover {  }
+.icon-team-title.manga_db_moderator {  }
+.icon-team-title.manga_db_moderator:hover {  }
+.icon-team-title.forum_moderator {  }
+.icon-team-title.forum_moderator:hover {  }
+.icon-team-title.review_recommendation_moderator {  }
+.icon-team-title.review_recommendation_moderator:hover {  }
+.icon-team-title.social_media_moderator {  }
+.icon-team-title.social_media_moderator:hover {  }
+.icon-team-title.retired_moderator {  }
+.icon-team-title.retired_moderator:hover {  } */
+/* GENERIC @Breadcrumb */
+.page-common .breadcrumb {
+	top: 34px;
+	
+	padding: 1px 0;
+	background: linear-gradient(to right, var(--border), var(--content-dim));
+	margin: 0 !important;
+	
+}
+.page-common .breadcrumb ~ .breadcrumb {
+	
+}
+.page-common .breadcrumb div {
+	
+	vertical-align: top;
+}
+.page-common .breadcrumb ~ .breadcrumb div { float: right; }
+.page-common .breadcrumb div a {
+	
+	padding: 2px 10px 2px 22px;
+	background: var(--border);
+	
+	line-height: 17px;
+	
+}
+.page-common .breadcrumb ~ .breadcrumb div a { padding: 2px 22px 2px 10px; }
+.page-common .breadcrumb div a:hover { background: var(--accent-dimmest); }
+.page-common .breadcrumb div a:after {
+	
+	width: 17px;
+	height: 17px;
+	background: inherit;
+	box-shadow: 2px 2px 0 var(--accent);
+	
+	transform: rotate(-45deg);
+	transform-origin: right top;
+}
+.page-common .breadcrumb ~ .breadcrumb div a:after {
+	right: 100%;
+	box-shadow: -2px -2px 0 var(--accent);
+}
+.page-common .breadcrumb div a:hover:after { border-left-color: var(--accent-dimmest); }
+.page-common .breadcrumb div a[href*="forum/?clubid"] { font-size: 0; }
+.page-common .breadcrumb div a[href*="forum/?clubid"]:before {
+	content: "Club Forum";
+	
+}
+/* .page-common .breadcrumb div a[href="https://myanimelist.net/"] { display: none !important; } */
+.page-common .breadcrumb div a[href="https://myanimelist.net/"] {
+}
+.page-common .breadcrumb div a[href="https://myanimelist.net/"]:before {
+	content: "Home";
+	
+}
+.page-common .breadcrumb div:nth-child(1) { z-index: 12; }
+.page-common .breadcrumb div:nth-child(2) { z-index: 11; }
+.page-common .breadcrumb div:nth-child(3) { z-index: 10; }
+.page-common .breadcrumb div:nth-child(4) { z-index: 9; }
+.page-common .breadcrumb div:nth-child(5) { z-index: 8; }
+.page-common .breadcrumb div:nth-child(6) { z-index: 7; }
+.page-common .breadcrumb div:nth-child(7) { z-index: 6; }
+.page-common .breadcrumb div:nth-child(8) { z-index: 5; }
+.page-common .breadcrumb div:nth-child(9) { z-index: 4; }
+.page-common .breadcrumb div:nth-child(10) { z-index: 3; }
+.page-common .breadcrumb div:nth-child(11) { z-index: 2; }
+.page-common .breadcrumb div:nth-child(12) { z-index: 1; }
+/* .page-common .breadcrumb ~ .breadcrumb div { z-index: 0; } */
+/* Patches - News */
+body.news .news-breadcrumbs {
+	width: initial;
+	min-height: initial;
+}
+/* GENERIC @Nav */
+.page-common #horiznav_nav {
+	border-bottom: 3px solid var(--border);
+	margin: 0 0 10px 0 !important;
+}
+.page-common #horiznav_nav ul {
+	display: inline-flex;
+	margin: 0;
+	flex-flow: row wrap;
+}
+.page-common #horiznav_nav ul li {
+	background: var(--content-dim) !important;
+}
+.page-common #horiznav_nav ul li a {
+	
+	padding: 0 7px;
+	background: var(--content-dim) !important;
+	margin: 0 5px 7px 0;
+	
+	color: var(--text-lnk) !important;
+	font: bold 1rem/26px var(--fontset-basic);
+	
+}
+.page-common #horiznav_nav ul li a:hover {
+	background: var(--border) !important;
+	
+	color: var(--text-lnk-hov) !important;
+}
+.page-common #horiznav_nav ul li .horiznav_active {
+	background: var(--accent-dim) !important;
+	
+	color: var(--text-heading) !important;
+}
+.page-common #horiznav_nav ul li .horiznav_active:hover {
+	background: var(--accent) !important;
+	
+	color: var(--text-heading) !important;
+}
+/* TEXT */
+/* Spoiler Expand & Quote Expand Buttons */
+#myanimelist .spoiler {
+	margin: 2px 0 0;
+} #myanimelist .spoiler + .spoiler {
+	margin-top: 4px;
+}
+#myanimelist .spoiler .button, #myanimelist .quotetext .button.expand_quote {
+	padding: 0 7px;
+	background: var(--content-dim) !important;
+	border: 1px solid var(--border);
+	
+	color: var(--text-dim);
+	line-height: 18px;
+	
+}
+#myanimelist .spoiler .button:hover, #myanimelist .quotetext .button.expand_quote:hover { border-color: var(--accent-dim) !important; }
+#myanimelist .spoiler > .spoiler_content[style*="ck"] > .button {
+	background: var(--border) !important;
+	border-color: var(--accent-dim) !important;
+	margin-bottom: 3px;
+}
+#myanimelist .spoiler > .spoiler_content[style*="ck"] > .button:hover { border-color: var(--accent) !important; }
+#myanimelist .spoiler > .spoiler_content {
+	padding-left: 2px;
+}
+#myanimelist .spoiler > .spoiler_content:before {
+	left: -5px;
+	
+	width: 2px;
+/* 	background: var(--accent-dim); TEMP */
+	background: linear-gradient(to bottom, transparent, var(--accent-dim) 15px, var(--accent-dim) calc(100% - 15px), transparent);
+}
+#myanimelist .quotetext {
+	background: var(--quotebox-bg);
+	border: 1px solid var(--border);
+	box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+	margin: 5px;
+}
+#myanimelist .news-list .comment-list .quotetext {
+	background: var(--quotebox-bg);
+	border: 1px solid var(--border);
+	
+	color: inherit;
+}
+#myanimelist .codetext {
+	max-width: 100%;
+   background: var(--codebox-bg);
+	border: 1px solid var(--border);
+	box-shadow: inset 0 0 4px rgba(0,0,0,.15);
+	margin: 0;
+	
+	
+   color: var(--codebox-text);
+}
+#myanimelist .codetext pre {
+	max-width: 100%;
+	overflow-x: auto;
+	overflow-y: visible;
+	
+	font: 11px/15px var(--fontset-monospace);
+}
+/*------------------------------*\
+  CONTENT @Search-Bars
+\*------------------------------*/
+.anime-search-form-search {
+	margin: 30px auto;
+}
+#quickadd .quickadd-form-search {
+	max-width: 768px;
+	margin: 30px auto;
+}
+#quickadd input {
+	background-color: var(--content-dim);
+	border-color: var(--border);
+	
+	color: var(--text);
+
+}
+.anime-search-form-search #q,
+#quickadd .quickadd-form-search #maSearchText {
+	width: calc(100% - 51px);
+	border-radius: 24px 0 0 24px;
+}
+#myanimelist .anime-search-form-search .inputButton,
+#quickadd .inputButton {
+	border-radius: 0 24px 24px 0;
+	padding-right: 14px;
+	height: 48px;
+	
+	font: 1.5rem "Font Awesome 6 Pro";
+}
+#quickadd .inputButton {
+	padding: 4px 14px 4px 10px;
+	background-color: var(--accent);
+	
+	color: var(--border);
+	font: bold 1rem/16px var(--fontset-basic);
+	
+}
+#quickadd .inputButton:not(:disabled):hover {
+	background: var(--accent-dim);
+	
+	color: var(--text-lnk-hov);
+}
+/* Search Results */
+.page-common #advancedSearchResultList {
+	top: 48px !important;
+	left: 24px !important;
+	right: 24px;
+	
+	background: var(--content-dim);
+	border-color: var(--border);
+}
+#advancedSearchResultList .list {
+}
+#advancedSearchResultList .list.focus { background: var(--border); }
+#advancedSearchResultList .list .image { border: 2px solid var(--border); }
+#advancedSearchResultList .list .name { color: var(--text) !important; }
+#advancedSearchResultList .list .media-type { color: var(--text-dimmer) !important; }
+#advancedSearchResultList .list .extra-info { color: var(--text-dim) !important; }
+#advancedSearchResultList .list.separator {
+	background: var(--border);
+	
+}
+#advancedSearchResultList .list.separator span {
+	color: var(--text);
+	font: 1rem/13px var(--fontset-heading);
+}
+#advancedSearchResultList .list-bottom {
+	background: var(--content-dim) !important;
+	
+}
+#advancedSearchResultList .list-bottom.focus {
+	background: var(--accent) !important;
+	
+}
+#advancedSearchResultList .list.list-bottom a { color: var(--header-text); }
+#advancedSearchResultList .list.list-bottom.focus a { color: var(--header); }
+/* Advanced Search */
+#advancedSearch {
+}
+#advancedSearch .mb24:last-of-type {
+	padding-bottom: 20px !important;
+	margin-bottom: 0px !important;
+}
+#advancedSearch select { width: 200px; }
+#advancedSearch #sd, #advancedSearch #sm, #advancedSearch #ed, #advancedSearch #em { width: 50px; }
+#advancedSearch [name="sy"], #advancedSearch [name="ey"] { width: 80px; }
+#advancedSearch .fw-b.mt24 {
+	border-bottom: 2px solid var(--border);
+	margin: 20px 0 7px !important;
+	
+	color: var(--text);
+	font: bold 1.1rem/13px var(--fontset-heading) !important;
+}
+#advancedSearch .fw-b.mt24 a {
+	float: right;
+	
+	color: var(--text-dim);
+	font: bold 0.9rem/13px var(--fontset-heading) !important;
+}
+/* ===============================================
+!GENERIC @News
+=============================================== */
+body.news .menu-category .btn-category.selected {
+    color: #7f7f7f !important;
+}
+.news-list .comment-list, .news-list .news-unit {
+	font-family: var(--fontset);
+}
+.di-ib.tags *, .tag-cloud * {
+	background-color: transparent !important;
+}
+#myanimelist .news-list .tags .tags-inner {
+}
+#myanimelist .news-list .tags .tags-inner-attributes {
+	border-color: var(--border);
+	margin-right: 7px;
+}
+#myanimelist .news-list .tags-inner .tag {
+	height: 18px;
+	padding: 0 5px;
+	background: var(--content-dim);
+	border: 1px solid var(--border);
+	margin: 0 5px 5px 0;
+	
+	color: var(--text);
+	
+	line-height: 18px;
+	
+}
+#myanimelist .news-list .tags-inner > .tag:hover {
+	background: var(--content-dimmer);
+	
+	color: var(--text-lnk-hov);
+}
+#myanimelist .news-list .tags .tag-color-feature-spoiler { border-color: var(--return-bad); }
+/* ===============================================
+!GENERIC @Companies
+=============================================== */
+.navi-seasonal.js-navi-company {
+	background-color: transparent !important;
+}
+    
+/* ===============================================
+!GENERIC @Interest Stacks
+=============================================== */
+.mymenu.clearfix, .tag, .quick-search *, .info-block.clearfix, h2.title, .tag, .any_status, .head {
+	background-color: var(--content) !important;
+}
+.info {
+	background-color: transparent !important;
+}
+.introduction, .any_status strong, .intro {
+    color: var(--text-heading) !important;
+}
+/* ===============================================
+!FORUM
+=============================================== */
+/* Header Thing */
+.page-forum .forum-table-header td { padding: 10px 0; }
+/* Board Base */
+.page-forum [id^="topicRow"] [class^="forum_boardrow"] {
+	background: var(--content-dim);
+}
+/* Browser */
+.page-common table.forum-topics tr td {
+/* 	padding: 7px; */
+}
+.page-common table.forum-topics tr td.watch-state {
+/* 	padding: 3px 0; */
+}
+.page-common table.forum-topics tr td h4 {
+	padding: 0 0 3px 0;
+	margin: 0;
+}
+/* Posts */
+.page-forum .forum_postusername a,.page-forum .forum_postusername a:visited { color: var(--text-dim); }
+.page-forum .forum_postusername a:hover { color: var(--text); }
+.page-forum [class^="forum_boardrow"],
+.page-forum .sig
+{
+	border-color: var(--border);
+}
+/* Icons */
+.js-toggle-watching-topic-button img {
+	width: 3px;
+	height: 3px;
+	padding: 2px;
+	background:rgba(var(--notif-rgb), 0.33) content-box;
+	border: 2px solid rgba(var(--notif-rgb), 0.33);
+	border-radius: 50% 0;
+	
+	object-position: 9999px;
+	transform: rotate(45deg);
+} .js-toggle-watching-topic-button img[title*="re wa"] {
+	background-color: var(--notif);
+	border-color: var(--notif);
+} /*.js-toggle-watching-topic-button img[title*="re not wa"] {
+} */
+.js-ignore-topic-button img {
+}
+.js-ignore-topic-button {
+	width: 12px;
+	height: 12px;
+	background: var(--border);
+	border-radius: 6px;
+	
+	line-height: 12px;
+}
+.js-ignore-topic-button:before {
+	
+	
+	width: 8px;
+	height: 2px;
+	background: var(--text-dim);
+	border-radius: 1px;
+	margin: 5px 2px;
+}
+/* ===============================================
+!NOTIFICATIONS
+=============================================== */
+body.notification #content {
+	padding-top: 44px !important;
+	min-height: 535px;
+}
+/* Left Column */
+body.notification #myanimelist #content .left-column {
+	padding-right: 7px;
+	border-right: 3px solid var(--border);
+}
+body.notification .notificaiton-category-nav {
+	min-height: auto;
+}
+body.notification .notificaiton-category-nav li {
+}
+body.notification .notificaiton-category-nav a {
+	color: var(--text-heading);
+	
+}
+body.notification .notificaiton-category-nav a .fa {
+	color: var(--icon);
+}
+body.notification .notificaiton-category-nav a:hover, body.notification .notificaiton-category-nav a.active {
+	background: var(--content-dim);
+}
+body.notification .notificaiton-category-nav li .fa-bell-o:before {
+	content: "\f0f3";
+}
+body.notification .notificaiton-category-nav a .counter.zero {
+	background: var(--border);
+	color: var(--text-heading);
+}
+body.notification .notificaiton-category-nav a .counter {
+	background: var(--accent);
+}
+/* Right Column */
+body.notification .notification-section {
+	margin-bottom: 30px;
+}
+body.notification .left-column + div {
+	padding-left: 7px;
+}
+body.notification .notification-item {
+	
+	border-bottom: 1px solid var(--border);
+	
+}
+body.notification .notification-item.empty {
+	font-size: 1.2rem;
+}
+body.notification .notification-item:hover { background: var(--content-dim); }
+body.notification #myanimelist .notification-item-layout {
+	padding: 5px;
+}
+body.notification .notification-item-layout > * {
+	padding: 0 5px;
+	
+}
+/* Text */
+body.notification #myanimelist .notification-item-layout .notification-item-content {
+	max-width: initial;
+	flex: 1 1 auto;
+}
+/* Time */
+body.notification .notification-item-layout .time {
+	color: var(--text-dimmest);
+}
+/* Checkmark */
+body.notification .notification-item-layout .is-read {
+	padding-left: 0;
+	margin: 0;
+}
+/* Unread */
+body.notification #myanimelist .notification-item-layout .fa {
+	margin: 2px 0;
+	
+	color: var(--text);
+	font-size: 1.3rem;
+	
+}
+/* Read */
+body.notification .notification-item-layout .is-read .fa-check-circle { background: var(--notif); }
+body.notification .notification-item-layout .is-read .fa-check-circle:before { content: "\f00c"; }
+body.notification .notification-item-layout .fa-check:hover { background: var(--border); }
+/*------------------------------*\
+  BROWSE @Anime-Search
+\*------------------------------*/
+/*https://myanimelist.net/anime.php*/
+/*https://myanimelist.net/manga.php*/
+.anime-manga-search .normal_header { margin-top: 20px; }
+/* Browse Page */
+.anime-manga-search .genre-link {
+/* 	 */
+}
+.anime-manga-search .genre-link .genre-list-col {
+	display: inline;
+}
+.anime-manga-search .genre-link .genre-list {
+	width: 16.6667%;
+	min-width: 206px;
+	
+}
+.anime-manga-search .genre-link .genre-list .genre-name-link {
+	height: 22px;
+/* 	padding: 0 0 0 16px; */
+	padding: 0 0 0 8px;
+/* 	background: var(--content-dim); */
+	border-left: 3px solid var(--border);
+/*  */
+	margin: 6px 6px 0;
+	
+	line-height: 22px;
+	
+}
+.anime-manga-search .genre-link .genre-list .genre-name-link:hover {
+	border-color: var(--accent);
+}
+.anime-manga-search .genre-link .genre-list .genre-name-link:after {
+}
+/* ===============================================
+BROWSE @Top-Lists
+=============================================== */
+/* 
+ * https://myanimelist.net/topanime.php
+ * https://myanimelist.net/topmanga.php
+ * https://myanimelist.net/people.php
+ * https://myanimelist.net/character.php
+ */
+#myanimelist [class$="-ranking-table"] .text {
+	color: var(--text);
+}
+#myanimelist [class$="-ranking-table"] .table-header td {
+	padding: 10px 0;
+	background: var(--border);
+	
+	font: 1.1rem/13px var(--fontset-heading);
+}
+#myanimelist [class$="-ranking-table"] .ranking-list td {
+	border-color: var(--border);
+	border-bottom: 2px solid var(--border);
+}
+/* #myanimelist [class$="-ranking-table"] .ranking-list:nth-of-type(even) td { background: var(--content-dim); } */
+/* Score */
+#myanimelist [class$="-ranking-table"] .score div:before, #myanimelist [class$="-ranking-table"] .your-score a:before {
+	content: "\f005";
+	
+	margin-right: 3px;
+	
+	color: #ecb428;
+	font: 1.5rem/1 "Font Awesome 6 Pro";
+}
+#myanimelist [class$="-ranking-table"] [class*="score"] div {
+	
+	font-size: 1.35rem;
+}
+#myanimelist [class$="-ranking-table"] .your-score a {
+}
+#myanimelist [class$="-ranking-table"] .your-score span {
+	
+}
+/* ===============================================
+BROWSE @Seasonal
+=============================================== */
+/* Header */
+.navi-seasonal {
+	width: 1040px;
+	background: var(--content);
+	
+}
+.navi-seasonal.fixed {
+	background: var(--border);
+}
+.navi-seasonal.fixed:after {
+	bottom: -15px;
+		
+	height: 15px;
+	background: linear-gradient(to bottom, rgba(0,0,0, 0.5), rgba(0,0,0, 0));
+	
+}
+.navi-seasonal .horiznav_nav ul li a,
+.navi-seasonal .horiznav_nav ul li a.navtab,
+.navi-seasonal .horiznav-nav-seasonal .btn-seasonal .btn-type
+{
+	background: var(--content-dim);
+	color: var(--text-dim);
+}
+/* Items */
+.seasonal-anime-list .seasonal-anime {
+	width: calc(33.3334% - 15px - 1.6667px);
+	border-color: var(--border);
+	margin-right: 5px;
+	
+}
+.seasonal-anime-list .seasonal-anime .prodsrc {
+	background: var(--border);
+}
+.seasonal-anime-list .seasonal-anime .genres {
+	background: var(--content-dim);
+}
+.seasonal-anime-list .seasonal-anime .genres .genre {
+	background: var(--content-dim);
+}
+.seasonal-anime-list .seasonal-anime .genres .genre a {
+	color: var(--text-dimmer);
+}
+.seasonal-anime-list .seasonal-anime .synopsis {
+	width: calc(100% - 167px) !important;
+}
+.seasonal-anime-list .seasonal-anime .information {
+	background: var(--border);
+	
+}
+.seasonal-anime-list .seasonal-anime .information > div {
+	
+	color: var(--text-dimmer) !important;
+}
+.seasonal-anime-list .seasonal-anime .information .scormem .score:after {
+	content: "☆";
+	left: -1px;
+	
+	
+	line-height: 11px;
+	font-size: 14px;
+}
+.seasonal-anime-list .seasonal-anime .information .scormem .member:after {
+	content: "M";
+	
+	
+	line-height: 14px;
+	font-size: 11px;
+}
+/* ===============================================
+BROWSE @Clubs
+=============================================== */
+/* Search Bar */
+#myanimelist .club-search-form-search .inputButton {
+	height: 50px;
+	border-radius: 0 50% 50% 0;
+}
+/* Text */
+.club-list .table-data td {
+	border: var(--border) !important;
+}
+.club-list .table-data td .informantion {
+	color: var(--text);
+}
+/* Join Button */
+#myanimelist .club-list .btn-club-join {
+	min-width: 30px;
+	padding: 4px 10px;
+	background-color: var(--accent);
+	background-color: var(--border);
+	
+	color: var(--text);
+	
+}
+#myanimelist .club-list .btn-club-join:hover {
+	background: var(--accent-dimmest);
+	
+	color: var(--text-lnk-hov);
+}
+/* New Comment */
+.club-list .table-data td .new {
+	color: var(--notif);
+}
+/* ===============================================
+!FANCYBOX-ETC
+=============================================== */
+#fancybox-overlay {
+	background: black !important;
+	
+}
+#fancybox-wrap {
+	left: 50% !important;
+	margin-top: 25% !important;
+	
+	min-width: 500px;
+	min-height: 350px;
+	
+	transform: translate(-50%,-50%);
+}
+#fancybox-outer {
+	
+	
+	min-width: 500px;
+	min-height: 350px;
+	background: var(--border);
+}
+#fancybox-inner {
+	
+	height: 100% !important;
+	
+	color: var(--text);
+}
+#fancybox-inner div {
+    background: black !important;
+	font: 1rem/1.5 var(--fontset-basic) !important;
+}
+#fancybox-title {
+	left: 0 !important;
+}
+/* MODALS */
+.root * { border-color: var(--border) !important; }
+.root .modal-content { transition: all var(--time-medium) ease; }
+.root .modal-mask { background-color: rgba(0,0,0,0.7) }
+.root .modal-content {
+	background: var(--header);
+	border-top: 2px solid var(--border);
+}
+.root .modal-wrapper {
+}
+.root .modal-container {
+	border-color: var(--accent) !important;
+	color: var(--text);
+	
+}
+.root button {
+	background: var(--accent);
+	border-radius: 12px;
+	
+	color: var(--border);
+	
+}
+.root button:hover { color: var(--text-lnk-hov); }
