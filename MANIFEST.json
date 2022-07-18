@@ -13,11 +13,6 @@
     }
     ,
     {
-        "matches": ["*://*.myanimelist.net/addtolist*"],
-        "css": ["QUICKADD.css"]
-    }
-    ,
-    {
         "matches": ["*://*.myanimelist.net/"],
         "exclude_matches": ["*://image.myanimelist.net/"],
         "css": ["PANEL.css"]
