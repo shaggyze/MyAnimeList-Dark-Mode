@@ -1,4 +1,25 @@
-/** MyAnimeList Dark Mode originally by Valerio Lyndon*** https://github.com/ValerioLyndon* https://myanimelist.net/profile/Valerio_Lyndon*** TABLE OF CONTENTS** VARIABLES : set the theme's colours, images, etcetera** PAGE-BASE : basic site-wide page layout** PAGE-HEADER : site-wide page navigation** CONTENT : generic, re-used parts of code** FOOTER : site-wide footer**/
+/* MyAnimeList Redesign originally by Valerio Lyndon
+ * 
+ * 
+ * https://github.com/ValerioLyndon
+ * https://myanimelist.net/profile/Valerio_Lyndon
+ * 
+ * 
+ * TABLE OF CONTENTS
+ * 
+ * 
+ * VARIABLES             : set the theme's colours, images, etcetera
+ * 
+ * PAGE-BASE             : basic site-wide page layout
+ * 
+ * PAGE-HEADER           : site-wide page navigation
+ * 
+ * CONTENT               : generic, re-used parts of code
+ * 
+ * FOOTER                : site-wide footer
+ * 
+ * 
+ */
 /*==============================*\!VARIABLES\*==============================*/
 :root {
     /* Base Colours */
@@ -46,8 +67,7 @@
     --codebox-text: #96af1d;
     --codebox-text: #99b6c2;
     /* Status Colours */
-    /* --allanime: #ff00de;
-	*/
+    --allanime: #ff00de;
     --watching: #bbbbdd;
     --completed: #9999bb;
     --onhold: #777799;
@@ -867,7 +887,7 @@ body.notification .notification-header .right-menu .item.disabled {
     color: var(--text-lnk-hov);
 }
 /*==============================*\!PAGE-TITLE\*==============================*/
-/* .page-common .wrapper:after {
+/*.page-common .wrapper:after {
 content: "";
 background: url(https://i.imgur.com/HheYL00.jpg) no-repeat center / cover fixed;
 background: url(https://i.imgur.com/4KgeXwW.png) no-repeat center / cover;
@@ -875,8 +895,7 @@ background: url(https://i.imgur.com/4KgeXwW.png) no-repeat center / cover;
 .page-common .wrapper:before {
 content: "";
 background: var(--border);
-}
-*/
+}*/
 /* Left */
 #contentWrapper > div:first-of-type:not(#content) {
     background: var(--content-dimmer) !important;
