@@ -1,0 +1,24 @@
+/* QUICKADD */
+body > div.pt16 {
+	background: var(--content);
+}
+#quickadd { margin-top: -36px; }
+#quickadd #searchResults > [id*="auto-recommendation"] {
+	padding: 0 7px 0 0;
+	border-right: 3px solid var(--border);
+}
+#quickadd #searchResults > [id*="auto-recommendation"] ~ [id*="auto-recommendation"] {
+	padding: 0 0 0 7px;
+}
+#quickadd [class*="quickAdd-"][class*="-result-unit"] {
+	padding: 3px 10px;
+	border-bottom: 1px solid var(--border);
+	
+	color: var(--text);
+}
+#quickadd [class*="quickAdd-"][class*="-result-unit"]:nth-of-type(odd) {  }
+#quickadd .lightLink { color: var(--text-dimmer); }
+#quickadd .not-found-text {
+	
+}
+}
