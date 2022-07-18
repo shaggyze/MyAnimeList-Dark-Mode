@@ -20,6 +20,7 @@
     ],
     "permissions": ["scripting",
     "tabs",
+	"storage",
     "activeTab"],
     "homepage_url": "http://www.myanimelist.net",
     "author": "ShaggyZE",

@@ -82,12 +82,9 @@
     --img-icon-arrow-up: url(https://i.imgur.com/iMOZI4Q.png);
     --img-icon-arrow-dn: url(https://i.imgur.com/Oe1DIWT.png);
     /* Other */
-    --ptwidth: 120px;
+    --ptwidth: 120px; /* for testing popup.html */
 }
 /*==============================*\!PAGE-BASE\*==============================*/
-.user-profile .user-image img {
-    width: var(--ptwidth) !important;
-}
 body:not(.ownlist) {
     /* background: #f9f9ff no-repeat fixed center center / cover !important;
 	*/
@@ -149,7 +146,6 @@ body.news .news-container .tags, body.news .news-container .news-info-block, bod
 .page-common .header-list .header-list-dropdown ul li a {
     background: none;
     color: var(--header-text-dim);
-    transition: all var(--time-btn-small) ease;
 }
 .page-common .header-list .header-list-dropdown ul li a:hover {
     background: var(--header-hov);
@@ -161,7 +157,6 @@ body.news .news-container .tags, body.news .news-container .news-info-block, bod
     background: var(--notif);
     color: var(--header-text);
     font-weight: bold;
-    transition: inherit;
 }
 .page-common #header-menu .header-notification-button.has-unread:after {
     right: 2px;
@@ -193,7 +188,6 @@ body.news .news-container .tags, body.news .news-container .news-info-block, bod
 }
 .page-common .header-notification-dropdown-inner h3 a, .page-common .header-notification-dropdown-inner h3 .mark-all {
     color: var(--header-text-dim) !important;
-    transition: all var(--time-btn-small) ease;
 }
 .page-common .header-notification-dropdown-inner h3 a:hover, .page-common .header-notification-dropdown-inner h3 .mark-all:not(.disabled):hover {
     background: var(--header-border-alt);
@@ -224,12 +218,8 @@ body.news .news-container .tags, body.news .news-container .news-info-block, bod
 }
 /* Checkmark */
 .page-common .header-notification-item .inner:not(.is-read) .is-read {
-    right: 0;
     background: var(--header-border);
     color: var(--text);
-}
-.page-common .header-notification-item .inner:not(.is-read) .is-read .fa-check {
-    transition: all var(--time-btn-small) ease;
 }
 .page-common .header-notification-item .inner:not(.is-read) .is-read:not(.checked) .fa-check:hover {
     background: rgba(var(--notif-rgb), 0.5);
@@ -253,7 +243,6 @@ body.news .news-container .tags, body.news .news-container .news-info-block, bod
 #myanimelist .actions .result, #myanimelist .actions .action-button {
     background: var(--header-border);
     color: var(--text);
-    transition: all var(--time-btn-small) ease;
 }
 #myanimelist .actions .result:hover, #myanimelist .actions .action-button:hover {
     background: var(--notif) !important;
@@ -295,7 +284,6 @@ body.news .news-container .tags, body.news .news-container .news-info-block, bod
 .page-common .header-profile .header-profile-dropdown ul li a {
     background: none;
     color: var(--header-text-dim);
-    transition: all var(--time-btn-small) ease;
 }
 .page-common .header-profile .header-profile-dropdown ul li a:hover {
     background: var(--header-hov);
@@ -307,9 +295,6 @@ body.news .news-container .tags, body.news .news-container .news-info-block, bod
 }
 /* Items */
 /* HEADER - PROFILE PICTURE */
-.page-common .header-profile-button {
-    transition: all var(--time-img) ease;
-}
 .page-common .header-profile-button:hover {
     opacity: 1;
 }
@@ -317,7 +302,6 @@ body.news .news-container .tags, body.news .news-container .news-info-block, bod
     content: "";
     background: var(--header);
     opacity: 0;
-    transition: all var(--time-btn-small) ease;
 }
 .header-profile-button:hover:before {
     opacity: 0.3;
@@ -331,7 +315,6 @@ body.news .news-container .tags, body.news .news-container .news-info-block, bod
     background: transparent;
     color: var(--header-text) !important;
     text-transform: uppercase;
-    transition: all var(--time-btn-small) ease;
 }
 .page-common #header-menu .header-menu-login .btn-signup {
     background: rgba(var(--notif-rgb), 0.5);
@@ -359,7 +342,6 @@ body.news .news-container .tags, body.news .news-container .news-info-block, bod
 /* LINKS */
 .page-common #nav li {
     text-indent: 0;
-    transition: all var(--time-btn-small) ease;
 }
 .page-common #nav li:hover {
     background: var(--header-hov) !important;
@@ -372,12 +354,10 @@ body.news .news-container .tags, body.news .news-container .news-info-block, bod
 .page-common #nav > li > ul {
     background: none !important;
     opacity: 0;
-    transition: all var(--time-btn-small) ease-in;
 }
 .page-common #nav > li:hover > ul {
     opacity: 1;
     pointer-events: auto;
-    transition-timing-function: ease-out;
 }
 .page-common #nav > li:hover:before {
     content: "";
@@ -386,7 +366,6 @@ body.news .news-container .tags, body.news .news-container .news-info-block, bod
     background: var(--header) !important;
     color: var(--header-text-dim) !important;
     white-space: nowrap;
-    transition: all var(--time-btn-small) ease;
 }
 .page-common #nav > li > ul > li > a:hover {
     background: var(--header-hov) !important;
@@ -397,7 +376,6 @@ body.news .news-container .tags, body.news .news-container .news-info-block, bod
 }
 .page-common #searchBar.searchBar #topSearchValue {
     background: transparent var(--img-icon-arrow-dn) 38px 14px / auto no-repeat !important;
-    box-sizing: border-box;
     color: var(--text-dim);
     cursor: pointer;
 }
@@ -406,14 +384,11 @@ body.news .news-container .tags, body.news .news-container .news-info-block, bod
 }
 .page-common #searchBar.searchBar #topSearchText {
     background: none !important;
-    box-sizing: border-box;
     color: var(--text-dim);
 }
 .page-common #searchBar.searchBar #topSearchButon {
     background: none !important;
-    box-sizing: border-box;
     color: var(--header-text-dim) !important;
-    transition: all var(--time-medium) ease;
 }
 .page-common #searchBar.searchBar #topSearchButon:not(.notActive):hover {
     background: var(--header-hov) !important;
@@ -424,7 +399,6 @@ body.news .news-container .tags, body.news .news-container .news-info-block, bod
     background: var(--header);
     border-style: solid;
     border-color: var(--header-border);
-    box-sizing: border-box;
 }
 #topSearchResultList .list {
     background: none;
@@ -564,13 +538,9 @@ html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
 /* Images */
 .page-common div.picSurround {
     background: var(--border);
-    transition: all var(--time-img) ease;
 }
 .page-common div.picSurround:hover {
     opacity: 0.7;
-}
-.lazyloaded {
-    transition: all var(--time-img) ease;
 }
 /* Images - Empty Avatar */
 #myanimelist img[src*="questionmark_50.gif"] {
@@ -582,7 +552,6 @@ html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
     background: none;
     overflow: visible;
     text-indent: 0;
-    transition: all var(--time-btn-small) ease;
 }
 .icon-watch:before, .icon-watch-pv:before {
     content: "\f144";
@@ -596,14 +565,12 @@ html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
     background-color: var(--content-dim);
     border-color: var(--border);
     border-style: solid;
-    box-sizing: border-box;
     color: var(--text);
 }
 input:disabled, textarea:disabled {
     color: var(--text-dimmest);
 }
 .page-common .textarea, .page-common textarea {
-    box-sizing: border-box;
     resize: both;
 }
 /* .page-common .textarea {
@@ -613,9 +580,7 @@ input:disabled, textarea:disabled {
 /* Buttons - Inputs */
 #myanimelist .inputButton, .page-common .btn-form-submit, .page-common.ownlist_style_theme .inputButton {
     background-color: var(--accent);
-    box-sizing: border-box;
     color: var(--border);
-    transition: all var(--time-btn-small) ease;
 }
 #myanimelist .inputButton:not(:disabled):hover, .page-common .btn-form-submit:not(:disabled):hover {
     background: var(--accent-dim);
@@ -635,9 +600,6 @@ input:disabled, textarea:disabled {
     color: var(--text-lnk-hov) !important;
 }
 /* Patches - page */
-.page-common .btn-form-submit.js-btn-support-form {
-    transition: all var(--time-medium) ease;
-}
 .page-support #myanimelist #content p, .page-support #myanimelist #content li, .page-support #myanimelist #content h3, .page-support #myanimelist #content h4 {
     color: var(--header-text)
 }
@@ -652,7 +614,6 @@ input:disabled, textarea:disabled {
 .page-common .pagination .link {
     background: none;
     color: var(--text);
-    transition: all var(--time-medium) ease;
 }
 .page-common .pagination .link:hover {
     background: var(--content-dimmer);
@@ -720,7 +681,6 @@ body.index .widget .widget-header > span a, .ranking-digest .ranking-header .btn
 .anime-manga-search .normal_header .floatRightHeader, /*Notifications*/
 body.notification .notification-header .right-menu .item {
     color: var(--text-dim);
-    transition: all var(--time-btn-small) ease;
 }
 /*General*/
 .page-common .normal_header .floatRightHeader a:hover, /*Panel*/
@@ -801,7 +761,6 @@ body.notification .notification-header .right-menu .item.disabled {
 .page-common .user-profile h4 a/*Profile*/
 {
     color: var(--text-dim);
-    transition: all var(--time-btn-small) ease;
 }
 .page-common .user-profile h4 a:hover/*Profile*/
 {
@@ -821,7 +780,6 @@ body.notification .notification-header .right-menu .item.disabled {
     background: var(--header);
     color: var(--text-dim);
     opacity: 1;
-    transition: all var(--time-btn-small) ease;
     pointer-events: auto;
 }
 .page-common .hoverinfo:after {
@@ -843,7 +801,6 @@ body.notification .notification-header .right-menu .item.disabled {
 #myanimelist a.button_add:not(.Lightbox_AddEdit), #myanimelist a.button_edit:not(.Lightbox_AddEdit), #myanimelist a.Lightbox_AddEdit[class*="button_"]:not(.btn-addEdit-large), .page-common .quickadd-content .btn-status-add {
     background: var(--content-dim);
     color: var(--text-dim);
-    transition: all var(--time-btn-small) ease;
 }
 #myanimelist a.button_add:not(.Lightbox_AddEdit):hover, #myanimelist a.button_edit:not(.Lightbox_AddEdit):hover, #myanimelist a.Lightbox_AddEdit[class*="button_"]:not(.btn-addEdit-large):hover, .page-common .quickadd-content .btn-status-add:hover {
     background: var(--border);
@@ -879,7 +836,6 @@ body.notification .notification-header .right-menu .item.disabled {
 #myanimelist a.Lightbox_AddEdit.btn-addEdit-large {
     background: var(--content-dim);
     color: var(--text);
-    transition: all var(--time-btn-small) ease;
 }
 #myanimelist a.Lightbox_AddEdit.btn-addEdit-large:hover {
     background: var(--border);
@@ -899,7 +855,6 @@ background: var(--border);
 /* Left */
 #contentWrapper > div:first-of-type:not(#content) {
     background: var(--content-dimmer) !important;
-    box-sizing: border-box;
 }
 #contentWrapper > div:first-of-type:not(#content):after {
     content: "";
@@ -925,17 +880,14 @@ background: var(--border);
 }
 /* Right */
 #contentWrapper > div:first-of-type:not(#content) .header-right a, #contentWrapper > div:first-of-type:not(#content) a.header-right, #contentWrapper > div:first-of-type:not(#content) .h1 [style*="float: right"] a {
-    box-sizing: border-box;
     white-space: nowrap;
     text-overflow: ellipsis;
-    transition: all var(--time-medium) ease;
 }
 #contentWrapper > div:first-of-type:not(#content) .header-right a:hover, #contentWrapper > div:first-of-type:not(#content) a.header-right:hover, #contentWrapper > div:first-of-type:not(#content) .h1 [style*="float: right"] a:hover {
     background: var(--accent-dimmest);
 }
 /* .page-common .header-right:before {
 content: "\f013 ";
-transition: all var(--time-medium) ease;
 }
 */
 .header-right #editdiv {
@@ -944,7 +896,6 @@ transition: all var(--time-medium) ease;
 /* User Banners (moderators, etc) */
 .icon-team-title {
     background-color: var(--content-dim);
-    transition: all var(--time-medium) ease;
 }
 /* GENERIC @Breadcrumb */
 .page-common .breadcrumb {
@@ -956,7 +907,6 @@ transition: all var(--time-medium) ease;
 }
 .page-common .breadcrumb div a {
     background: var(--border);
-    transition: all var(--time-btn-small) ease;
 }
 .page-common .breadcrumb div a:hover {
     background: var(--accent-dimmest);
@@ -993,7 +943,6 @@ transition: all var(--time-medium) ease;
 .page-common #horiznav_nav ul li a {
     background: var(--content-dim) !important;
     color: var(--text-lnk) !important;
-    transition: all var(--time-btn-small) ease;
 }
 .page-common #horiznav_nav ul li a:hover {
     background: var(--border) !important;
@@ -1011,9 +960,7 @@ transition: all var(--time-medium) ease;
 /* Spoiler Expand & Quote Expand Buttons */
 #myanimelist .spoiler .button, #myanimelist .quotetext .button.expand_quote {
     background: var(--content-dim) !important;
-    box-sizing: border-box;
     color: var(--text-dim);
-    transition: all var(--time-btn-small) ease;
     cursor: pointer;
 }
 #myanimelist .spoiler .button:hover, #myanimelist .quotetext .button.expand_quote:hover {
@@ -1043,7 +990,6 @@ TEMP */
 #myanimelist .codetext {
     background-color: var(--codebox-bg) !important;
     box-shadow: inset 0 0 4px rgba(0, 0, 0, .15);
-    box-sizing: border-box;
     color: var(--codebox-text);
 }
 /*------------------------------*\CONTENT @Search-Bars\*------------------------------*/
@@ -1051,13 +997,11 @@ TEMP */
     background-color: var(--content-dim);
     border-color: var(--border);
     border-style: solid;
-    box-sizing: border-box;
     color: var(--text);
 }
 #quickadd .inputButton {
     background-color: var(--accent);
     color: var(--border);
-    transition: all var(--time-btn-small) ease;
 }
 #quickadd .inputButton:not(:disabled):hover {
     background: var(--accent-dim);
@@ -1069,7 +1013,6 @@ TEMP */
     background: var(--content-dim);
     border-style: solid;
     border-color: var(--border);
-    box-sizing: border-box;
 }
 #advancedSearchResultList .list {
     background: none;
@@ -1131,7 +1074,6 @@ body.news .menu-category .btn-category.selected {
 #myanimelist .news-list .tags-inner .tag {
     background: var(--content-dim);
     color: var(--text);
-    transition: all var(--time-btn-small) ease;
 }
 #myanimelist .news-list .tags-inner > .tag:hover {
     background: var(--content-dimmer);
@@ -1195,7 +1137,6 @@ body.notification #myanimelist #content .left-column {
 }
 body.notification .notificaiton-category-nav a {
     color: var(--text-heading);
-    transition: all var(--time-medium) ease;
 }
 body.notification .notificaiton-category-nav a .fa {
     color: var(--icon);
@@ -1214,9 +1155,6 @@ body.notification .notificaiton-category-nav a .counter {
     background: var(--accent);
 }
 /* Right Column */
-body.notification .notification-item {
-    transition: all var(--time-btn-small) ease;
-}
 body.notification .notification-item:hover {
     background: var(--content-dim);
 }
@@ -1229,7 +1167,6 @@ body.notification .notification-item-layout .time {
 /* Unread */
 body.notification #myanimelist .notification-item-layout .fa {
     color: var(--text);
-    transition: all var(--time-btn-small) ease;
 }
 /* Read */
 body.notification .notification-item-layout .is-read .fa-check-circle {
@@ -1252,7 +1189,6 @@ body.notification .notification-item-layout .fa-check:hover {
     /* background: var(--content-dim);
 */
     white-space: nowrap;
-    transition: all var(--time-medium) ease;
 }
 .anime-manga-search .genre-link .genre-list .genre-name-link:hover {
     background: transparent;
@@ -1285,7 +1221,6 @@ background: var(--content-dim);
 /* Header */
 .navi-seasonal {
     background: var(--content);
-    transition: all var(--time-medium) ease;
 }
 .navi-seasonal.fixed {
     background: var(--border);
@@ -1300,7 +1235,6 @@ background: var(--content-dim);
 /* Items */
 .seasonal-anime-list .seasonal-anime {
     border-color: var(--border);
-    box-sizing: border-box;
 }
 .seasonal-anime-list .seasonal-anime .prodsrc {
     background: var(--border);
@@ -1313,9 +1247,6 @@ background: var(--content-dim);
 }
 .seasonal-anime-list .seasonal-anime .genres .genre a {
     color: var(--text-dimmer);
-}
-.seasonal-anime-list .seasonal-anime .synopsis {
-    box-sizing: border-box;
 }
 .seasonal-anime-list .seasonal-anime .information {
     background: var(--border);
@@ -1346,7 +1277,6 @@ background: var(--content-dim);
     background-color: var(--accent);
     background-color: var(--border);
     color: var(--text);
-    transition: all var(--time-medium) ease;
 }
 #myanimelist .club-list .btn-club-join:hover {
     background: var(--accent-dimmest);
@@ -1366,7 +1296,6 @@ background: var(--content-dim);
 }
 #fancybox-outer {
     background: var(--border);
-    box-sizing: border-box;
 }
 #fancybox-inner {
     color: var(--text);
@@ -1377,9 +1306,6 @@ background: var(--content-dim);
 /* MODALS */
 .root * {
     border-color: var(--border) !important;
-}
-.root .modal-content {
-    transition: all var(--time-medium) ease;
 }
 .root .modal-mask {
     background-color: rgba(0, 0, 0, 0.7)
@@ -1396,7 +1322,6 @@ background: var(--content-dim);
 .root button {
     background: var(--accent);
     color: var(--border);
-    transition: all var(--time-btn-small) ease;
 }
 .root button:hover {
     color: var(--text-lnk-hov);
@@ -1412,9 +1337,6 @@ body.index article > div.widget:not([class*="_ad"]) {
     background: var(--content-dim);
 }
 /* Widget Content */
-body.index .widget .widget-content {
-    box-sizing: border-box;
-}
 /* body.index .widget a {
 color: var(--text-dim);
 }
@@ -1434,9 +1356,6 @@ body.index .widget.clubs .item .info p:nth-of-type(2) {
 .ranking-digest .ranking-header {
     background: var(--content-dim);
 }
-.ranking-digest ul .ranking-unit {
-    box-sizing: border-box;
-}
 .ranking-digest .ranking-unit .rank {
     background: var(--border);
     color: var(--text-dimmer);
@@ -1447,9 +1366,6 @@ body.index .widget.clubs .item .info p:nth-of-type(2) {
 /*------------------------------*\PANEL @Friend-Updates\*------------------------------*/
 /* Removes popularity rank. */
 /*------------------------------*\PANEL @Clubs\*------------------------------*/
-body.index .widget.clubs .item {
-    box-sizing: border-box;
-}
 body.index .widget.clubs .item .info p:nth-of-type(2) {
     color: var(--text-dim);
     white-space: nowrap;
@@ -1488,7 +1404,6 @@ body.index .widget.clubs .new:before {
 }
 .widget-slide-block .widget-slide .btn-anime .link:before, .auto-recommendations .item:before {
     content: "";
-    transition: all var(--time-img) ease;
 }
 .widget-slide-block .widget-slide .btn-anime:hover .link:before, .auto-recommendations .item:hover:before {
     background: rgba(0, 0, 0, 0.3);
@@ -1496,12 +1411,10 @@ body.index .widget.clubs .new:before {
 /* - - - - - - - - - - - - - - -*\Latest Episodes & Manga Store\*- - - - - - - - - - - - - - - */
 .index-watch-description, .index-manga-store-description {
     background-size: cover;
-    box-sizing: border-box;
 }
 #myanimelist .btn-watch-video, #myanimelist .btn-manga-store {
     background: var(--accent);
     color: var(--border);
-    transition: all var(--time-btn-small) ease;
 }
 #myanimelist .btn-watch-video:hover, #myanimelist .btn-manga-store:hover {
     color: var(--text-lnk-hov);
@@ -1513,7 +1426,6 @@ body.index .widget.clubs .new:before {
 #widget-episode-video .widget-slide .btn-anime.episode .link a {
     box-shadow: inset 80px 0 80px -60px rgba(0, 0, 0, 1);
     color: var(--slider-subtitle);
-    transition: all var(--time-btn-small) ease;
 }
 #widget-episode-video .widget-slide .btn-anime.episode .link a:hover {
     background: rgba(0, 0, 0, 0.7);
@@ -1534,7 +1446,6 @@ body.index .widget.clubs .new:before {
 #widget-promotional-video .widget-slide .btn-anime .link .btn-play {
     background: rgba(0, 0, 0, 0.7) !important;
     transform: scale(0);
-    transition: all var(--time-img) var(--time-function-bounce);
 }
 #widget-promotional-video .widget-slide .btn-anime:hover .link .btn-play {
     transform: scale(1);
@@ -1561,9 +1472,6 @@ body.index .widget.clubs .new:before {
 #myanimelist table.forum-topics tr td {
     background: var(--content-dim);
     border-color: var(--border);
-}
-#myanimelist table.forum-topics tr .watch-state {
-    box-sizing: border-box;
 }
 /*------------------------------*\PANEL @News\*------------------------------*/
 /* - - - - - - - - - - - - - - -*\Newest\*- - - - - - - - - - - - - - - */
@@ -1610,7 +1518,6 @@ table {
 .page-common h2 .floatRightHeader a {
     color: var(--text-dim);
     font-family: inherit;
-    transition: all var(--time-btn-small) ease;
 }
 .page-common h2 .floatRightHeader a:hover {
     background: var(--content-dim);
@@ -1714,7 +1621,6 @@ table {
 .btn-sns-setting, #myanimelist .sns-setting .setting-input-button {
     background: var(--content-dim) !important;
     color: var(--text-lnk) !important;
-    transition: all var(--time-btn-small) ease;
 }
 .btn-sns-setting:hover, #myanimelist .sns-setting .setting-input-button:hover {
     background: var(--border) !important;
@@ -1799,9 +1705,6 @@ background: var(--content-dim);
     border-right: 3px solid var(--border) !important;
 }
 /* Right Split */
-.js-scrollfix-bottom-rel {
-    box-sizing: border-box;
-}
 /* Generic */
 .page-common [id^="fsgComments"] .bgColor2 {
     background: var(--border);
@@ -1823,6 +1726,10 @@ background: var(--content-dim);
     background-color: transparent !important;
 }
 /* Image */
+.user-profile .user-image img {
+    width: var(--ptwidth) !important;
+	max-width: var(--ptwidth) !important;
+}
 /* Image - Empty */
 .btn-detail-add-picture {
     background: var(--border) var(--img-missing) no-repeat center / cover !important;
@@ -1830,7 +1737,6 @@ background: var(--content-dim);
 /* Buttons - Social */
 .user-profile .user-function .icon-user-function {
     background-color: var(--accent) !important;
-    transition: all var(--time-btn-small) ease;
 }
 .user-profile .user-function .icon-user-function:not(.disabled):hover {
     background-color: var(--accent-dim) !important;
@@ -1841,7 +1747,6 @@ background: var(--content-dim);
 }
 .user-profile .user-function .icon-user-function .text {
     color: var(--border);
-    transition: all var(--time-btn-small) ease;
 }
 .user-profile .user-function .icon-user-function:not(.disabled):hover .text {
     color: var(--text-lnk-hov);
@@ -1862,9 +1767,6 @@ background: var(--content-dim);
     color: var(--text-heading);
     letter-spacing: 0.05em;
 }
-.user-profile .user-status li {
-    box-sizing: border-box;
-}
 .user-profile .user-status li .user-status-data.online {
     color: var(--notif);
 }
@@ -1876,9 +1778,7 @@ background: var(--content-dim);
 /* Buttons - Anime/Mangalist */
 .user-profile .user-button .btn-profile-submit {
     background: var(--accent) !important;
-    box-sizing: border-box;
     color: var(--border);
-    transition: all var(--time-btn-small) ease;
 }
 .user-profile .user-button .btn-profile-submit:hover {
     background: var(--accent-dim) !important;
@@ -1888,7 +1788,6 @@ background: var(--content-dim);
 /* Buttons - Nav */
 .user-status.border-top.mt12.mb12 li a {
     background: var(--content-dim);
-    transition: all var(--time-btn-small) ease;
 }
 .user-status.border-top.mt12.mb12 li a:hover {
     background: var(--border);
@@ -1938,14 +1837,7 @@ background: var(--content-dim);
     opacity: initial;
 }
 .user-profile .user-friends .icon-friend:after {
-    content: attr(title);
     background: var(--border);
-    box-sizing: border-box;
-    word-wrap: break-word;
-    white-space: normal;
-    opacity: 0;
-    /* transition: all var(--time-medium) ease;
-*/
 }
 .user-profile .user-friends .icon-friend:hover:after {
     opacity: 1;
@@ -1965,11 +1857,9 @@ background: var(--content-dim);
     color: var(--text-dimmest);
     text-indent: 0;
     white-space: nowrap;
-    transition: text-indent 0.5s ease-out 0s;
 }
 #myanimelist .user-profile-sns .icon-profile-sns:hover:before {
     text-indent: -167px;
-    transition: text-indent 2s ease-in-out 0.5s;
 }
 #myanimelist .user-profile-sns .icon-profile-sns[href*="myanimelist.net"]:after {
     background-position: -112px -14px;
@@ -1999,24 +1889,29 @@ background: var(--content-dim);
     letter-spacing: 0.05em;
 }
 .js-truncate-outer {
-    transition: all var(--time-long) ease-in-out;
+	transition: all var(--time-long) ease-in-out;
 }
+
 .js-truncate-outer .btn-truncate {
-    /* background-image: url(https://myanimelist.net/images/icon-pulldown2.png?v=160803001), linear-gradient(to bottom, #33343600, #333436);
-*/
-    background: transparent linear-gradient(to top, var(--content), rgba(var(--content-rgb), 0)) no-repeat 100% / contain !important;
-    transition: inherit;
+/* 	background-image: url(https://myanimelist.net/images/icon-pulldown2.png?v=160803001), linear-gradient(to bottom, #33343600, #333436); */
+	background: transparent linear-gradient(to top, var(--content), rgba(var(--content-rgb), 0)) no-repeat 100% / contain !important;
+	transition: inherit;
 }
 .js-truncate-outer .btn-truncate:before {
-    content: "";
-    background: var(--content) url(https://myanimelist.net/images/icon-pulldown2.png?v=160803001) no-repeat center -36px / 17px 54px;
-    box-shadow: 0 0 10px 5px var(--content);
+	content: "";
+	position: absolute;
+	left: 50%;
+	bottom: -25px;
+	
+	width: 50px;
+	height: 50px;
+	background: var(--content) url(https://myanimelist.net/images/icon-pulldown2.png?v=160803001) no-repeat center -36px / 17px 54px;
+	border-radius: 50%;
+	box-shadow: 0 0 10px 5px var(--content);
+	margin-left: -25px;
 }
 .js-truncate-outer .btn-truncate.open:before {
-    background-position: center 0px;
-}
-.settings-cunstom-forum-title input:disabled {
-    background: var(--content-dim);
+	background-position: center 0px;
 }
 /* STATS */
 /* Left (stats) */
@@ -2045,7 +1940,6 @@ background: var(--content-dim);
 }
 .page-common .user-statistics .stats-graph .graph {
     background-clip: content-box;
-    box-sizing: border-box;
 }
 .page-common .user-statistics .stats-graph:empty:before {
     content: "";
@@ -2055,9 +1949,7 @@ background: var(--content-dim);
 .page-common .statistics-updates {
     clear: both;
 }
-.page-common .statistics-updates .image {
-    transition: all var(--time-medium) ease;
-}
+
 .page-common .statistics-updates .image:hover {
     opacity: 0.7;
 }
@@ -2094,9 +1986,6 @@ background: var(--content-dim);
 .page-common .user-favorites p.favorites-list {
     color: var(--text-dimmer);
 }
-.profile .user-favorites .favorites-list .list .image {
-    transition: all var(--time-medium) ease;
-}
 .profile .user-favorites .favorites-list .list .image:hover {
     opacity: 0.7;
 }
@@ -2104,7 +1993,6 @@ background: var(--content-dim);
 .page-common .comment-form .textarea {
     background: var(--content-dim);
     border-color: var(--border);
-    box-sizing: border-box;
 }
 .page-common .comment-form .btn-form-submit {
     background: var(--accent);
@@ -2128,7 +2016,6 @@ background: var(--content-dim);
 }
 .page-common .user-comments .comment .text .postActions a {
     color: var(--text-dim);
-    transition: all var(--time-btn-small) ease;
 }
 .page-common .user-comments .comment .text .postActions a:hover {
     background: var(--border);
@@ -2151,13 +2038,7 @@ background: var(--content-dim);
     background: var(--notif);
     animation: online 2.25s ease-in-out infinite 0s;
 }
-.majorPad .friendBlock {
-    box-sizing: border-box;
-}
 /* Avatar */
-.majorPad .friendIcon {
-    box-sizing: border-box;
-}
 .majorPad .friendIcon img {
     object-fit: cover;
 }
@@ -2205,7 +2086,6 @@ div[style="text-align: right;"] span[style="color:#888;"] { color: var(--text-di
 .borderClass [id^="com"]:not([id^="comtext"]) textarea {
     background: var(--content-dim);
     resize: vertical;
-    box-sizing: border-box;
     color: var(--text-dim);
 }
 .bgNone .borderClass > [id^="com"] div:nth-child(1) {
@@ -2216,7 +2096,6 @@ background: linear-gradient(to left, var(--border) 0, var(--content-dim) 150px);
 #myanimelist .btn-rect-grey1 {
     background: var(--content-dim);
     color: var(--text-lnk) !important;
-    transition: all var(--time-btn-small) ease;
 }
 #myanimelist .btn-rect-grey1:hover {
     background: var(--border);
@@ -2237,11 +2116,7 @@ background: linear-gradient(to left, var(--border) 0, var(--content-dim) 150px);
 .forum .forum-board, .forum .forum-board:nth-of-type(even) {
     background-color: var(--content) !important;
     border-color: var(--border) !important;
-    box-sizing: border-box;
     color: var(--text);
-}
-.forum .forum-board .board {
-    box-sizing: border-box;
 }
 .forum .forum-board .fa {
     color: var(--icon) !important;
@@ -2251,7 +2126,6 @@ background: linear-gradient(to left, var(--border) 0, var(--content-dim) 150px);
 }
 .forum .forum-board .topics {
     background: var(--content-dim);
-    box-sizing: border-box;
 }
 /* Mark All Read */
 /* Clear Floats */
@@ -2260,16 +2134,10 @@ background: linear-gradient(to left, var(--border) 0, var(--content-dim) 150px);
     clear: both;
 }
 /* - - - - - - - - - - - - - - -*\Forum Mods\*- - - - - - - - - - - - - - - */
-#myanimelist .link-forum-mods {
-    transition: all var(--time-img) ease;
-}
 #myanimelist .link-forum-mods:hover {
     background: var(--content-dim);
 }
 /* Name */
-#myanimelist .link-forum-mods .name {
-    transition: all var(--time-img) ease;
-}
 #myanimelist .link-forum-mods.offline .name {
     color: var(--text-dimmer);
 }
@@ -2277,9 +2145,6 @@ background: linear-gradient(to left, var(--border) 0, var(--content-dim) 150px);
     color: var(--text-dim);
 }
 /* Image */
-#myanimelist .link-forum-mods .thumb {
-    box-sizing: border-box;
-}
 .forum .forum-mods .link-forum-mods.offline .thumb {
     opacity: 0.3
 }
@@ -2388,7 +2253,6 @@ div.forum-topic-message-wrapper > table > tbody > tr > td.forum_boardrow2 > div 
 #content .sprite-icon-social-small {
     background-image: var(--img-socials);
     background-size: 190px 38px;
-    transition: all var(--time-btn-small) ease;
 }
 #content .sprite-icon-social-small.icon-facebook-small {
     background-position: 0 0;
@@ -2442,7 +2306,6 @@ background: linear-gradient(45deg, var(--accent), var(--accent-dim) 85%);
 */
     background: var(--border);
     background: transparent linear-gradient(45deg, var(--border) 118px, var(--content-dim) 85%);
-    transition: all var(--time-btn-small) ease;
 }
 .page-common #myanimelist .forum-topic-message-ignored-user.hide-message .forum_category {
     opacity: 0.3;
@@ -2475,7 +2338,6 @@ background: linear-gradient(45deg, var(--accent), var(--accent-dim) 85%);
 /* Signature */
 /* Quick Reply */
 #quickReply textarea {
-    box-sizing: border-box;
     resize: vertical;
 }
 /* - - - - - - - - - - - - - - -*\Post Actions\*- - - - - - - - - - - - - - - */
@@ -2489,7 +2351,6 @@ background: linear-gradient(45deg, var(--accent), var(--accent-dim) 85%);
 .page-forum .postActions a {
     background: var(--content-dim);
     color: var(--text-lnk) !important;
-    transition: all var(--time-btn-small) ease;
 }
 .page-forum .postActions a:hover {
     background: var(--border);
@@ -2567,7 +2428,6 @@ tr:not(:first-of-type) > td:nth-child(2)[style*="f6"], tr:not(:first-of-type) > 
 #myanimelist .style-setting .setting-switch input[type=radio] + label {
     background: var(--content-dim);
     color: var(--text-heading);
-    transition: all var(--time-btn-small) ease;
 }
 #myanimelist .style-setting .setting-switch input[type=radio] + label:hover {
     background: var(--accent-dim);
@@ -2601,9 +2461,6 @@ object-fit: cover;
 }
 */
 /* Radio Boxes */
-.ownlist_style .new-theme-list .new-theme-unit div label:last-child input {
-float: left;
-}
 /* .ownlist_style .new-theme-list .new-theme-unit div label input[checked="checked"] {
 background: var(--accent);
 }
@@ -2615,7 +2472,6 @@ background: var(--accent);
 /*------------------------------*\OWNLIST-STYLE @Editor\*------------------------------*/
 .ownlist_style_theme .customize-content-left {
     background: var(--content);
-    box-sizing: border-box;
     color: var(--text);
 }
 .ownlist_style_theme #preview-container {
@@ -2652,7 +2508,6 @@ background: var(--accent);
 }
 .reviews-horiznav-nav-sort-block .review-sort-order-block .btn-close {
     background: var(--border) var(--img-icon-close) no-repeat center / 8px 8px;
-    transition: all var(--time-btn-small) ease;
 }
 .reviews-horiznav-nav-sort-block .review-sort-order-block .btn-close:hover {
     background: var(--accent);
@@ -2662,7 +2517,6 @@ background: var(--accent);
 }
 .reviews-horiznav-nav-sort-block + div.ml4 a, .borderDark ~ div.mt4 .ml4 a {
     background: var(--content-dim);
-    transition: all var(--time-btn-small) ease;
 }
 .reviews-horiznav-nav-sort-block + div.ml4 a:hover, .borderDark ~ div.mt4 .ml4 a:hover {
     background: var(--border);
@@ -2705,7 +2559,6 @@ background: var(--accent);
     background: var(--content-dim);
     color: var(--text-lnk) !important;
     text-transform: capitalize;
-    transition: all var(--time-btn-small) ease;
 }
 .borderDark > div:last-child a:nth-child(2):hover {
     background: var(--border);
@@ -2713,15 +2566,8 @@ background: var(--accent);
 }
 /* Permalink */
 .borderDark > div:last-child a:first-child {
-    right: 5px;
     background: var(--border);
     color: var(--icon);
-    transition: all var(--time-btn-small) ease;
-}
-.borderDark > div:last-child a:first-child:after {
-    /* content: "\f14c";
-*/
-    content: "\f0c1";
 }
 .borderDark > div:last-child a:first-child:hover {
     background: var(--accent-dimmest);
@@ -2773,9 +2619,6 @@ background: var(--accent);
     text-transform: uppercase;
 }
 /* Recommendations */
-.spaceit.borderClass {
-    box-sizing: border-box;
-}
 .spaceit.borderClass table {
     background: var(--content-dim);
 }
@@ -2783,7 +2626,6 @@ background: var(--accent);
     background: var(--content-dim);
     color: var(--text-lnk) !important;
     text-transform: capitalize;
-    transition: all var(--time-btn-small) ease;
 }
 .spaceit.borderClass > .lightLink .lightLink:hover {
     background: var(--border);
@@ -2816,7 +2658,6 @@ background: var(--accent);
 /* Club Member Box/Club Picture Box */
 .club-information-header ~ table:not(#forumTopics) tbody tr td {
     opacity: 1;
-    transition: all var(--time-medium) ease;
 }
 .club-information-header ~ table:not(#forumTopics) tbody tr td:hover {
     opacity: 0.7;
@@ -2836,7 +2677,6 @@ background: var(--accent);
 #myanimelist #profileRows a, td:nth-child(2) .normal_header + a[href="#"] {
     background: var(--content-dim);
     color: var(--text-lnk) !important;
-    transition: all var(--time-btn-small) ease;
 }
 #myanimelist #profileRows a:hover, td:nth-child(2) .normal_header + a[href="#"]:hover {
     background: var(--accent-dim);
@@ -2847,7 +2687,6 @@ background: var(--accent);
 /* VERSION ONE.page-common #profileRows a, .page-common .profileRows a {
 border-color: var(--border) !important;
 color: var(--text-lnk) !important;
-transition: all var(--time-btn-small) ease;
 }
 .page-common #profileRows a:hover, .page-common .profileRows a:hover {
 background: var(--accent-dim);
@@ -2899,13 +2738,9 @@ div[id^="comment"] td:nth-child(2) > div ~ div[style="margin-top: 10px;"]:last-o
 }
 #content > div.spaceit a {
     font-weight: bold;
-    transition: all var(--time-medium) ease;
 }
 #content > div.spaceit a:hover {
     background: var(--accent-dimmest);
-}
-#content > div.spaceit a:before {
-    content: "\f06a";
 }
 /* !CLUB-PICTURES */
 #content > .borderClass {
@@ -3034,7 +2869,6 @@ footer {
 }
 .page-common #footer-block .footer-link a {
     color: var(--text-heading);
-    transition: all var(--time-medium) ease;
 }
 /* First Div */
 .page-common #footer-block .footer-link-block {
@@ -3055,11 +2889,9 @@ footer {
     background-image: var(--img-socials-alt);
     /*/
 images/footer/footer-icon-sns.png?v=150421001*/
-    transition: all var(--time-medium) ease;
 }
 .page-common #footer-block .footer-recommended .icon-recommended {
     color: var(--text-heading);
-    transition: all var(--time-medium) ease;
 }
 .page-common #footer-block div:after, .page-common #footer-block #copyright {
     color: var(--accent) !important;

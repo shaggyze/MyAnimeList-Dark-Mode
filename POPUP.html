@@ -1,21 +1,52 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="ja">
   <head>
-    <title>Popup</title>
-  </head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Settings</title>
+    <style>
+      kbd {
+        font-size: inherit;
+        font-family: inherit;
+      }
+
+      input {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .success {
+        color: green;
+      }
+
+      .error {
+        color: red;
+      }
+
+      .message {
+        display: block;
+      }
+    </style>
+    <head>
+      <title>Popup</title>
+    </head>
   <body>
+    <span class="message" id="js-message"></span>
+    <!--<button class="reset">Reset</button>
+    <button class="format">Format</button>-->
+    <h2>Page Color</h2>
+    <input type="color" id="colorChanger" />
+    <h1>Profile IMG Width</h1>
+    <div id="data"></div>
+    <p>
+      <input type="text" id="newWidth" value="120" />
+    </p>
+    <div class="form-group">
+      <lable for="slider">Profile IMG Width</lable>
+      <input type="range" min="0" max="240" step="1" value="120" id="slider" />
+    </div>
     <script src="jquery-2.2.0.min.js"></script>
     <script src="POPUP.js"></script>
-    <h2>Page Color</h2>
-    <input type="color" id="color-changer" />
-    <h1>Profile Pic Width</h1>
-    <p>
-      <input type="text" id="newWidth" value="120"/>
-      <input type="submit" id="btnChange" value="Change"/>
-    </p>
-  <div class="form-group">
-    <lable for="slider">Project/Task Width</lable>
-    <input type="range" min="0" max="250" step="1" value="160" id="slider" />
-  </div>
   </body>
 </html>
