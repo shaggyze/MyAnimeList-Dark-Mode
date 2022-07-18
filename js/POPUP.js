@@ -27,39 +27,6 @@ document.onchange = function() {
     });
 }
 
-$(document).ready(function() {
-    $(".reset").click(function() {
-        chrome.tabs.query({
-            currentWindow: true,
-            active: true
-        }, function(tabs) {
-            var activeTab = tabs[0];
-            chrome.scripting.removeCSS({
-                target: {
-                    tabId: activeTab.id
-                },
-                files: ["MAIN.css"],
-            });
-        });
-    });
-
-    $(".format").click(function() {
-        chrome.tabs.query({
-            currentWindow: true,
-            active: true
-        }, function(tabs) {
-            var activeTab = tabs[0];
-            chrome.scripting.insertCSS({
-                target: {
-                    tabId: activeTab.id,
-                    allFrames: true
-                },
-                files: ["MAIN.css"],
-            });
-        });
-    });
-});
-
 $(function() {
     // colorChanger listener
     $('#colorChanger').on('input', function() {

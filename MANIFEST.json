@@ -8,14 +8,8 @@
     "content_scripts": [ {
         "matches": ["*://*.myanimelist.net/*"],
         "exclude_matches": ["*://image.myanimelist.net/*", "*://*.myanimelist.net/animelist*", "*://*.myanimelist.net/mangalist*", "*://*.myanimelist.net/rss*", "*://*.myanimelist.net/ownlist*"],
-        "css": ["MAIN.css"],
-        "js": ["jquery-2.2.0.min.js", "CONTENT.js"]
-    }
-    ,
-    {
-        "matches": ["*://*.myanimelist.net/"],
-        "exclude_matches": ["*://image.myanimelist.net/"],
-        "css": ["PANEL.css"]
+        "css": ["/css/MAIN.css"],
+        "js": ["/js/jquery-2.2.0.min.js", "/js/CONTENT.js"]
     }
     ],
     "permissions": ["scripting",
