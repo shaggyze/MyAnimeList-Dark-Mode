@@ -2,7 +2,7 @@
     "manifest_version": 3,
 
     "name": "MyAnimeList Dark Mode",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "MAL Dark Mode",
 
     "content_scripts": [ {
@@ -17,7 +17,7 @@
 	"storage",
     "activeTab"],
     "homepage_url": "http://www.myanimelist.net",
-    "author": "ShaggyZE",
+    "author": "V.L, ShaggyZE & Shishio-kun",
     "icons": {
         "16": "images/icon_16.png",
         "32": "images/icon_32.png",

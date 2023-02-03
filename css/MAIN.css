@@ -1,2901 +1,1673 @@
-/* MyAnimeList Redesign originally by Valerio Lyndon
- * 
- * 
- * https://github.com/ValerioLyndon
- * https://myanimelist.net/profile/Valerio_Lyndon
- * 
- * 
- * TABLE OF CONTENTS
- * 
- * 
- * VARIABLES             : set the theme's colours, images, etcetera
- * 
- * PAGE-BASE             : basic site-wide page layout
- * 
- * PAGE-HEADER           : site-wide page navigation
- * 
- * CONTENT               : generic, re-used parts of code
- * 
- * FOOTER                : site-wide footer
- * 
- * 
+/* MyAnimeList Dark Mode originally by Valerio Lyndon
+ * Edited by ShaggyZE and completed by Shishio-kun
  */
 /*==============================*\!VARIABLES\*==============================*/
 :root {
-    /* Base Colours */
-    --page: #2a2a2a;
-    --content: #303030;
-    --content-rgb: 49, 48, 47;
-    --content-dim: hsl(30, 0%, 16%);
-    --content-dim-rgb: 42, 41, 40;
-    --content-dimmer: hsl(30, 0%, 13%);
-    --content-dimmest: hsl(30, 0%, 10%);
-    --accent-bright: hsl(46, 63%, 46%);
-    --accent: #7994bc;
-    --accent-rgb: 166, 140, 57;
-    --accent-dim: #4e678d;
-    --accent-dimmer: #344969;
-    --accent-dimmest: #28384f;
-    --notif: #df6464;
-    --notif-0: #df646400;
-    --notif-rgb: 102, 130, 202;
-    --text: hsl(0, 0%, 86%);
-    --text-0: #ffffff;
-    --text-dim: hsl(0, 0%, 74%);
-    --text-dimmer: hsl(0, 0%, 60%);
-    --text-dimmest: hsl(0, 0%, 50%);
-    --text-heading: hsl(0, 0%, 89%);
-    --text-lnk: #99b0d3;
-    --text-lnk-hov: hsl(223, 49%, 60%);
-    --icon: hsl(0, 0%, 69%);
-    --return-bad: hsl(0, 85%, 59%)
-    --page-shadow: hsla(0, 0%, 0%, 25%);
-    /* Header Colours */
-    --header: #2a2a2a;
-    --header-rgb: 34, 34, 34;
-    --header-dim: hsl(0, 0%, 25%);
-    --header-hov: hsl(0, 0%, 26%);
-    --header-border-alt: hsl(0, 0%, 3.3334%);
-    --header-text: hsl(0, 0%, 96%);
-    --header-text-dim: hsl(0, 0%, 86%);
-    --header-icon: #1d439b;
-    /*Specific Colours */
-    --quotebox-bg: #2c2b2a;
-    --quotebox-bg: rgba(15, 10, 10, 0.1);
-    --codebox-bg: #3c402f;
-    --codebox-bg: #2a2b2b;
-    --codebox-text: #96af1d;
-    --codebox-text: #99b6c2;
-    /* Status Colours */
-    --allanime: #ff00de;
-    --watching: #bbbbdd;
-    --completed: #9999bb;
-    --onhold: #777799;
-    --dropped: #555577;
-    --planned: #444455;
-    /* Images */
-    --img-bg: url(https://i.imgur.com/5a80nyh.png) 1px 1px / auto repeat;
-    --img-socials: url(https://i.imgur.com/F4pMdCJ.png);
-    --img-socials-alt: url(https://i.imgur.com/l6AR23x.png);
-    --img-missing: url(https://i.imgur.com/AeA2JxM.png);
-    --img-icon-resize: url(https://files.catbox.moe/nv0brx.svg);
-    --img-icon-arrow-up: url(https://i.imgur.com/iMOZI4Q.png);
-    --img-icon-arrow-dn: url(https://i.imgur.com/Oe1DIWT.png);
-    /* Other */
-    --ptwidth: 120px; /* for testing popup.html */
-}
-/*==============================*\!PAGE-BASE\*==============================*/
-body:not(.ownlist) {
-    /* background: #f9f9ff no-repeat fixed center center / cover !important;
-	*/
-    /* background: var(--page) url(https://i.imgur.com/d5hZgll.png) 1px 1px / auto repeat !important;
-	*/
-    background: var(--header) var(--img-bg) !important;
-    /* background: var(--page) url(https://i.imgur.com/gpQ795m.gif) center / cover no-repeat fixed !important;
-	background-image:linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url(https://i.imgur.com/gpQ795m.gif)!important;
-	*/
-    color: var(--text);
-}
-.page-common #myanimelist {
-    overflow: visible !important;
-}
-.page-common #contentWrapper {
-    background-color: var(--page) !important;
-    box-shadow: var(--page-shadow);
-}
-.page-common #content {
-    background: none !important;
-}
-.page-common .watch-state-icon.watched {
-    color: var(--text-lnk-hov);
-}
-body.news h2, .page-common .mb16, .page-common .pt16, body.news .news-container .title, body.news .news-container .summary, .featured-article-body p, .news-list .comment-list .text, .news-list .news-unit .text {
-    color: var(--text-0) !important;
-}
-body.news .news-container .tags, body.news .news-container .news-info-block, body.news .news-container .information {
-    background: var(--content) !important;
-    box-shadow: var(--page-shadow) !important;
-}
-/*==============================*\!PAGE-HEADER\*==============================*/
-#menu:before {
-    content: "";
-    box-shadow: var(--page-shadow);
-}
-/* ACCOUNT */
-.page-common #headerSmall {
-    background-color: var(--page) !important;
-}
-.page-common #header-menu {
-    background-color: var(--page) !important;
-    box-shadow: var(--header-border);
-}
-.page-common #header-menu .header-menu-unit {
-    cursor: auto;
-}
-/* ACCOUNT ICONS */
-.page-common #header-menu .header-menu-unit:not(.header-profile) > a, .page-common #header-menu .header-notification .header-notification-button {
-    color: var(--header-icon) !important;
-}
-.page-common #header-menu .header-menu-unit:not(.header-profile) > a:hover, .page-common #header-menu .header-notification:hover .header-notification-button:hover {
-    background: var(--header-hov) !important;
-}
-/* ACCOUNT LIST DROPDOWN */
-.page-common .header-list .header-list-dropdown {
-    background: var(--header);
-}
-.page-common .header-list .header-list-dropdown ul li a {
-    background: none;
-    color: var(--header-text-dim);
-}
-.page-common .header-list .header-list-dropdown ul li a:hover {
-    background: var(--header-hov);
-}
-/* ACCOUNT NOTIFICATIONS */
-/* Base */
-.page-common #header-menu .header-notification-button.has-unread:after, .page-common #header-menu .header-message-button.has-unread:after {
-    right: 0;
-    background: var(--notif);
-    color: var(--header-text);
-    font-weight: bold;
-}
-.page-common #header-menu .header-notification-button.has-unread:after {
-    right: 2px;
-}
-.page-common #header-menu .header-message-button.has-unread:after {
-    right: -2px;
-}
-.page-common .header-notification-dropdown {
-    right: 0;
-}
-.page-common .header-notification-dropdown .arrow_box {
-    background: var(--header);
-    border-style: solid;
-    border-color: var(--header-border);
-}
-/* Links */
-.page-common .header-notification-item-list a {
-    color: var(--text-lnk) !important;
-}
-.page-common .header-notification-item-list a:hover {
-    color: var(--text-lnk-hov) !important;
-}
-/* Top Bar */
-.page-common .header-notification-dropdown-inner h3 {
-    background: var(--header-border);
-    color: var(--header-text);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-.page-common .header-notification-dropdown-inner h3 a, .page-common .header-notification-dropdown-inner h3 .mark-all {
-    color: var(--header-text-dim) !important;
-}
-.page-common .header-notification-dropdown-inner h3 a:hover, .page-common .header-notification-dropdown-inner h3 .mark-all:not(.disabled):hover {
-    background: var(--header-border-alt);
-}
-.page-common .header-notification-dropdown-inner h3 .mark-all.disabled {
-    color: var(--text-dimmest) !important;
-}
-/* Items */
-.page-common .header-notification-item:hover {
-    background: var(--header-hov) !important;
-}
-.page-common .header-notification-item.new {
-    background: none;
-}
-.page-common .header-notification-item .inner.is-read a {
-    opacity: 0.7;
-}
-/* .page-common .header-notification-item .inner:not(.is-read):before {
-	content: "";
-	background: linear-gradient(to right, rgba(var(--notif-rgb), 0.3), rgba(var(--notif-rgb), 0));
-}
-*/
-.page-common .header-notification-item .inner:not(.is-read) {
-    color: var(--text-dim);
-}
-.page-common .header-notification-item .inner.is-read {
-    color: var(--text-dimmest);
-}
-/* Checkmark */
-.page-common .header-notification-item .inner:not(.is-read) .is-read {
-    background: var(--header-border);
-    color: var(--text);
-}
-.page-common .header-notification-item .inner:not(.is-read) .is-read:not(.checked) .fa-check:hover {
-    background: rgba(var(--notif-rgb), 0.5);
-}
-.page-common .header-notification-item-header .is-read.checked .fa-check {
-    background: var(--notif);
-}
-.page-common .header-notification-item-header .category {
-    color: var(--text) !important;
-}
-.page-common .is-read .header-notification-item-header .category {
-    color: var(--text-dimmer) !important;
-}
-.page-common .header-notification-item-header .time {
-    color: var(--text-dimmer) !important;
-}
-.page-common .is-read .header-notification-item-header .time {
-    color: var(--text-dimmest) !important;
-}
-/* Friend Requests */
-#myanimelist .actions .result, #myanimelist .actions .action-button {
-    background: var(--header-border);
-    color: var(--text);
-}
-#myanimelist .actions .result:hover, #myanimelist .actions .action-button:hover {
-    background: var(--notif) !important;
-}
-#myanimelist .actions .action-button.deny {
-    background: var(--header-border);
-}
-#myanimelist .actions .action-button.accept {
-    background: var(--accent-dim);
-}
-#myanimelist .actions .result {
-    background: var(--notif);
-}
-/* Bottom Bar */
-.page-common .header-notification-view-all a {
-    background: var(--header);
-}
-.page-common .header-notification-view-all a:hover {
-    background: var(--header-hov);
-}
-/* ACCOUNT PROFILE */
-.page-common .header-profile.link-bg {
-    background: none !important;
-}
-.page-common #header-menu .header-profile .header-profile-link {
-    background-color: var(--page) !important;
-    color: var(--header-text);
-}
-.page-common #header-menu .header-profile .header-profile-link:hover {
-    background-color: var(--header-hov) !important;
-}
-/* PROFILE DROPDOWN */
-.page-common .header-profile .header-profile-dropdown {
-    right: -12px;
-    background: var(--header);
-    border-style: solid;
-    border-color: var(--header-border);
-}
-.page-common .header-profile .header-profile-dropdown ul li a {
-    background: none;
-    color: var(--header-text-dim);
-}
-.page-common .header-profile .header-profile-dropdown ul li a:hover {
-    background: var(--header-hov);
-}
-/* Dividers */
-.page-common .header-profile .header-profile-dropdown ul li:last-child:before, .page-common .header-profile .header-profile-dropdown ul li:nth-child(8):after {
-    content: "";
-    background: var(--header-border);
-}
-/* Items */
-/* HEADER - PROFILE PICTURE */
-.page-common .header-profile-button:hover {
-    opacity: 1;
-}
-.header-profile-button:before {
-    content: "";
-    background: var(--header);
-    opacity: 0;
-}
-.header-profile-button:hover:before {
-    opacity: 0.3;
-}
-/* ===============================================HEADER / NAV=============================================== */
-.page-common #menu {
-    background-color: var(--header) !important;
-}
-/* LOGGED OUT */
-.page-common #header-menu .header-menu-login .btn-login, .page-common #header-menu .header-menu-login .btn-signup {
-    background: transparent;
-    color: var(--header-text) !important;
-    text-transform: uppercase;
-}
-.page-common #header-menu .header-menu-login .btn-signup {
-    background: rgba(var(--notif-rgb), 0.5);
-}
-.page-common #header-menu .header-menu-login .btn-login:hover {
-    background: var(--header-hov);
-}
-.page-common #header-menu .header-menu-login .btn-signup:hover {
-    background: rgb(var(--notif-rgb));
-}
-.page-common #header-menu .header-menu-login .btn-login:after {
-    content: "\f007";
-    color: var(--header-icon);
-    font-family: "Font Awesome 6 Pro";
-}
-.page-common #header-menu .header-menu-login .btn-signup:after {
-    content: "\f067";
-    color: var(--header-icon);
-    font-family: "Font Awesome 6 Pro";
-    font-weight: normal;
-}
-.page-common #header-menu .header-menu-login .btn-signup {
-    font-weight: bold;
-}
-/* LINKS */
-.page-common #nav li {
-    text-indent: 0;
-}
-.page-common #nav li:hover {
-    background: var(--header-hov) !important;
-}
-.page-common #nav > li > .non-link {
-    background: none !important;
-    color: var(--header-text) !important;
-    cursor: default;
-}
-.page-common #nav > li > ul {
-    background: none !important;
-    opacity: 0;
-}
-.page-common #nav > li:hover > ul {
-    opacity: 1;
-    pointer-events: auto;
-}
-.page-common #nav > li:hover:before {
-    content: "";
-}
-.page-common #nav > li > ul > li > a {
-    background: var(--header) !important;
-    color: var(--header-text-dim) !important;
-    white-space: nowrap;
-}
-.page-common #nav > li > ul > li > a:hover {
-    background: var(--header-hov) !important;
-}
-/* ===============================================HEADER / NAV / SEARCH=============================================== */
-#top-search-bar #searchBar {
-    background: var(--header-dim);
-}
-.page-common #searchBar.searchBar #topSearchValue {
-    background: transparent var(--img-icon-arrow-dn) 38px 14px / auto no-repeat !important;
-    color: var(--text-dim);
-    cursor: pointer;
-}
-.page-common #searchBar.searchBar #topSearchValue:focus {
-    background-color: var(--header-hov) !important;
-}
-.page-common #searchBar.searchBar #topSearchText {
-    background: none !important;
-    color: var(--text-dim);
-}
-.page-common #searchBar.searchBar #topSearchButon {
-    background: none !important;
-    color: var(--header-text-dim) !important;
-}
-.page-common #searchBar.searchBar #topSearchButon:not(.notActive):hover {
-    background: var(--header-hov) !important;
-}
-/* Results */
-.page-common #topSearchResultList {
-    right: -65px;
-    background: var(--header);
-    border-style: solid;
-    border-color: var(--header-border);
-}
-#topSearchResultList .list {
-    background: none;
-}
-#topSearchResultList .list.focus {
-    background: var(--header-hov);
-}
-#topSearchResultList .list .name {
-    color: var(--text-dim) !important;
-}
-#topSearchResultList .list .media-type {
-    color: var(--text-dimmest) !important;
-}
-#topSearchResultList .list .extra-info {
-    color: var(--text-dimmer) !important;
-}
-#topSearchResultList .list.separator {
-    background: var(--header-border);
-}
-#topSearchResultList .list.separator span {
-    color: var(--text);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-#topSearchResultList .list-bottom {
-    background: var(--content-dim) !important;
-}
-#topSearchResultList .list-bottom.focus {
-    background: var(--accent) !important;
-}
-#topSearchResultList .list.list-bottom a {
-    color: var(--header-text);
-}
-#topSearchResultList .list.list-bottom.focus a {
-    color: var(--header);
-}
-/*==============================*\!GENERIC\*==============================*/
-/* Scrollbar - Firefox */
-* {
-    scrollbar-color: var(--accent-dimmer) var(--content-dimmer);
-}
-/* Scrollbar - Chrome/Webkit */
-*::-webkit-scrollbar {
-    background: var(--content-dimmest);
-    cursor: default;
-}
-*::-webkit-scrollbar-track {
-    background: var(--content-dimmer);
-}
-*::-webkit-scrollbar-thumb {
-    background: var(--accent-dimmer);
-}
-*::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-dim);
-}
-*::-webkit-scrollbar-button, *::-webkit-scrollbar-corner {
-    background: var(--content-dimmest);
-}
-*::-webkit-scrollbar-button:vertical:decrement {
-    background: transparent var(--img-icon-arrow-up) no-repeat center / 8px auto;
-}
-*::-webkit-scrollbar-button:vertical:increment {
-    background: transparent var(--img-icon-arrow-dn) no-repeat center / 8px auto;
-}
-*::-webkit-scrollbar-button:horizontal:decrement {
-    background: transparent var(--img-icon-arrow-lt) no-repeat center / auto 8px;
-}
-*::-webkit-scrollbar-button:horizontal:increment {
-    background: transparent var(--img-icon-arrow-rt) no-repeat center / auto 8px;
-}
-*::-webkit-resizer {
-    background: transparent var(--img-icon-resize) no-repeat right bottom / 12px 12px;
-}
-html::-webkit-scrollbar-track, body::-webkit-scrollbar-track {
-    background: var(--content-dimmer);
-}
-html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb {
-    background: var(--accent-dim);
-}
-html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
-    background: var(--accent);
-}
-/* Divs */
-/* Text Colours */
-.page-common .lightLink, .page-common .lightLink:link, .page-common .lightLink:visited, .page-common .lightLink:active, .page-common .dark_text, .page-common .dark_text:hover, .page-common .dark_text:visited {
-    color: var(--text-dimmer) !important;
-}
-.page-common .fn-grey1, .page-common .fn-grey6 {
-    color: var(--text-dimmer) !important;
-}
-.page-common .fn-grey2, .page-common .fn-grey5 {
-    color: var(--text-dim) !important;
-}
-.page-common a, .page-common a:visited {
-    color: var(--text-lnk) !important;
-}
-.page-common a:hover {
-    color: var(--text-lnk-hov);
-}
-.page-common .fn-blue1 {
-    color: var(--text-lnk) !important;
-}
-.page-common a.fn-blue1:hover {
-    color: var(--text-lnk-hov) !important;
-}
-/* Text Sizes, Line Heights, Fonts */
-.page-common .ff-Verdana, .page-common .ff-avenir {
-    font-family: var(--fontset-basic);
-}
-/* Text Headers */
-.page-common .h1, .page-common .h2, .page-common .h3, .page-common .h4, .page-common .h5, .page-common .h6, .page-common h1, .page-common h2, .page-common h3, .page-common h4, .page-common h5, .page-common h6 {
-    color: var(--text);
-    font-family: var(--fontset-basic);
-}
-.page-common .badresult-text {
-    color: var(--return-bad)
-}
-/* Borders & Containers */
-:focus {
-    outline-color: var(--accent);
-}
-.wrapper > div > div *:not(img) {
-    border-color: var(--border);
-}
-.page-common .bgColor1 {
-    background: none;
-}
-.page-common .bgColor2 {
-    background: var(--content-dim);
-}
-.page-common .bgbdrContainer, .page-common .border_top, #dialog, .page-common .normal_header, .page-common .borderClass {
-    border-color: var(--border);
-}
-.page-common .bgbdrContainer {
-    background: var(--content-dim);
-}
-/* Images */
-.page-common div.picSurround {
-    background: var(--border);
-}
-.page-common div.picSurround:hover {
-    opacity: 0.7;
-}
-/* Images - Empty Avatar */
-#myanimelist img[src*="questionmark_50.gif"] {
-    object-position: 999px 999px;
-    background: var(--header-border) var(--img-missing) no-repeat center / cover !important;
-}
-/* Images - Preview Button */
-.icon-watch, .icon-watch-pv {
-    background: none;
-    overflow: visible;
-    text-indent: 0;
-}
-.icon-watch:before, .icon-watch-pv:before {
-    content: "\f144";
-    color: var(--icon);
-}
-.icon-watch:hover, .icon-watch-pv:hover {
-    opacity: 0.7;
-}
-/* Buttons - Generic */
-#myanimelist textarea, #myanimelist input, #Size, #Colour, .page-common .textarea {
-    background-color: var(--content-dim);
-    border-color: var(--border);
-    border-style: solid;
-    color: var(--text);
-}
-input:disabled, textarea:disabled {
-    color: var(--text-dimmest);
-}
-.page-common .textarea, .page-common textarea {
-    resize: both;
-}
-/* .page-common .textarea {
-	background: var(--content-dim) var(--img-icon-resize) no-repeat right bottom / 12px 12px !important;
-}
-*/
-/* Buttons - Inputs */
-#myanimelist .inputButton, .page-common .btn-form-submit, .page-common.ownlist_style_theme .inputButton {
-    background-color: var(--accent);
-    color: var(--border);
-}
-#myanimelist .inputButton:not(:disabled):hover, .page-common .btn-form-submit:not(:disabled):hover {
-    background: var(--accent-dim);
-    color: var(--text-lnk-hov);
-}
-#myanimelist .inputButton:disabled {
-    background-color: var(--content-dimmer);
-    color: var(--text-dimmest);
-    opacity: 0.7;
-}
-/* Patches - Ownlist-style */
-.page-common .inputButton.btn-middle:active {
-    background: var(--accent);
-    color: var(--border);
-}
-.page-common.ownlist_style_theme .inputButton:hover {
-    color: var(--text-lnk-hov) !important;
-}
-/* Patches - page */
-.page-support #myanimelist #content p, .page-support #myanimelist #content li, .page-support #myanimelist #content h3, .page-support #myanimelist #content h4 {
-    color: var(--header-text)
-}
-/* #myanimelist .inputButton[value*="Delete"] {
-	background-color: var(--return-bad);
-}
-*/
-/* Buttons - Nav */
-.page-common .pagination {
-    background: var(--content-dim);
-}
-.page-common .pagination .link {
-    background: none;
-    color: var(--text);
-}
-.page-common .pagination .link:hover {
-    background: var(--content-dimmer);
-}
-.page-common .pagination .link.current {
-    background: var(--accent-dim)
-}
-.page-common .pagination .link.current:hover {
-    background: var(--accent)
-}
-/* Unknown Anime Images */
-img[src*="qm_50.gif"] {
-    object-position: 999px 999px;
-    background: var(--border) var(--img-missing) no-repeat center / cover !important;
-}
-/* ========== */
-ul.ignored-user-list li:nth-child(2n) {
-    background: var(--content-dim);
-}
-.page-common .goodresult, .page-common .successQuery {
-    background: var(--content-dim);
-    border-color: var(--border);
-}
-.page-common .goodresult a:link, .page-common .goodresult a:active, .page-common .goodresult a:visited {
-    color: var(--text-lnk) !important;
-}
-.page-common .goodresult a:hover {
-    color: var(--text-lnk-hov);
-}
-.page-common .badresult {
-    background-color: var(--return-bad);
-    border-color: var(--border);
-}
-/* Random Pages that should really f****** use simple site-wide classes but instead use singular CSS rules for no HECKing reason */
-h1.term-header1, h1[data="EULA"], h1[data="TermsOfUse"], .mal-address {
-    background: none;
-}
-/* GENERIC @HEADINGS */
-/*General*/
-.page-common .normal_header, /*Panel*/
-body.index .widget .widget-header, body.index .ranking-digest .ranking-header, /*Profile*/
-.profile .content-container .container-right h2, /*Forums*/
-.forum .forum-header, .forum .forum-side-block .header, /*Anime Search*/
-.anime-manga-search .normal_header, /*Notifications*/
-body.notification .notification-header, /*Ownlist-Style*/
-.ownlist_style_theme .customize-content-left .header, .ownlist_style_theme .customize-content-left h2.theme-custom-header {
-    background-color: var(--content-dimmer) !important;
-    color: var(--text) !important;
-    white-space: nowrap;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-/*General*/
-.page-common .normal_header .floatRightHeader, /*Panel*/
-body.index .widget .widget-header > span, /*Profile*/
-.profile .content-container .user-comments h2 .floatRightHeader, /*Notifications*/
-body.notification .notification-header .right-menu {
-    color: var(--text);
-}
-/*General*/
-.page-common .normal_header a, /*Panel*/
-body.index .widget .widget-header > span a, .ranking-digest .ranking-header .btn-view_more, /*Profile*/
-.profile .content-container .container-right h2.mb12 .floatRightHeader, .profile .content-container .user-comments h2 .floatRightHeader a, /*Forums*/
-.forum .forum-header a, .forum .forum-side-block .header a, /*Anime Search*/
-.anime-manga-search .normal_header .floatRightHeader, /*Notifications*/
-body.notification .notification-header .right-menu .item {
-    color: var(--text-dim);
-}
-/*General*/
-.page-common .normal_header .floatRightHeader a:hover, /*Panel*/
-body.index .widget .widget-header > span a:hover, .ranking-digest .ranking-header .btn-view_more:hover, /*Profile*/
-.profile .content-container .container-right h2.mb12 .floatRightHeader:hover, .profile .content-container .user-comments h2 .floatRightHeader a:hover, /*Forums*/
-.forum .forum-header a:hover, .forum .forum-side-block .header a:hover, /*Anime Search*/
-.anime-manga-search .normal_header .floatRightHeader:hover {
-    background: var(--content-dimmest);
-}
-/* - - - - - - - - - - - - - - -*\Patches\*- - - - - - - - - - - - - - - */
-/* Patches - General */
-/* Patches - Panel */
-body.index .widget .widget-header > span a {
-    font-weight: bold !important;
-}
-/* Patches - Advertising */
-.page-advertising .ad-contents .ad-text-head3 {
-    color: var(--header-text);
-}
-/* Patches - Forum */
-.forum-table-header .normal_header > a {
-    color: var(--text);
-}
-.forum-table-header .normal_header > a:after {
-    content: " \f0dc";
-    font-family: "Font Awesome 6 Pro";
-}
-/* Patches - Clubs */
-.normal_header.club-information-header ~ .normal_header .floatRightHeader a {
-    font-weight: bold !important;
-}
-/* Patches - Notifications */
-body.notification .notification-section .notification-header h3 {
-    color: inherit;
-}
-body.notification .notification-header .right-menu .item.disabled {
-    color: var(--text-dimmest);
-}
-/* Patches - Quickadd */
-/* Patches - Ownlist-Style */
-.ownlist_style_theme .customize-content-left .header .header-text {
-    color: inherit;
-}
-/* - - - - - - - - - - - - - - -*\Icon About Recommendations\*- - - - - - - - - - - - - - - */
-/* Recommendations Info Icon */
-.page-common .icon-about-recommendations {
-    color: var(--accent);
-    cursor: help;
-}
-.page-common .icon-about-recommendations:after {
-    right: auto;
-    background: var(--content-dimmest);
-    color: var(--text);
-    letter-spacing: 0;
-}
-/*------------------------------*\GENERIC @Sub-Headings\*------------------------------*/
-.profile .content-container .container-right h5, .ownlist_style_theme .customize-content-left h3.theme-custom-header {
-    color: var(--text);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-.profile .content-container .container-right h5 a {
-    color: var(--text-dim);
-}
-/* Patches - Profile */
-/* Patches - Ownlist-style */
-.ownlist_style_theme .customize-content-left h3.theme-custom-header.js-theme-custom-header:active {
-    background: none;
-}
-/*------------------------------*\GENERIC @Sidebar-Headings\*------------------------------*/
-.page-common .user-profile h4/*Profile*/
-{
-    background: var(--content-dimmer);
-    color: var(--text);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-.page-common .user-profile h4 a/*Profile*/
-{
-    color: var(--text-dim);
-}
-.page-common .user-profile h4 a:hover/*Profile*/
-{
-    background: var(--content-dimmest);
-}
-/* Patches - Profile */
-.user-profile h4.icon-rss:after {
-    background-size: 13px 13px;
-    float: left;
-}
-/* GENERIC @HOVERINFO */
-.page-common .hoverinfo:hover {
-    opacity: 1;
-    pointer-events: auto;
-}
-.page-common .hoverinfo {
-    background: var(--header);
-    color: var(--text-dim);
-    opacity: 1;
-    pointer-events: auto;
-}
-.page-common .hoverinfo:after {
-    background: none;
-    border-style: solid;
-    border-color: var(--header-border) var(--header-border) transparent transparent;
-    transform: skewY(15deg);
-}
-.page-common .hovertitle {
-    color: var(--text) !important
-}
-.page-common .hovertitle:hover {
-    color: var(--text-heading) !important
-}
-.page-common .hoverinfo .dark_text {
-    color: var(--text-dim);
-}
-/* ANIME STATUS BUTTONS (add, edit, etc) */
-#myanimelist a.button_add:not(.Lightbox_AddEdit), #myanimelist a.button_edit:not(.Lightbox_AddEdit), #myanimelist a.Lightbox_AddEdit[class*="button_"]:not(.btn-addEdit-large), .page-common .quickadd-content .btn-status-add {
-    background: var(--content-dim);
-    color: var(--text-dim);
-}
-#myanimelist a.button_add:not(.Lightbox_AddEdit):hover, #myanimelist a.button_edit:not(.Lightbox_AddEdit):hover, #myanimelist a.Lightbox_AddEdit[class*="button_"]:not(.btn-addEdit-large):hover, .page-common .quickadd-content .btn-status-add:hover {
-    background: var(--border);
-    border-color: var(--border);
-    color: var(--text-lnk-hov);
-    opacity: 1;
-}
-#myanimelist a.button_add.watching, #myanimelist a.button_edit.watching, #myanimelist a.button_add.reading, #myanimelist a.button_edit.reading, #myanimelist a.Lightbox_AddEdit.btn-addEdit-large.watching, #myanimelist a.Lightbox_AddEdit.btn-addEdit-large.reading/* Watching */
-{
-    border-color: var(--watching)
-}
-#myanimelist a.button_add.completed, #myanimelist a.button_edit.completed, #myanimelist a.Lightbox_AddEdit.btn-addEdit-large.completed/* Completed */
-{
-    border-color: var(--completed)
-}
-#myanimelist a.button_add.on-hold, #myanimelist a.button_edit.on-hold, #myanimelist a.Lightbox_AddEdit.btn-addEdit-large.on-hold/* On Hold */
-{
-    border-color: var(--onhold)
-}
-#myanimelist a.button_add.dropped, #myanimelist a.button_edit.dropped, #myanimelist a.Lightbox_AddEdit.btn-addEdit-large.dropped/* Dropped */
-{
-    border-color: var(--dropped)
-}
-#myanimelist a.button_add.plantowatch, #myanimelist a.button_edit.plantowatch, #myanimelist a.button_add.plantoread, #myanimelist a.button_edit.plantoread, #myanimelist a.Lightbox_AddEdit.btn-addEdit-large.plantowatch, #myanimelist a.Lightbox_AddEdit.btn-addEdit-large.plantoread/* Planned */
-{
-    border-color: var(--planned)
-}
-/* Buttons - Add/Edit */
-.page-common a.button_add.button_add:hover, .page-common a.button_add.button_edit:hover, .page-common a.button_edit.button_add:hover, .page-common a.button_edit.button_edit:hover {
-    color: var(--text);
-}
-/* Buttons - Large */
-#myanimelist a.Lightbox_AddEdit.btn-addEdit-large {
-    background: var(--content-dim);
-    color: var(--text);
-}
-#myanimelist a.Lightbox_AddEdit.btn-addEdit-large:hover {
-    background: var(--border);
-    border-color: var(--border);
-    color: var(--text-lnk-hov);
-}
-/*==============================*\!PAGE-TITLE\*==============================*/
-/*.page-common .wrapper:after {
-content: "";
-background: url(https://i.imgur.com/HheYL00.jpg) no-repeat center / cover fixed;
-background: url(https://i.imgur.com/4KgeXwW.png) no-repeat center / cover;
-}
-.page-common .wrapper:before {
-content: "";
-background: var(--border);
-}*/
-/* Left */
-#contentWrapper > div:first-of-type:not(#content) {
-    background: var(--content-dimmer) !important;
-}
-#contentWrapper > div:first-of-type:not(#content):after {
-    content: "";
-    background: linear-gradient(to right, var(--accent), var(--accent-dim) 25%, var(--accent-dim) 75%, var(--accent));
-}
-#contentWrapper > div:first-of-type:not(#content) .h1 {
-    background: none !important;
-    color: var(--text-heading) !important;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-#contentWrapper > div:first-of-type:not(#content) .h1:only-child {
-    overflow: visible;
-}
-.page-common .h1 .title-english {
-    color: var(--text-dimmer);
-}
-.title-english::before {
-    content: '(';
-}
-.title-english::after {
-    content: ')';
-}
-/* Right */
-#contentWrapper > div:first-of-type:not(#content) .header-right a, #contentWrapper > div:first-of-type:not(#content) a.header-right, #contentWrapper > div:first-of-type:not(#content) .h1 [style*="float: right"] a {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-#contentWrapper > div:first-of-type:not(#content) .header-right a:hover, #contentWrapper > div:first-of-type:not(#content) a.header-right:hover, #contentWrapper > div:first-of-type:not(#content) .h1 [style*="float: right"] a:hover {
-    background: var(--accent-dimmest);
-}
-/* .page-common .header-right:before {
-content: "\f013 ";
-}
-*/
-.header-right #editdiv {
-    background: var(--header);
-}
-/* User Banners (moderators, etc) */
-.icon-team-title {
-    background-color: var(--content-dim);
-}
-/* GENERIC @Breadcrumb */
-.page-common .breadcrumb {
-    background: linear-gradient(to right, var(--border), var(--content-dim));
-}
-.page-common .breadcrumb ~ .breadcrumb {
-    right: 0;
-    background: none;
-}
-.page-common .breadcrumb div a {
-    background: var(--border);
-}
-.page-common .breadcrumb div a:hover {
-    background: var(--accent-dimmest);
-}
-.page-common .breadcrumb div a:after {
-    content: "";
-    right: 0;
-    background: inherit;
-    box-shadow: 2px 2px 0 var(--accent);
-    transform: rotate(-45deg);
-    transform-origin: right top;
-}
-.page-common .breadcrumb ~ .breadcrumb div a:after {
-    right: 100%;
-    box-shadow: -2px -2px 0 var(--accent);
-}
-.page-common .breadcrumb div a:hover:after {
-    border-left-color: var(--accent-dimmest);
-}
-.page-common .breadcrumb div a[href*="forum/?clubid"]:before {
-    content: "Club Forum";
-}
-.page-common .breadcrumb div a[href="https://myanimelist.net/"]:before {
-    content: "Home";
-}
-/* Patches - News */
-/* GENERIC @Nav */
-.page-common #horiznav_nav ul {
-    display: inline-flex;
-}
-.page-common #horiznav_nav ul li {
-    background: none;
-}
-.page-common #horiznav_nav ul li a {
-    background: var(--content-dim) !important;
-    color: var(--text-lnk) !important;
-}
-.page-common #horiznav_nav ul li a:hover {
-    background: var(--border) !important;
-    color: var(--text-lnk-hov) !important;
-}
-.page-common #horiznav_nav ul li .horiznav_active {
-    background: var(--accent-dim) !important;
-    color: var(--text-heading) !important;
-}
-.page-common #horiznav_nav ul li .horiznav_active:hover {
-    background: var(--accent) !important;
-    color: var(--text-heading) !important;
-}
-/* TEXT */
-/* Spoiler Expand & Quote Expand Buttons */
-#myanimelist .spoiler .button, #myanimelist .quotetext .button.expand_quote {
-    background: var(--content-dim) !important;
-    color: var(--text-dim);
-    cursor: pointer;
-}
-#myanimelist .spoiler .button:hover, #myanimelist .quotetext .button.expand_quote:hover {
-    border-color: var(--accent-dim) !important;
-}
-#myanimelist .spoiler > .spoiler_content[style*="ck"] > .button {
-    background: var(--border) !important;
-    border-color: var(--accent-dim) !important;
-}
-#myanimelist .spoiler > .spoiler_content[style*="ck"] > .button:hover {
-    border-color: var(--accent) !important;
-}
-#myanimelist .spoiler > .spoiler_content:before {
-    content: "";
-    /* background: var(--accent-dim);
-TEMP */
-    background: linear-gradient(to bottom, transparent, var(--accent-dim) 15px, var(--accent-dim) calc(100% - 15px), transparent);
-}
-#myanimelist .quotetext {
-    background: var(--quotebox-bg);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-}
-#myanimelist .news-list .comment-list .quotetext {
-    background: var(--quotebox-bg);
-    color: inherit;
-}
-#myanimelist .codetext {
-    background-color: var(--codebox-bg) !important;
-    box-shadow: inset 0 0 4px rgba(0, 0, 0, .15);
-    color: var(--codebox-text);
-}
-/*------------------------------*\CONTENT @Search-Bars\*------------------------------*/
-#quickadd input {
-    background-color: var(--content-dim);
-    border-color: var(--border);
-    border-style: solid;
-    color: var(--text);
-}
-#quickadd .inputButton {
-    background-color: var(--accent);
-    color: var(--border);
-}
-#quickadd .inputButton:not(:disabled):hover {
-    background: var(--accent-dim);
-    color: var(--text-lnk-hov);
-}
-/* Search Results */
-.page-common #advancedSearchResultList {
-    right: 24px;
-    background: var(--content-dim);
-    border-style: solid;
-    border-color: var(--border);
-}
-#advancedSearchResultList .list {
-    background: none;
-}
-#advancedSearchResultList .list.focus {
-    background: var(--border);
-}
-#advancedSearchResultList .list .name {
-    color: var(--text) !important;
-}
-#advancedSearchResultList .list .media-type {
-    color: var(--text-dimmer) !important;
-}
-#advancedSearchResultList .list .extra-info {
-    color: var(--text-dim) !important;
-}
-#advancedSearchResultList .list.separator {
-    background: var(--border);
-}
-#advancedSearchResultList .list.separator span {
-    color: var(--text);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-#advancedSearchResultList .list-bottom {
-    background: var(--content-dim) !important;
-}
-#advancedSearchResultList .list-bottom.focus {
-    background: var(--accent) !important;
-}
-#advancedSearchResultList .list.list-bottom a {
-    color: var(--header-text);
-}
-#advancedSearchResultList .list.list-bottom.focus a {
-    color: var(--header);
-}
-/* Advanced Search */
-#advancedSearch .fw-b.mt24 {
-    color: var(--text);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-#advancedSearch .fw-b.mt24 a {
-    color: var(--text-dim);
-}
-/* ===============================================!GENERIC @News=============================================== */
-body.news .menu-category .btn-category.selected {
-    color: #7f7f7f !important;
-}
-.news-list .comment-list, .news-list .news-unit {
-    font-family: var(--fontset);
-}
-.di-ib.tags *, .tag-cloud * {
-    background-color: transparent !important;
-}
-#myanimelist .news-list .tags .tags-inner-attributes {
-    border-color: var(--border);
-}
-#myanimelist .news-list .tags-inner .tag {
-    background: var(--content-dim);
-    color: var(--text);
-}
-#myanimelist .news-list .tags-inner > .tag:hover {
-    background: var(--content-dimmer);
-    color: var(--text-lnk-hov);
-}
-#myanimelist .news-list .tags .tag-color-feature-spoiler {
-    border-color: var(--return-bad);
-}
-/* ===============================================!GENERIC @Companies=============================================== */
-.navi-seasonal.js-navi-company {
-    background-color: transparent !important;
-}
-/* ===============================================!GENERIC @Interest Stacks=============================================== */
-.mymenu.clearfix, .tag, .quick-search *, .info-block.clearfix, h2.title, .tag, .any_status, .head {
-    background-color: var(--content) !important;
-}
-.info {
-    background-color: transparent !important;
-}
-.introduction, .any_status strong, .intro {
-    color: var(--text-heading) !important;
-}
-/* ===============================================!FORUM=============================================== */
-/* Header Thing */
-/* Board Base */
-.page-forum [id^="topicRow"] [class^="forum_boardrow"] {
-    background: var(--content-dim);
-}
-/* Browser */
-/* Posts */
-.page-forum .forum_postusername a, .page-forum .forum_postusername a:visited {
-    color: var(--text-dim);
-}
-.page-forum .forum_postusername a:hover {
-    color: var(--text);
-}
-.page-forum [class^="forum_boardrow"], .page-forum .sig {
-    border-color: var(--border);
-}
-/* Icons */
-.js-toggle-watching-topic-button img {
-    background: rgba(var(--notif-rgb), 0.33) content-box;
-    object-position: 9999px;
-    transform: rotate(45deg);
-}
-.js-toggle-watching-topic-button img[title*="re wa"] {
-    background-color: var(--notif);
-    border-color: var(--notif);
-}
-.js-ignore-topic-button {
-    background: var(--border);
-}
-.js-ignore-topic-button:before {
-    content: "";
-    background: var(--text-dim);
-}
-/* ===============================================!NOTIFICATIONS=============================================== */
-/* Left Column */
-body.notification #myanimelist #content .left-column {
-    border-right: 3px solid var(--border);
-}
-body.notification .notificaiton-category-nav a {
-    color: var(--text-heading);
-}
-body.notification .notificaiton-category-nav a .fa {
-    color: var(--icon);
-}
-body.notification .notificaiton-category-nav a:hover, body.notification .notificaiton-category-nav a.active {
-    background: var(--content-dim);
-}
-body.notification .notificaiton-category-nav li .fa-bell-o:before {
-    content: "\f0f3";
-}
-body.notification .notificaiton-category-nav a .counter.zero {
-    background: var(--border);
-    color: var(--text-heading);
-}
-body.notification .notificaiton-category-nav a .counter {
-    background: var(--accent);
-}
-/* Right Column */
-body.notification .notification-item:hover {
-    background: var(--content-dim);
-}
-/* Text */
-/* Time */
-body.notification .notification-item-layout .time {
-    color: var(--text-dimmest);
-}
-/* Checkmark */
-/* Unread */
-body.notification #myanimelist .notification-item-layout .fa {
-    color: var(--text);
-}
-/* Read */
-body.notification .notification-item-layout .is-read .fa-check-circle {
-    background: var(--notif);
-}
-body.notification .notification-item-layout .is-read .fa-check-circle:before {
-    content: "\f00c";
-}
-body.notification .notification-item-layout .fa-check:hover {
-    background: var(--border);
-}
-/*------------------------------*\BROWSE @Anime-Search\*------------------------------*/
-/*https://myanimelist.net/anime.php*/
-/*https://myanimelist.net/manga.php*/
-/* Browse Page */
-.anime-manga-search .genre-link .genre-list-col {
-    display: inline;
-}
-.anime-manga-search .genre-link .genre-list .genre-name-link {
-    /* background: var(--content-dim);
-*/
-    white-space: nowrap;
-}
-.anime-manga-search .genre-link .genre-list .genre-name-link:hover {
-    background: transparent;
-    border-color: var(--accent);
-}
-/* ===============================================BROWSE @Top-Lists=============================================== */
-/** https://myanimelist.net/topanime.php* https://myanimelist.net/topmanga.php* https://myanimelist.net/people.php* https://myanimelist.net/character.php*/
-#myanimelist [class$="-ranking-table"] .text {
-    color: var(--text);
-}
-#myanimelist [class$="-ranking-table"] .table-header td {
-    background: var(--border);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-#myanimelist [class$="-ranking-table"] .ranking-list td {
-    background: none;
-    border-color: var(--border);
-}
-/* #myanimelist [class$="-ranking-table"] .ranking-list:nth-of-type(even) td {
-background: var(--content-dim);
-}
-*/
-/* Score */
-#myanimelist [class$="-ranking-table"] .score div:before, #myanimelist [class$="-ranking-table"] .your-score a:before {
-    content: "\f005";
-    color: #ecb428;
-}
-/* ===============================================BROWSE @Seasonal=============================================== */
-/* Header */
-.navi-seasonal {
-    background: var(--content);
-}
-.navi-seasonal.fixed {
-    background: var(--border);
-}
-.navi-seasonal.fixed:after {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-}
-.navi-seasonal .horiznav_nav ul li a, .navi-seasonal .horiznav_nav ul li a.navtab, .navi-seasonal .horiznav-nav-seasonal .btn-seasonal .btn-type {
-    background: var(--content-dim);
-    color: var(--text-dim);
-}
-/* Items */
-.seasonal-anime-list .seasonal-anime {
-    border-color: var(--border);
-}
-.seasonal-anime-list .seasonal-anime .prodsrc {
-    background: var(--border);
-}
-.seasonal-anime-list .seasonal-anime .genres {
-    background: var(--content-dim);
-}
-.seasonal-anime-list .seasonal-anime .genres .genre {
-    background: var(--content-dim);
-}
-.seasonal-anime-list .seasonal-anime .genres .genre a {
-    color: var(--text-dimmer);
-}
-.seasonal-anime-list .seasonal-anime .information {
-    background: var(--border);
-}
-.seasonal-anime-list .seasonal-anime .information > div {
-    background: none !important;
-    color: var(--text-dimmer) !important;
-}
-.seasonal-anime-list .seasonal-anime .information .scormem .score:after {
-    content: "☆";
-    background: none;
-}
-.seasonal-anime-list .seasonal-anime .information .scormem .member:after {
-    content: "M";
-    background: none;
-}
-/* ===============================================BROWSE @Clubs=============================================== */
-/* Search Bar */
-/* Text */
-.club-list .table-data td {
-    background: none !important;
-}
-.club-list .table-data td .informantion {
-    color: var(--text);
-}
-/* Join Button */
-#myanimelist .club-list .btn-club-join {
-    background-color: var(--accent);
-    background-color: var(--border);
-    color: var(--text);
-}
-#myanimelist .club-list .btn-club-join:hover {
-    background: var(--accent-dimmest);
-    color: var(--text-lnk-hov);
-}
-/* New Comment */
-.club-list .table-data td .new {
-    color: var(--notif);
-}
-/* ===============================================!FANCYBOX-ETC=============================================== */
-#fancybox-overlay {
-    background: black !important;
-    opacity: 0.3;
-}
-#fancybox-wrap {
-    transform: translate(-50%, -50%);
-}
-#fancybox-outer {
-    background: var(--border);
-}
-#fancybox-inner {
-    color: var(--text);
-}
-#fancybox-inner div {
-    background: black !important;
-}
-/* MODALS */
-.root * {
-    border-color: var(--border) !important;
-}
-.root .modal-mask {
-    background-color: rgba(0, 0, 0, 0.7)
-}
-.root .modal-content {
-    background: var(--header);
-}
-.root .modal-container {
-    background: none;
-    border-color: var(--accent) !important;
-    color: var(--text);
-    font-family: var(--fontset-basic);
-}
-.root button {
-    background: var(--accent);
-    color: var(--border);
-}
-.root button:hover {
-    color: var(--text-lnk-hov);
-}
-/* ===============================================!PANEL=============================================== */
-body.index #content {
-    --slider-title: #eee;
-    --slider-subtitle: #ddd;
-    --slider-gradient: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
-}
-/* Widget Bases */
-body.index article > div.widget:not([class*="_ad"]) {
-    background: var(--content-dim);
-}
-/* Widget Content */
-/* body.index .widget a {
-color: var(--text-dim);
-}
-*/
-/* Widget Container */
-body.index .widget-container .widget .widget-header {
-    color: var(--text-heading);
-}
-body.index .widget.clubs .item .info p:nth-of-type(2) {
-    overflow: auto !important;
-    white-space: initial !important;
-}
-/*------------------------------*\PANEL @Top-Upcoming\*------------------------------*/
-.ranking-digest {
-    background: none;
-}
-.ranking-digest .ranking-header {
-    background: var(--content-dim);
-}
-.ranking-digest .ranking-unit .rank {
-    background: var(--border);
-    color: var(--text-dimmer);
-}
-.ranking-digest .ranking-unit .data .info, .ranking-digest .ranking-unit .data .members {
-    color: var(--text-dimmer);
-}
-/*------------------------------*\PANEL @Friend-Updates\*------------------------------*/
-/* Removes popularity rank. */
-/*------------------------------*\PANEL @Clubs\*------------------------------*/
-body.index .widget.clubs .item .info p:nth-of-type(2) {
-    color: var(--text-dim);
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-body.index .widget.clubs .item .info p:nth-of-type(3) {
-    white-space: nowrap;
-}
-body.index .widget.clubs .item .info p:nth-of-type(4) {
-    color: var(--text-dimmer);
-}
-body.index .widget.clubs .new {
-    background: var(--notif);
-}
-body.index .widget.clubs .new:before {
-    content: "!";
-    color: var(--text-heading);
-    font-weight: bold;
-}
-/*------------------------------*\PANEL @Sliders\*------------------------------*/
-/* Title */
-#myanimelist .widget-slide-block .widget-slide .external-link {
-    background: none;
-}
-#myanimelist .widget-slide-block .widget-slide .external-link a {
-    color: var(--slider-title);
-}
-/* Title Background */
-#widget-episode-video .widget-slide .btn-anime:before, #widget-manga-store .widget-slide .btn-anime:before, .auto-recommendations .item:after {
-    content: "";
-    background: var(--slider-gradient);
-}
-/* Dim on Hover */
-#myanimelist .widget-slide-block .widget-slide .btn-anime:hover, #myanimelist .widget-slide-block .widget-slide .btn-anime .link:hover, .auto-recommendations .item:hover {
-    opacity: initial;
-}
-.widget-slide-block .widget-slide .btn-anime .link:before, .auto-recommendations .item:before {
-    content: "";
-}
-.widget-slide-block .widget-slide .btn-anime:hover .link:before, .auto-recommendations .item:hover:before {
-    background: rgba(0, 0, 0, 0.3);
-}
-/* - - - - - - - - - - - - - - -*\Latest Episodes & Manga Store\*- - - - - - - - - - - - - - - */
-.index-watch-description, .index-manga-store-description {
-    background-size: cover;
-}
-#myanimelist .btn-watch-video, #myanimelist .btn-manga-store {
-    background: var(--accent);
-    color: var(--border);
-}
-#myanimelist .btn-watch-video:hover, #myanimelist .btn-manga-store:hover {
-    color: var(--text-lnk-hov);
-    opacity: initial;
-}
-#widget-episode-video .widget-slide .btn-anime .link .title {
-    background: none;
-}
-#widget-episode-video .widget-slide .btn-anime.episode .link a {
-    box-shadow: inset 80px 0 80px -60px rgba(0, 0, 0, 1);
-    color: var(--slider-subtitle);
-}
-#widget-episode-video .widget-slide .btn-anime.episode .link a:hover {
-    background: rgba(0, 0, 0, 0.7);
-}
-/* - - - - - - - - - - - - - - -*\Seasonals\*- - - - - - - - - - - - - - - */
-/* - - - - - - - - - - - - - - -*\Promotional Videos\*- - - - - - - - - - - - - - - */
-#widget-promotional-video .widget-slide .btn-anime .link {
-    background-size: cover;
-}
-#widget-promotional-video .widget-slide .link:after {
-    content: "";
-    background: var(--slider-gradient);
-}
-#widget-promotional-video .widget-slide .btn-anime .link .title {
-    background: none;
-    color: var(--slider-subtitle);
-}
-#widget-promotional-video .widget-slide .btn-anime .link .btn-play {
-    background: rgba(0, 0, 0, 0.7) !important;
-    transform: scale(0);
-}
-#widget-promotional-video .widget-slide .btn-anime:hover .link .btn-play {
-    transform: scale(1);
-}
-#widget-promotional-video .widget-slide .btn-anime .link .btn-play:before {
-    content: "\f04b";
-    color: var(--text-0);
-    text-indent: 0;
-}
-/* - - - - - - - - - - - - - - -*\Recommendations\*- - - - - - - - - - - - - - - */
-.auto-recommendations .btn-side {
-    background-size: 70px auto;
-}
-.auto-recommendations .btn-side.left {
-    background-position: -35px 0;
-}
-.auto-recommendations .item {
-    background-color: var(--content-dim);
-}
-.auto-recommendations .item .title {
-    color: var(--slider-title);
-}
-/*------------------------------*\PANEL @Forum\*------------------------------*/
-#myanimelist table.forum-topics tr td {
-    background: var(--content-dim);
-    border-color: var(--border);
-}
-/*------------------------------*\PANEL @News\*------------------------------*/
-/* - - - - - - - - - - - - - - -*\Newest\*- - - - - - - - - - - - - - - */
-/* Layout */
-.news-list .news-unit-right:before {
-    content: "";
-    float: left;
-}
-#myanimelist .news-unit .title {
-    display: inline;
-    word-wrap: break-word;
-}
-#myanimelist .news-unit .title:after {
-    content: "\a";
-    white-space: pre;
-}
-#myanimelist .news-unit .text {
-    display: inline;
-    color: var(--text-dim);
-}
-#myanimelist .news-unit .information .info {
-    color: var(--text-dimmer);
-}
-/* - - - - - - - - - - - - - - -*\Featured News\*- - - - - - - - - - - - - - - */
-/* #PANEL - LEFT-SPECIFIC */
-/* #PANELS - RIGHT SPECIFIC */
-/* !SETTINGS */
-table {
-    border-collapse: collapse;
-}
-#myanimelist textarea {
-    resize: vertical;
-}
-/* - - - - - - - - - - - - - - -*\Headings\*- - - - - - - - - - - - - - - */
-.page-common h2 {
-    background: var(--border);
-    color: var(--text);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-.page-common h2 .floatRightHeader {
-    font-family: inherit;
-}
-.page-common h2 .floatRightHeader a {
-    color: var(--text-dim);
-    font-family: inherit;
-}
-.page-common h2 .floatRightHeader a:hover {
-    background: var(--content-dim);
-    background: var(--content-dimmest);
-}
-/*------------------------------*\SETTINGS @Profile\*------------------------------*/
-.normal_header .badresult-text {
-    white-space: nowrap;
-}
-.normal_header .badresult-text:hover {
-    background: var(--content-dimmest);
-    color: var(--text);
-    letter-spacing: 0;
-}
-.normal_header .badresult-text:before {
-    content: "\f06a";
-    color: var(--return-bad);
-    cursor: help;
-    pointer-events: auto;
-}
-.normal_header .badresult-text:hover:before {
-    color: transparent;
-}
-/*------------------------------*\SETTINGS @Favourites\*------------------------------*/
-.page-common .draggable_list li:hover {
-    background: var(--content-dim);
-}
-#dialog .spaceit_pad ~ table .normal_header {
-    background: none;
-}
-#dialog .spaceit_pad ~ table .normal_header a {
-    background: none;
-}
-/*------------------------------*\SETTINGS @Notifications\*------------------------------*/
-/* Header */
-.notification_settings .notification-setting-content .settings-notification .setting.header td {
-    background: var(--content-dim);
-    color: var(--text-heading);
-    font-weight: bold;
-}
-/* Content */
-.notification_settings .notification-setting-content .settings-notification .setting td {
-    border-color: var(--border) !important;
-}
-.notification_settings .notification-setting-content .settings-notification .setting td.label .title {
-    color: var(--text);
-}
-.notification_settings .notification-setting-content .settings-notification .setting td.label .text {
-    color: var(--text-dimmer);
-}
-/* Content Labels */
-.notification_settings .notification-setting-content .settings-notification .setting td.button input[type=checkbox] + label {
-    background: var(--content-dim);
-    border-color: var(--border);
-}
-.notification_settings .notification-setting-content .settings-notification .setting td.button.off input[type=checkbox] + label {
-    background: var(--content-dim) !important;
-    border-color: var(--border) !important;
-    opacity: 0.3;
-}
-.notification_settings .notification-setting-content .settings-notification .setting td.button input[type=checkbox]:checked + label {
-    background: var(--border);
-    border-color: var(--accent);
-}
-.notification_settings .notification-setting-content .settings-notification .setting td.button.all input[type=checkbox]:checked + label {
-    background: var(--border);
-    border-color: var(--notif);
-}
-.notification_settings .notification-setting-content .settings-notification .setting td.button input[type=checkbox] + label:before {
-    color: var(--text-lnk) !important;
-}
-.notification_settings .notification-setting-content .settings-notification .setting td.button input[type=checkbox]:checked + label:before {
-    color: var(--text-lnk-hov);
-}
-.notification_settings .notification-setting-content .settings-notification .setting td.button.all input[type=checkbox] + label:before {
-    color: var(--notif);
-}
-.notification_settings .notification-setting-content .settings-notification .setting td.button input[type=checkbox] + label:after {
-    background: var(--text-lnk);
-}
-.notification_settings .notification-setting-content .settings-notification .setting td.button input[type=checkbox]:checked + label:after {
-    background: var(--text-lnk-hov);
-}
-.notification_settings .notification-setting-content .settings-notification .setting td.button.all input[type=checkbox] + label:after {
-    background: var(--notif);
-}
-/*------------------------------*\SETTINGS @Panel\*------------------------------*/
-.setting-row {
-    background: var(--content-dim);
-    color: var(--text);
-}
-.setting-row.show-hidden {
-    background: none;
-    color: var(--text-dimmest);
-}
-.setting-row.locate-right {
-    background: var(--content-dim);
-}
-/*------------------------------*\SETTINGS @Forum\*------------------------------*/
-/*------------------------------*\SETTINGS @List-Settings\*------------------------------*/
-.btn-sns-setting, #myanimelist .sns-setting .setting-input-button {
-    background: var(--content-dim) !important;
-    color: var(--text-lnk) !important;
-}
-.btn-sns-setting:hover, #myanimelist .sns-setting .setting-input-button:hover {
-    background: var(--border) !important;
-    color: var(--text-lnk-hov);
-}
-.sns-setting .explanation td {
-    background: var(--content-dim) !important;
-}
-.sns-setting .table td {
-    border-color: var(--border);
-    font-family: var(--fontset-basic);
-}
-.sns-setting .table tr:nth-of-type(odd) td {
-    background: none;
-}
-.sns-setting .sns-setting-default {
-    border-color: var(--border);
-    font-family: var(--fontset-basic);
-}
-.sns-setting .cell-border-vertical {
-    border-color: var(--border);
-}
-/* .sns-setting .setting-input-button {
-background: var(--content-dim);
-}
-*/
-/*------------------------------*\SETTINGS @Advanced-CSS\*------------------------------*/
-/*------------------------------*\SETTINGS @Login\*------------------------------*/
-.page-common .login-form-header-text {
-    border-color: var(--border);
-}
-.page-common .social-login-block {
-    border-color: var(--border);
-}
-.page-common .social-login-block:after {
-    background: var(--border);
-}
-/*------------------------------*\SETTINGS @Privacy\*------------------------------*/
-/*------------------------------*\SETTINGS @MALSUPPORTER\*------------------------------*/
-.membership #myanimelist span {
-    color: var(--text);
-}
-.membership #myanimelist p {
-    color: var(--text-dimmer);
-}
-.membership #myanimelist .plan-header, .membership #myanimelist .about-membership div {
-    background: none;
-}
-.membership #myanimelist .plan-header, .membership #myanimelist .header {
-    color: var(--text-heading)
-}
-.membership #myanimelist .about-membership .about-new-feature {
-    background: var(--content-dim);
-}
-.membership #myanimelist .about-new-feature .new {
-    background: var(--notif);
-    color: var(--border);
-}
-.faq-container .faq-lists .question, .faq-container .faq-lists .answer {
-    color: var(--header-text);
-}
-.faq-container .faq-lists .question:hover, .faq-container .faq-lists .question.on {
-    color: var(--content-dimmest);
-}
-/* SEARCH */
-/* Recommendations */
-.auto-recommendations .item:hover {
-    opacity: 0.7;
-}
-/* SEASONAL/GENRE */
-.property {
-    background-color: transparent !important;
-}
-/* STATS */
-#content > table, #content > table > tbody, .js-scrollfix-bottom-rel > table, .js-scrollfix-bottom-rel > table > tbody, .js-scrollfix-bottom-rel > table > tbody > tr, .js-scrollfix-bottom-rel > table > tbody > tr > td, .tr {
-    display: revert !important;
-    background-color: transparent !important;
-}
-/* ANIME-PAGE & MANGA-PAGE */
-/* Left Split */
-#content > table > tbody > tr > td:first-child {
-    border-right: 3px solid var(--border) !important;
-}
-/* Right Split */
-/* Generic */
-.page-common [id^="fsgComments"] .bgColor2 {
-    background: var(--border);
-}
-.page-common [id^="fsgComments"] .spaceit[style*="#f7e0e0"] {
-    background: var(--dropped) !important;
-}
-/* ===============================================!PROFILE=============================================== */
-/* PROFILE / GENERAL */
-.page-common.profile #content {
-    padding: 0 !important;
-}
-/* PROFILE @Split-Left */
-/* General */
-.page-common .content-container .container-left {
-    border-right: 3px solid var(--border);
-}
-.user-profile .user-status li {
-    background-color: transparent !important;
-}
-/* Image */
-.user-profile .user-image img {
-    width: var(--ptwidth) !important;
-	max-width: var(--ptwidth) !important;
-}
-/* Image - Empty */
-.btn-detail-add-picture {
-    background: var(--border) var(--img-missing) no-repeat center / cover !important;
-}
-/* Buttons - Social */
-.user-profile .user-function .icon-user-function {
-    background-color: var(--accent) !important;
-}
-.user-profile .user-function .icon-user-function:not(.disabled):hover {
-    background-color: var(--accent-dim) !important;
-}
-.user-profile .user-function .icon-user-function.disabled {
-    background: var(--border) !important;
-    opacity: 0.75;
-}
-.user-profile .user-function .icon-user-function .text {
-    color: var(--border);
-}
-.user-profile .user-function .icon-user-function:not(.disabled):hover .text {
-    color: var(--text-lnk-hov);
-}
-#myanimelist .user-profile .user-function .icon-user-function.disabled .text {
-    color: var(--text-dim)
-}
-.user-profile .user-function .icon-user-function.icon-request .text:before {
-    content: "";
-}
-.user-profile .user-function .icon-user-function.icon-remove .text:before {
-    content: "Unfriend";
-}
-/* Basic Info */
-.user-profile .user-status.border-top.pb8:before {
-    content: "BASIC INFO";
-    background: var(--border);
-    color: var(--text-heading);
-    letter-spacing: 0.05em;
-}
-.user-profile .user-status li .user-status-data.online {
-    color: var(--notif);
-}
-.user-profile .user-status li .user-status-data.online:after {
-    content: "";
-    background: var(--notif);
-    animation: online 2.25s ease-in-out infinite 0s;
-}
-/* Buttons - Anime/Mangalist */
-.user-profile .user-button .btn-profile-submit {
-    background: var(--accent) !important;
-    color: var(--border);
-}
-.user-profile .user-button .btn-profile-submit:hover {
-    background: var(--accent-dim) !important;
-    color: var(--text-lnk-hov);
-}
-/* Buttons - Stats & History */
-/* Buttons - Nav */
-.user-status.border-top.mt12.mb12 li a {
-    background: var(--content-dim);
-}
-.user-status.border-top.mt12.mb12 li a:hover {
-    background: var(--border);
-}
-/* Buttons - Nav - Sub-pages */
-.page-common #horiznav_nav ul li .horiznav_active:hover {
-    background: var(--border) !important;
-    color: var(--text-lnk-hov) !important;
-}
-.head-config {
-    background-color: transparent !important;
-}
-/* Affinity */
-.user-profile .user-compatability-graph .bar-outer {
-    background: var(--content-dim) !important;
-}
-.user-profile .user-compatability-graph .bar-outer div {
-    background: none !important;
-    border-color: var(--border) !important;
-}
-.user-profile .user-compatability-graph .bar-outer-negative span {
-    color: var(--text-dim) !important;
-}
-.user-profile .user-compatability-graph .bar-outer-positive span {
-    color: var(--text-heading) !important;
-}
-.user-profile .user-compatability-graph .bar-outer .bar-inner {
-    font-weight: bold !important;
-}
-.user-profile .user-compatability-graph .bar-outer-negative .bar-inner {
-    background: var(--dropped) !important;
-}
-.user-profile .user-compatability-graph .bar-outer-positive .bar-inner {
-    background: var(--completed) !important;
-}
-/* Friends */
-.user-profile .user-friends .icon-friend {
-    background-color: var(--border);
-    color: var(--text-dim);
-    text-indent: 0;
-    overflow: visible;
-}
-.user-profile .user-friends .icon-friend[style*="questionmark_50.gif"] {
-    background: var(--border) var(--img-missing) no-repeat center / cover !important;
-}
-.user-profile .user-friends .icon-friend:hover {
-    opacity: initial;
-}
-.user-profile .user-friends .icon-friend:after {
-    background: var(--border);
-}
-.user-profile .user-friends .icon-friend:hover:after {
-    opacity: 1;
-}
-/* Links & RSS */
-#myanimelist .user-profile-sns .icon-profile-sns:after {
-    background-image: var(--img-socials);
-}
-/* Empty */
-#myanimelist .user-profile-sns .icon-profile-sns.icon-url:after {
-    background-size: 140px 28px;
-    background-position: -126px -14px;
-}
-/* Custom Websites */
-#myanimelist .user-profile-sns .icon-profile-sns:before {
-    content: attr(href);
-    color: var(--text-dimmest);
-    text-indent: 0;
-    white-space: nowrap;
-}
-#myanimelist .user-profile-sns .icon-profile-sns:hover:before {
-    text-indent: -167px;
-}
-#myanimelist .user-profile-sns .icon-profile-sns[href*="myanimelist.net"]:after {
-    background-position: -112px -14px;
-}
-#myanimelist .user-profile-sns .icon-profile-sns[href*="anilist.co"]:after {
-    background-position: -98px -14px;
-}
-#myanimelist .user-profile-sns .icon-profile-sns[href*="kitsu.io"]:after {
-    background-position: -84px -14px;
-}
-#myanimelist .user-profile-sns .icon-profile-sns[href*="youtube.com"]:after {
-    background-position: 0 -14px;
-}
-#myanimelist .user-profile-sns .icon-profile-sns[href*="last.fm"]:after {
-    background-position: -14px -14px;
-}
-#myanimelist .user-profile-sns .icon-profile-sns[href*="github.com"]:after {
-    background-position: -28px -14px;
-}
-/* PROFILE @Split-Right */
-/* General */
-/* Section Header */
-.page-common .container-right .user-profile-about:before {
-    content: "ABOUT";
-    background: var(--border);
-    color: var(--text-heading) !important;
-    letter-spacing: 0.05em;
-}
-.js-truncate-outer {
-	transition: all var(--time-long) ease-in-out;
+    
+/*The Background's Dark Color*/
+ --bg: #222;
+    
+    
+/*Table Grays and Blacks
+Colors most of the site's content and tables*/
+ --table1: #303030;
+ --table2: #2D2F30;
+ --table3: #2A2B2C;
+ --table4: #262626;
+ --table5: #1A1A1A;
+    
+    
+/*Header Grays*/
+ --header-light-grey: #585555;
+ --header-mid-grey: #424242;
+    
+    
+/*MAL Blues*/
+ --default-blue: #2e51a2;
+ --dark-blue: #1d3366;
+ --grey-blue: #4E678D;
+    
+    
+/*Special*/
+ --important-red: #ce6161;  
+
+    
+/*Border Color*/
+ --border: #3e3e3e;
+    
+    
+/*Text Colors*/
+ --text-white: #DBDBDB;
+ --text-white-bright: #F5F5F5;
+ --text-light-grey: #BFBFBF;
+ --text-med-grey: #999999;
+ --text-dark-grey: #808080;
+    
+ --text-link: #648BC6;
+ --text-link-list: #7faaea;
+ --text-link-hover: #5179DB;
+
+/*Profile Image Width for testing purposes*/
+ --piwidth: 225px;
 }
 
-.js-truncate-outer .btn-truncate {
-/* 	background-image: url(https://myanimelist.net/images/icon-pulldown2.png?v=160803001), linear-gradient(to bottom, #33343600, #333436); */
-	background: transparent linear-gradient(to top, var(--content), rgba(var(--content-rgb), 0)) no-repeat 100% / contain !important;
-	transition: inherit;
-}
-.js-truncate-outer .btn-truncate:before {
-	content: "";
-	position: absolute;
-	left: 50%;
-	bottom: -25px;
-	
-	width: 50px;
-	height: 50px;
-	background: var(--content) url(https://myanimelist.net/images/icon-pulldown2.png?v=160803001) no-repeat center -36px / 17px 54px;
-	border-radius: 50%;
-	box-shadow: 0 0 10px 5px var(--content);
-	margin-left: -25px;
-}
-.js-truncate-outer .btn-truncate.open:before {
-	background-position: center 0px;
-}
-/* STATS */
-/* Left (stats) */
-.profile .user-statistics .stats-graph .graph.watching, .profile .user-statistics .stats-graph .graph.reading, .profile .user-statistics .stats-status .circle.watching:after, .profile .user-statistics .stats-status .circle.reading:after/* Watching */
+
+
+/* 
+###################################            COLOR GROUPS           #########################################################     
+*/
+
+
+
+
+
+/* 
+##########################################################################################                         
+
+
+BG 
+
+A dark color for the main background is applied to all selectors grouped here. 
+
+##########################################################################################     
+*/
+
+.user-image.mb8 > img {width: var(--piwidth) !important; max-width: var(--piwidth) !important;}
+#advancedSearchResultList .list.list-bottom.focus a,
+#topSearchResultList .list.list-bottom.focus a,
+.anime-detail-header-stats .stats-block,
+.characters-favorites-ranking-table tr.ranking-list td,
+.navi-seasonal .horiznav-nav-seasonal .btn-seasonal .btn-type,
+.page-common #content,
+.page-common #footer-block,
+.page-common #header-menu .header-menu-unit,
+.page-common .badresult,
+.page-common .bg-color-base5,
+.page-common .borderClass,
+.page-common .fn-grey6,
+.page-common .goodresult,
+.page-common .header-notification-dropdown-inner h3,
+.page-common .header-profile.link-bg,
+.page-common .header-profile.link-bg.on,
+.page-common .header-profile.link-bg.on:hover ,
+.page-common .header-profile.link-bg:hover,
+.page-common .incrementalSearchResultList .list .off .info,
+.page-common .incrementalSearchResultList .list,
+.page-common .topic-reply-box,
+.page-common div.picSurround,
+.page-forum .btn-forum,
+.page-forum .forum_boardrow1,
+.page-forum .js-ignore-topic-button, .page-forum .forum-ignore,
+.people-favorites-ranking-table tr.ranking-list td,
+.pmessage-checked-action .pmessage-checked-action-button,
+.profile .statistics-updates .data .graph,
+.profile .user-comments .comment,
+.ranking-company .company-favorites-ranking-table tr.ranking-list td,
+.seasonal-anime-list .seasonal-anime .image,
+.staff_wrap .staff:nth-child(odd),
+.user-profile .user-compatability-graph .bar-outer .bar-outer-negative,
+.user-profile .user-compatability-graph .bar-outer,
+.user-profile .user-status li,
+.user-profile .user-status,
+.watch .video-menu-category .btn-category:hover,
+a.mal-btn.small, button.mal-btn.small,
+body.placeholder,
+body:not(.ownlist),
+div.fl-l.pb8,
+div.sceditor-toolbar,
+li.clearfix 
 {
-    background-color: var(--watching)
-}
-.profile .user-statistics .stats-graph .graph.completed, .profile .user-statistics .stats-status .circle.completed:after/* Completed */
-{
-    background-color: var(--completed)
-}
-.profile .user-statistics .stats-graph .graph.on_hold, .profile .user-statistics .stats-status .circle.on_hold:after/* On Hold */
-{
-    background-color: var(--onhold)
-}
-.profile .user-statistics .stats-graph .graph.dropped, .profile .user-statistics .stats-status .circle.dropped:after/* Dropped */
-{
-    background-color: var(--dropped)
-}
-.profile .user-statistics .stats-graph .graph.plan_to_watch, .profile .user-statistics .stats-graph .graph.plan_to_read, .profile .user-statistics .stats-status .circle.plan_to_watch:after, .profile .user-statistics .stats-status .circle.plan_to_read:after/* Planned */
-{
-    background-color: var(--planned)
-}
-.page-common .user-statistics .stats-graph {
-    background: none;
-}
-.page-common .user-statistics .stats-graph .graph {
-    background-clip: content-box;
-}
-.page-common .user-statistics .stats-graph:empty:before {
-    content: "";
-    background: var(--content-dim);
-}
-/* Right (updates) */
-.page-common .statistics-updates {
-    clear: both;
+	background-color: var(--bg) !important;
 }
 
-.page-common .statistics-updates .image:hover {
-    opacity: 0.7;
-}
-.page-common .statistics-updates .image img {
-    object-fit: cover;
-}
-.page-common .statistics-updates .data > a {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-.page-common .statistics-updates .data .graph {
-    background: var(--content-dim);
-}
-.profile .statistics-updates .data .graph .graph-inner.watching, .profile .statistics-updates .data .graph .graph-inner.reading {
-    background-color: var(--watching)
-}
-.profile .statistics-updates .data .graph .graph-inner.completed {
-    background-color: var(--completed)
-}
-.profile .statistics-updates .data .graph .graph-inner.on_hold {
-    background-color: var(--onhold)
-}
-.profile .statistics-updates .data .graph .graph-inner.dropped {
-    background-color: var(--dropped)
-}
-.profile .statistics-updates .data .graph .graph-inner.plan_to_watch, .profile .statistics-updates .data .graph .graph-inner.plan_to_read {
-    background-color: var(--planned)
-}
-/* FAVOURITES DISPLAY */
-.page-common .user-favorites-outer .di-t {
-    display: flex !important;
-}
-/* Contents */
-.page-common .user-favorites p.favorites-list {
-    color: var(--text-dimmer);
-}
-.profile .user-favorites .favorites-list .list .image:hover {
-    opacity: 0.7;
-}
-/* PROFILE @Split-Comments */
-.page-common .comment-form .textarea {
-    background: var(--content-dim);
-    border-color: var(--border);
-}
-.page-common .comment-form .btn-form-submit {
-    background: var(--accent);
-}
-/* Comments */
-.page-common .user-comments .comment {
-    background: none !important;
-}
-.page-common .user-comments .comment .image {
-    background: var(--border);
-}
-.page-common .user-comments .comment .text .pb8 {
-    background: linear-gradient(to right, var(--border) 0, var(--content-dim) 150px);
-}
-.page-common .user-comments .comment .text .pb8 span:before {
-    content: "| ";
-    white-space: pre;
-}
-.page-common .user-comments .comment .text .postActions {
-    right: 0;
-}
-.page-common .user-comments .comment .text .postActions a {
-    color: var(--text-dim);
-}
-.page-common .user-comments .comment .text .postActions a:hover {
-    background: var(--border);
-}
-/* Comment REply */
-/* Comment Content */
-/*==============================*\!PROFILE-SUB-PAGES\*==============================*/
-.boxlist-container * {
-    background-color: transparent !important;
-}
-/*------------------------------*\PROFILE-SUB-PAGES @Friends\*------------------------------*/
-.majorPad .friendHolder {
-    background: var(--content-dim);
-}
-.majorPad .bgLightBlue {
-    background: var(--content-dim);
-}
-.majorPad .bgLightBlue:after {
-    content: "";
-    background: var(--notif);
-    animation: online 2.25s ease-in-out infinite 0s;
-}
-/* Avatar */
-.majorPad .friendIcon img {
-    object-fit: cover;
-}
-/* Last Online */
-.majorPad .friendBlock div:nth-child(3) {
-    color: var(--text-dim);
-}
-.majorPad .friendBlock div:nth-child(3):before {
-    content: "Online";
-}
-/* Friends Since */
-.majorPad .friendBlock div:nth-child(4) {
-    color: var(--text-dim);
-}
-/* COM-TO-COM & ALL-COMMENTS */
-/* Page Title */
-#content > .borderClass [style*="left"] {
-    text-indent: 5px;
-}
-/* Page Nav */
-div[style=""]:not(:empty), #content > .spaceit {
-    background: var(--content-dim);
-}
-div[style="text-align: right;"] span[style="color:#888;"] { color: var(--text-dimmest) !important; }
-/* Comments */
-[id^="comBox"], [id^="comment"] {
-    clear: both;
-}
-/* Avatar */
-/* - - - - - - - - - - - - - - -*\Header & Text\*- - - - - - - - - - - - - - - */
-/* Name & Date */
-.borderClass [id^="com"]:not([id^="comtext"]) > div:nth-of-type(1), [id^="comment"] td:last-child > div:nth-of-type(1) {
-    background: linear-gradient(to right, var(--border) 0, var(--content-dim) 150px);
-}
-/* Buttons */
-.borderClass [id^="com"]:not([id^="comtext"]) > div:nth-child(3) {
-    background: var(--content-dim);
-}
-.borderClass [id^="com"]:not([id^="comtext"]) > div:nth-child(3) a, [id^="comment"] [style="margin-top: 10px;"] a {
-	color: var(--text-dim);
-}
-.borderClass [id^="com"]:not([id^="comtext"]) > div:nth-child(3) a:hover, [id^="comment"] [style="margin-top: 10px;"] a:hover { background: var(--border); }
-/* Text */
-/* Replies */
-.borderClass [id^="com"]:not([id^="comtext"]) textarea {
-    background: var(--content-dim);
-    resize: vertical;
-    color: var(--text-dim);
-}
-.bgNone .borderClass > [id^="com"] div:nth-child(1) {
-background: linear-gradient(to left, var(--border) 0, var(--content-dim) 150px);
-}
-/* FORUM-BASE */
-/* - - - - - - - - - - - - - - -*\Buttons\*- - - - - - - - - - - - - - - */
-#myanimelist .btn-rect-grey1 {
-    background: var(--content-dim);
-    color: var(--text-lnk) !important;
-}
-#myanimelist .btn-rect-grey1:hover {
-    background: var(--border);
-    color: var(--text-lnk-hov)
-}
-/* - - - - - - - - - - - - - - -*\Add-Reply\*- - - - - - - - - - - - - - - */
-.page-forum .bgbdrContainer[style="width: 500px; margin: 10px auto;"] {
-	background: none;
-	border: 10px solid var(--border);
-}
-#dialog {
-    border-color: var(--border);
-}
-/*------------------------------*\FORUM-BASE @Split-Left\*------------------------------*/
-.forum .content-container .container-left {
-    border-right: 3px solid var(--border);
-}
-.forum .forum-board, .forum .forum-board:nth-of-type(even) {
-    background-color: var(--content) !important;
-    border-color: var(--border) !important;
-    color: var(--text);
-}
-.forum .forum-board .fa {
-    color: var(--icon) !important;
-}
-.forum .forum-board .forum-board-description {
-    color: var(--text-dim);
-}
-.forum .forum-board .topics {
-    background: var(--content-dim);
-}
-/* Mark All Read */
-/* Clear Floats */
-#content > .forum_border_around:before {
-    content: "";
-    clear: both;
-}
-/* - - - - - - - - - - - - - - -*\Forum Mods\*- - - - - - - - - - - - - - - */
-#myanimelist .link-forum-mods:hover {
-    background: var(--content-dim);
-}
-/* Name */
-#myanimelist .link-forum-mods.offline .name {
-    color: var(--text-dimmer);
-}
-#myanimelist .link-forum-mods.offline:hover .name {
-    color: var(--text-dim);
-}
-/* Image */
-.forum .forum-mods .link-forum-mods.offline .thumb {
-    opacity: 0.3
-}
-.forum .forum-mods .link-forum-mods:hover .thumb {
-    opacity: 0.7
-}
-/*------------------------------*\FORUM-BASE @Split-Right\*------------------------------*/
-/* Buttons */
-/* Search */
-#myanimelist .forum-search-side .forum-search-select {
-    background: var(--content-dim) var(--img-icon-arrow-dn) no-repeat 78px 9px / auto;
-    color: var(--text-dim);
-}
-#myanimelist .forum-search-side .forum-search-select:focus {
-    background-color: var(--border);
-    color: var(--text);
-}
-#myanimelist .forum-search-side .forum-search-input-text {
-    background: var(--content-dim);
-    border-color: var(--text-0);
-    color: var(--text-dim);
-    text-indent: 5px;
-}
-#myanimelist .forum-search-side .forum-search-input-text:focus {
-    color: var(--text);
-}
-#myanimelist .forum-search-side .forum-search-input-submit {
-    background: var(--content-dim);
-    color: var(--text);
-}
-#myanimelist .forum-search-side .forum-search-input-submit:not(.notActive):hover {
-    background: var(--border);
-}
-#myanimelist .forum-search-side .forum-search-input-submit.notActive {
-    color: var(--text-dim);
-}
-/* - - - - - - - - - - - - - - -*\Sidebar Items\*- - - - - - - - - - - - - - - */
-#myanimelist .forum-side-block .forum-side-list .forum-post {
-    border-color: var(--border);
-}
-#myanimelist .forum-side-block .forum-side-list .forum-post .information .comment {
-    color: var(--text-dimmest);
-}
-#myanimelist .forum-side-block .forum-side-list .forum-post .thumbs {
-    background: var(--border);
-}
-/*------------------------------*\FORUM-BASE @Generic\*------------------------------*/
-/* Forum Header / Thread Title */
-#content .fl-l.mt8.cl-l .forum_locheader {
-    color: var(--text-heading);
-}
-#content .fl-l.mt8.cl-l span {
-    color: var(--text);
-}
-/* Buttons */
-#content > div.borderClass .fl-l a, #content > div.mt4.mb4.pl0.pb0.pt4.pb4 > a, #content > div.mt4.mb4.pl0.pb0.pt4.pb4 > span > a, #content > div.mt4.mb4.pl0.pb0.pt4.pb4 [style*="inline-flex"] a, #contentWrapper > div[style="height: 15px; margin: 5px 0px;"] div[style="margin: 3px 0px;"] a {
-	background-color: var(--accent);
-	color: var(--border);
-}
-#content > div.borderClass .fl-l a:hover, #content > div.mt4.mb4.pl0.pb0.pt4.pb4 > a:hover, #content > div.mt4.mb4.pl0.pb0.pt4.pb4 > span > a:hover, #content > div.mt4.mb4.pl0.pb0.pt4.pb4 [style*="inline-flex"] a:hover, #contentWrapper > div[style="height: 15px; margin: 5px 0px;"] div[style="margin: 3px 0px;"] a:hover {
-	background: var(--accent-dim);
-	color: var(--text-lnk-hov) !important;
-}
-#content > div.mt4.mb4.pl0.pb0.pt4.pb4 [style*="inline-flex"] form {
-	background: none;
-}
-/* Page Navigation */ 
-/* Board Top */ #content > div.borderClass .fl-r, /* Board Bottom */ #content > .spaceit:last-child:not(:empty), /* Thread Top */ #content > div.mt4.mb4.pl0.pb0.pt4.pb4 .fl-r:not(:empty), /* Thread Bottom */ #contentWrapper > div[style="height: 15px; margin: 5px 0px;"] [style="float: right;"]:not(:empty), /* Watched Top */ #content > div[style="text-align: center;"] [style="float: right;"]:not(:empty), /* Ignored Top */ #content > div[style="margin: 4px 0; text-align: center;"] [style="float: right;"]:not(:empty) {
-	background: var(--content-dim);
-}
-/* Forum Board Sort */
-.page-common .forum-topic-sort {
-    background: var(--content-dim);
-    color: var(--text);
-}
-.page-common .forum-topic-sort a {
-    color: var(--text-lnk) !important;
-}
-.page-common .forum-topic-sort a:hover {
-    color: var(--text-lnk-hov);
-}
-/* Watched Topics/Ignored Topics Blurb */
-/* - - - - - - - - - - - - - - -*\Forum Board\*- - - - - - - - - - - - - - - */
-#forumTopics {
-    clear: both;
-}
-/* Watched & Ignored Topic Fixes */
-/* - - - - - - - - - - - - - - -*\Forum Search\*- - - - - - - - - - - - - - - */
-#content .content-container .mt4 + form .normal_header {
-    background: none;
-}
-/* FORUM-THREADS */
-/*------------------------------*\FORUM-THREADS @Buttons\*------------------------------*/
-/* Thread Title */
-#content > div:nth-of-type(1) .fl-l.mt8.cl-l {
-    background: var(--content-dim);
-}
-div.forum-topic-message-wrapper > table > tbody > tr > td.forum_boardrow2 > div > div > a:nth-child(2) {
-    filter: invert(100%);
-}
-/* Forum Browse Buttons */
-/* Share Buttons */
-#content > div:nth-of-type(2) {
-    background: var(--content-dim);
-}
-#content .sprite-icon-social-small {
-    background-image: var(--img-socials);
-    background-size: 190px 38px;
-}
-#content .sprite-icon-social-small.icon-facebook-small {
-    background-position: 0 0;
-}
-#content .sprite-icon-social-small.icon-twitter-small {
-    background-position: -19px 0;
-}
-#content .sprite-icon-social-small.icon-google-small {
-    background-position: -38px 0;
-}
-#content .sprite-icon-social-small.icon-reddit-small {
-    background-position: -57px 0;
-}
-#content .sprite-icon-social-small.icon-tumblr-small {
-    background-position: -76px 0;
-}
-/* Thread Poll */
-.page-forum .forum_category + .forum_boardrow1, .page-forum form .forum_boardrow1 {
-	background: var(--content);
-}
-.page-forum .forum_category + .forum_boardrow1 div[style="text-align: right;"] a {
-	background: var(--content-dim);
-	color: var(--text-lnk);
-}
-.page-forum .forum_category + .forum_boardrow1 div[style="text-align: right;"] a:hover {
-	background: var(--accent-dim);
-	color: var(--text-lnk-hov);
-}
-.page-forum .forum_category + .forum_boardrow1 td[width="40"] { width: 50px; }
-.page-forum .vote_container {
-	background: var(--accent);
-}
-/* Thread Locked */
-/* Top Icon */
-/* Bottom Icon */
-/* Notice */
-/*------------------------------*\FORUM-THREADS @Post-Layout\*------------------------------*/
-/* Space between posts */
-.page-forum .forum_boardrowspacer {
-    background: none;
-}
-/* Post Basis */
-/* Header */
-.page-forum #myanimelist .forum_category {
-    /* background: #4f74c8;
+
+
+.header-profile-button:before,
+.header-right #editdiv,
+.mal-navbar,
+.page-common #headerSmall,
+.page-common #topSearchResultList,
+.page-common .h1,
+.page-common .header-list .header-list-dropdown,
+.page-common .header-notification-dropdown .arrow_box,
+.page-common .header-notification-view-all a,
+.page-common .header-profile .header-profile-dropdown,
+.root .modal-content 
+{
+	background-color: var(--bg) !important;
+}
+
+
+#advancedSearchResultList .list.list-bottom.focus a, 
+#topSearchResultList .list.list-bottom.focus a
+{
+	color: var(--bg) !important;
+}
+
+.video-block .video-list.episode a 
+{
+	box-shadow: var( --bg);
+}
+
+
+/* 
+##########################################################################################                         
+
+
+TABLE 1
+
+A dark blackish grey, the brightest of the table colors. 
+
+##########################################################################################     
 */
-    /* background: var(--accent);
-background: linear-gradient(45deg, var(--accent), var(--accent-dim) 85%);
+
+.private-message-content .message.selected > .mym,
+.head-config,
+.profile .boxlist-container .boxlist,
+.membership .about-membership .about-no-ads .image,
+.membership .about-membership .plan-description,
+.membership .about-membership .plan .plan-monthly, 
+.membership .about-membership .plan .plan-annually, 
+.membership .about-membership .plan .plan-gift,
+.membership .about-membership .plan-header,
+.initialize-tutorial,
+#content > div.membership-manager *,
+#myanimelist .inputButton:not(:disabled):hover,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large.btn-anime-watch-status.notinmylist:hover,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large.btn-anime-watch-status:hover, 
+#myanimelist-layout[data-v-2ac6c46e] .form-control,
+#new-style > p,
+#topSearchResultList .list.focus,
+.club-list .table-data:nth-of-type(odd) td,
+.club-search-form-search .select,
+.icon-top-ranking-page .prev:hover, .icon-top-ranking-page .next:hover,
+.mal-alert.info,
+.mym_checkboxes,
+.navi-seasonal,
+.news-list .comment-list .information .tags *, 
+.news-list .news-unit .information .tags *,
+.page-common #header-menu .header-menu-login .btn-mal-service:hover,
+.page-common .bbcode-table th,
+.page-common .bg-color-blue1,
+.page-common .footer-ranking,
+.page-common .inputtext,
+.page-common .normal_header,
+.page-forum .forum-topic-message .message-wrapper .content,
+.page-forum .forum-topic-message .message-wrapper .profile,
+.page-forum .topic-poll .topic-poll-result .topic-poll-option .vote .topic-poll-button,
+.pmessage-checkbox-block .mym-checkbox-pulldown-button.on,
+.pmessage-select > a,
+.private-message-content .message.selected > .mym,
+.private-message-content .message.selected:first-of-type > .mym,
+.quick-search *,
+.ranking-digest .ranking-header,
+.ranking-digest ul,
+.ranking-digest,
+.review-element .thumbbody .body .reaction-box .btn-reaction,
+.sceditor-button:hover, .sceditor-button:active, .sceditor-button.active,
+.sceditor-container,
+.stacks .stacks-detail .any_status .score,
+.stacks .stacks-detail .any_status,
+.stacks .stacks-detail .info-block,
+.stacks .stacks-detail .list-anime-list .seasonal-anime .head .title-text,
+.stacks .stacks-detail .tag,
+.top-ranking-table .title .button-preview:hover,
+.user-profile .user-function .icon-user-function:hover,
+.user-status-block *, 
+.user-status-block .form-user-episode, 
+.user-status-block .form-user-score option,
+.user-status-block .form-user-score,
+.user-status-block .form-user-status option,
+.user-status-block .form-user-status,
+.video-block .video-list.episode a:hover,
+a.left-info-block-broadcast-button:hover,
+body.index .widget-container .widget.friend_list_updates .footer .link-more,
+body.index .widget-container .widget.friend_list_updates .footer,
+body.news .news-container .information,
+body.news .news-container .news-info-block,
+body.news .news-container .tags .tag,
+body.news .news-container .tags,
+h2.title
+{
+	background-color: var(--table1) !important;
+}
+
+
+
+
+
+/* 
+##########################################################################################                         
+
+
+TABLE 2
+
+A dark blackish grey, the second brightest of the table colors. 
+
+##########################################################################################     
 */
-    /* background: transparent linear-gradient(45deg, var(--border), var(--content-dim) 85%, var(--content-dim) 92%, var(--accent) 100%);
+
+#advancedSearchResultList .list-bottom,
+#advancedSearchResultList .list.focus:hover,
+#myanimelist .news-list .comment-list .quotetext,
+#myanimelist .news-list .tags-inner .tag,
+#myanimelist .news-list .tags-inner .tag,
+#myanimelist .quotetext .button.expand_quote,
+#myanimelist .quotetext,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large.completed,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large.dropped,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large.on-hold,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large.plantoread,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large.plantowatch,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large.reading,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large.watching,
+#myanimelist a.button_add:not(.Lightbox_AddEdit),
+#myanimelist a.button_add:not(.Lightbox_AddEdit),
+#myanimelist a.button_edit:not(.Lightbox_AddEdit),
+#myanimelist a.button_edit:not(.Lightbox_AddEdit),
+#myanimelist input,
+#myanimelist textarea,
+#quickadd input,
+#topSearchResultList .list-bottom,
+.anime-manga-search .genre-link .genre-list .genre-name-link:hover,
+.btn-rect-grey1:hover,
+.forum .forum-search-side .forum-search-input-submit.notActive,
+.forum .forum-search-side .forum-search-select,
+.icon-team-title,
+.navi-seasonal .horiznav_nav ul li a,
+.news-list .comment-list:nth-of-type(even),
+.news.featured .featured-search-side .featured-search-input-submit,
+.notification_settings .notification-setting-content .settings-notification *,
+.page-common #advancedSearchResultList,
+.page-common #horiznav_nav ul li a,
+.page-common #horiznav_nav ul li,
+.page-common #searchBar.searchBar #topSearchButon.notActive,
+.page-common #searchBar.searchBar #topSearchButon:not(.notActive),
+.page-common #searchBar.searchBar #topSearchButon:not(.notActive):hover,
+.page-common #searchBar.searchBar #topSearchValue,
+.page-common .bgColor1,
+.page-common .bgColor2,
+.page-common .bgbdrContainer,
+.page-common .goodresult,
+.page-common .header-list .header-list-dropdown ul li a, 
+.page-common .header-profile .header-profile-dropdown ul li a,
+.page-common .header-profile .header-profile-dropdown ul li a,
+.page-common .pagination .link, .page-common .pagination .link+.link:hover,
+.page-common .pagination,
+.page-common .quickadd-content .btn-status-add,
+.page-common .quickadd-content .btn-status-add,
+.page-common .successQuery,
+.page-common .textarea,
+.page-forum .forum-topic-message .message-wrapper .profile,
+.quickadd-content .quickAdd-anime-result-unit:nth-of-type(odd), 
+.quickadd-content .quickAdd-manga-result-unit:nth-of-type(odd),
+.review-element .thumbbody .body .tags .tag,
+.review-element .thumbbody .body .tags .tag.not-recommended,
+.review-element .thumbbody .body .tags .tag.recommended *,
+.review-element .thumbbody .body .tags .tag.recommended, 
+.season .seasonal-sort-order-block,
+.seasonal-anime-list .seasonal-anime .genres .genre,
+.seasonal-anime-list .seasonal-anime .genres,
+.seasonal-anime-list .seasonal-anime .properties .property,
+.stacks .stacks-detail .list-anime-list .seasonal-anime .info,
+.user-profile .user-function .icon-user-function:not(.disabled),
+.user-profile .user-status li.link:hover,
+.user-status-block .btn-user-status-add-list:hover,
+.widget-slide-block .widget-slide .btn-anime .external-link,
+body.news .menu-category .btn-edit-tags,
+body.news .tag-side-block .tag-cloud .tag,
+body.notification .notificaiton-category-nav a.active,
+body.notification .notificaiton-category-nav a:hover,
+ul.ignored-user-list li:nth-child(2n) 
+{
+	background-color: var(--table2) !important;
+}
+
+
+
+/* 
+##########################################################################################                         
+
+
+TABLE 3
+
+A dark blackish grey, the third brightest of the table colors. 
+
+##########################################################################################     
 */
-    background: var(--border);
-    background: transparent linear-gradient(45deg, var(--border) 118px, var(--content-dim) 85%);
+
+#myanimelist .inputButton:disabled,
+#myanimelist .news-list .tags-inner>.tag:hover,
+#myanimelist [class$="-ranking-table"] .ranking-list:nth-of-type(odd) td,
+*::-webkit-scrollbar,
+.forum .forum-board:nth-of-type(even),
+.mal-alert.danger,
+.page-common .btn-form-submit:hover,
+.page-common .header-notification-item.new,
+.page-common .pagination .link:hover,
+.page-common .pagination .link:hover,
+.page-forum .forum-topic-message .message-wrapper .content,
+.page-forum .sig-container .sig,
+.profile .user-comments .comment,
+.review-element .thumbbody .body .reaction-box .btn-reaction:hover,
+.sceditor-container,
+.user-profile .user-button .btn-profile-submit:hover,
+.user-profile .user-function .icon-user-function.icon-comment:hover,
+.user-profile .user-function .icon-user-function.icon-gift:hover,
+.user-profile .user-function .icon-user-function.icon-message:hover, 
+.user-profile .user-function .icon-user-function.icon-remove:hover, 
+.user-profile .user-function .icon-user-function.icon-request:hover, 
+.watch .video-menu-category .btn-category
+{
+	background-color: var(--table3) !important;
 }
-.page-common #myanimelist .forum-topic-message-ignored-user.hide-message .forum_category {
-    opacity: 0.3;
+
+
+body > div,
+body > p {
+	background-color: var(--table3);
 }
-.page-common #myanimelist .forum-topic-message-ignored-user .forum_category:hover {
-    opacity: 0.5;
-}
-.page-common #myanimelist .forum-topic-message-ignored-user.hide-message .forum_category:hover {
-    opacity: 0.7;
-}
-.page-forum .forum_category .date {
-    color: var(--text-dim);
-}
-.page-forum .forum_category .postnum {
-    color: var(--text-dim) !important;
-}
-.page-common .forum-topic-message-ignored-user .forum_category .date:after {
-    content: "IGNORED";
-    color: var(--text);
-}
-/* Containers Etc */
-.page-forum [id^=forumMsg] [class^="forum_boardrow"] {
-    background: none;
-}
-/* Containers Etc - Left Bar */
-[id^=forumMsg] [class^="forum_boardrow"]:nth-child(1) {
-    background: var(--content-dim);
-}
-/* Containers Etc - Right Bar */
-/* Signature */
-/* Quick Reply */
-#quickReply textarea {
-    resize: vertical;
-}
-/* - - - - - - - - - - - - - - -*\Post Actions\*- - - - - - - - - - - - - - - */
-.page-forum .postActions:before {
-    content: "";
-    background: var(--border);
-}
-.page-forum .postActions div {
-    background: var(--content);
-}
-.page-forum .postActions a {
-    background: var(--content-dim);
-    color: var(--text-lnk) !important;
-}
-.page-forum .postActions a:hover {
-    background: var(--border);
-    color: var(--text-lnk-hov);
-}
-/* FORUM-THREADS @SIDEBAR */
-/* Name */
-.page-forum [id^=messageuser] {
-    white-space: nowrap;
-}
-/* Avatar */
-[id^=forumMsg] [class^="forum_boardrow"] .forum-icon {
-    background: var(--border);
-}
-/* Halloween Fixes */
-[id^=forumMsg] [class^="forum_boardrow"] .forum-icon {
-    display: flex !important;
-}
-/* Empty Avatar */
-.forum_border_around:not(.forum-topic-message-ignored-user) .forum_category:before {
-    content: "";
-    background: var(--content-dimmest) var(--img-missing) no-repeat center / cover;
-}
-/* Custom User Titles/Banners */
-.icon-team-title.forum {
-    font-weight: normal;
-}
-.page-forum .custom-forum-title {
-    background: var(--border);
-}
-[id^=forumMsg] [class^="forum_boardrow"]:nth-child(1) span[style*="green"] {
-    color: var(--notif) !important;
-    font-weight: bold;
-}
-[id^=forumMsg] [class^="forum_boardrow"]:nth-child(1) span[style*="green"]:after {
-    content: "";
-    background: var(--notif);
-    animation: online 2.25s ease-in-out infinite 0s;
-}
-/*------------------------------*\FORUM-THREADS @Post-Content\*------------------------------*/
-.forum-topic-message-wrapper > table > tbody > tr > td.forum_boardrow2 > div > a > strong {
-    color: var(--accent) !important;
-    font-weight: bold;
-}
-.page-common table.forum-topics tr td:nth-child(2n+1) {
-    background-color: transparent;
-}
-/* HEADER ROW */
-#content table, #content tbody {
-    table-layout: fixed;
-}
-tr:first-of-type td.borderClass:not(:nth-of-type(1)) > * strong {
-    transform: rotate(90deg) translateY(-100%);
-    transform-origin: left top;
-}
-/* Content */
-tr:not(:first-of-type) > td:nth-child(2), tr:not(:first-of-type) > td:nth-child(3) {
-    background: #666a !important;
-}
-tr:not(:first-of-type) > td:nth-child(2)[style*="f6"], tr:not(:first-of-type) > td:nth-child(3)[style*="f6"] {
-    background: #000a !important;
-}
-#content tr:not(:first-of-type) > td:nth-child(2) span, #content tr:not(:first-of-type) > td:nth-child(3) span {
-    color: var(--text-0) !important;
-}
-/* OWNLIST-STYLE */
-/* HEADING */
-.page-common h2 {
-    background: var(--border);
-    color: var(--text-heading);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-/* Classic | Modern Toggle */
-#myanimelist .style-setting .setting-switch input[type=radio] + label {
-    background: var(--content-dim);
-    color: var(--text-heading);
-}
-#myanimelist .style-setting .setting-switch input[type=radio] + label:hover {
-    background: var(--accent-dim);
-}
-#myanimelist .style-setting .setting-switch input[type=radio]:checked + label {
-    background: var(--accent);
-    color: var(--text-heading);
-}
-/* Information Bar */
-.ownlist_style #new-style .info {
-    background: var(--content-dim);
-    border-color: var(--border);
-    color: var(--text);
-}
-/*------------------------------*\OWNLIST-STYLE @Modern-Theme-Selector\*------------------------------*/
-.ownlist_style .new-theme-list .new-theme-unit {
-    background: var(--content-dim);
-    border-color: var(--border);
-}
-.ownlist_style .new-theme-list .new-theme-unit.selected {
-    background: var(--content-dim);
-    border-color: var(--accent);
-}
-/* Title */
-.ownlist_style .new-theme-list .new-theme-unit .title {
-    color: var(--text-lnk) !important;
-}
-/* Image */
-/* .ownlist_style .new-theme-list .new-theme-unit .theme-link .thumb {
-object-fit: cover;
-}
+
+
+/* 
+##########################################################################################                         
+
+
+TABLE 4
+
+A dark blackish grey, the fourth brightest of the table colors.
+
+##########################################################################################     
 */
-/* Radio Boxes */
-/* .ownlist_style .new-theme-list .new-theme-unit div label input[checked="checked"] {
-background: var(--accent);
+
+.forum_boardrow2, 
+.message.read > .mym,
+.page-common #contentWrapper,
+.page-common #topSearchResultList,
+.page-common .normal_header,
+.page-common table.forum-topics tr td:nth-child(2n+1),
+.page-forum .forum_boardrow2, 
+.profile .user-comments .comment:nth-of-type(odd),
+.review-element,
+.setting-row.show-hidden,
+.top-ranking-table tr.ranking-list td
+{
+	background-color: var(--table4) !important;
 }
+
+
+
+/* 
+##########################################################################################                         
+
+
+TABLE 5
+
+A dark blackish grey, the darkest of the table colors and nearly black.
+
+##########################################################################################     
 */
-/* Save Button */
-.ownlist_style .style-setting .style-setting-form-button {
-    border-color: var(--border);
+
+a.mal-btn:hover, 
+#myanimelist .spoiler .button,
+.anime-manga-search .normal_header .floatRightHeader:hover,
+.anime-manga-search .normal_header .floatRightHeader:hover,
+.forum .forum-header a:hover,
+.forum .forum-header a:hover,
+.forum .forum-side-block .header a:hover,
+.forum .forum-side-block .header a:hover,
+.page-common .header-notification-item:hover,
+.page-common .icon-about-recommendations:after,
+.page-common .normal_header .floatRightHeader a:hover,
+.page-common .normal_header .floatRightHeader a:hover,
+.page-common .user-profile h4 a:hover ,
+.page-common .user-profile h4 a:hover,
+.profile .content-container .container-right h2.mb12 .floatRightHeader:hover,
+.profile .content-container .container-right h2.mb12 .floatRightHeader:hover,
+.profile .content-container .user-comments h2 .floatRightHeader a:hover,
+.profile .content-container .user-comments h2 .floatRightHeader a:hover,
+.ranking-digest .ranking-header .btn-view_more:hover,
+.ranking-digest .ranking-header .btn-view_more:hover,
+.review-element:hover,
+.setting-row.locate-right,
+blockquote,
+button.mal-btn.small:hover,
+code 
+{
+	background-color: var(--table5) !important;
 }
-/*------------------------------*\OWNLIST-STYLE @Editor\*------------------------------*/
-.ownlist_style_theme .customize-content-left {
-    background: var(--content);
-    color: var(--text);
+
+.page-common a.button_add.button_add, 
+.page-common a.button_add.button_edit, 
+.page-common a.button_edit.button_add, 
+.page-common a.button_edit.button_edit{
+	background-color: var(--table);
 }
-.ownlist_style_theme #preview-container {
-    background: #fff;
+
+.page-common a.button_add.button_add.plantoread, 
+.page-common a.button_add.button_add.plantowatch, 
+.page-common a.button_add.button_edit.plantoread, 
+.page-common a.button_add.button_edit.plantowatch, 
+.page-common a.button_edit.button_add.plantoread, 
+.page-common a.button_edit.button_add.plantowatch, 
+.page-common a.button_edit.button_edit.plantoread, 
+.page-common a.button_edit.button_edit.plantowatch,
+.page-common a.button_add.button_add.reading, 
+.page-common a.button_add.button_add.watching,
+.page-common a.button_add.button_edit.reading, 
+.page-common a.button_add.button_edit.watching, 
+.page-common a.button_edit.button_add.reading, 
+.page-common a.button_edit.button_add.watching,
+.page-common a.button_edit.button_edit.reading, 
+.page-common a.button_edit.button_edit.watching,
+.page-common a.button_add.button_add.on-hold, 
+.page-common a.button_add.button_edit.on-hold, 
+.page-common a.button_edit.button_add.on-hold, 
+.page-common a.button_edit.button_edit.on-hold{
+     color:var(--table5) !important;
 }
-/* Content */
-/* Custom CSS */
-#add_custom_css [style*="#a94442"] {
-    color: var(--return-bad) !important;
-}
-.ace-ambiance .ace_gutter {
-    background: var(--border);
-}
-.ace-ambiance .ace_gutter-layer, .ace-ambiance .ace_text-layer {
-    background: none;
-}
-.ace-ambiance .ace_gutter-active-line {
-    background: linear-gradient(to right, transparent, var(--accent-dimmest));
-}
-.ace_gutter-cell {
-    color: var(--text-heading);
-}
-/* REVIEWS */
-/*------------------------------*\REVIEWS @Other\*------------------------------*/
-#myanimelist .reviews-horiznav-nav-sort-block {
-    float: left;
-}
-.reviews-horiznav-nav-sort-block .btn-show-sort {
-    color: var(--text);
-}
-.reviews-horiznav-nav-sort-block .review-sort-order-block {
-    background: var(--content-dim);
-    border-color: var(--border);
-}
-.reviews-horiznav-nav-sort-block .review-sort-order-block .btn-close {
-    background: var(--border) var(--img-icon-close) no-repeat center / 8px 8px;
-}
-.reviews-horiznav-nav-sort-block .review-sort-order-block .btn-close:hover {
-    background: var(--accent);
-}
-.borderDark ~ div.mt4 {
-    clear: both;
-}
-.reviews-horiznav-nav-sort-block + div.ml4 a, .borderDark ~ div.mt4 .ml4 a {
-    background: var(--content-dim);
-}
-.reviews-horiznav-nav-sort-block + div.ml4 a:hover, .borderDark ~ div.mt4 .ml4 a:hover {
-    background: var(--border);
-}
-/*------------------------------*\REVIEWS @Content-Base\*------------------------------*/
-.page-common .borderDark {
-    clear: both;
-}
-/*------------------------------*\REVIEWS @Content-Header\*------------------------------*/
-.borderDark > .spaceit:nth-child(1) {
-    background: var(--content-dim);
-}
-/* Fix for anime pages */
-.breadcrumb ~ .borderDark > .spaceit:first-child  div[style="float: left;"] td:last-child { padding-left: 7px; }
-/* - - - - - - - - - - - - - - -*\Post Time, Episodes Seen, Overall Rating\*- - - - - - - - - - - - - - - */
-/* Post Time */
-/* Episodes Seen */
-/* Overall Rating */
-/* - - - - - - - - - - - - - - -*\Anime Title\*- - - - - - - - - - - - - - - */
-/* - - - - - - - - - - - - - - -*\User Name, User Avatar, and Helpful Count\*- - - - - - - - - - - - - - - */
-/* Helpful Count */
-/* Preliminary Review */
-.js-reviews-chk-preliminary .fa-tag, .borderDark > .spaceit:first-child > div[style*="left"] .spaceit + div .fa-tag {
-    color: var(--accent) !important;
-}
-/* User Avatar */
-/*------------------------------*\REVIEWS @Text\*------------------------------*/
-/* - - - - - - - - - - - - - - -*\Score\*- - - - - - - - - - - - - - - */
-.borderDark:before {
-    content: "";
-    background: var(--content-dim);
-    border-right: 2px solid var(--border);
-    float: left;
-}
-/* - - - - - - - - - - - - - - -*\Anime Image\*- - - - - - - - - - - - - - - */
-/* More Pics Button */
-/*------------------------------*\REVIEWS @Bottom-Buttons\*------------------------------*/
-/* Report, Edit, Etc */
-.borderDark > div:last-child a:nth-child(2) {
-    background: var(--content-dim);
-    color: var(--text-lnk) !important;
-    text-transform: capitalize;
-}
-.borderDark > div:last-child a:nth-child(2):hover {
-    background: var(--border);
-    color: var(--text-lnk-hov);
-}
-/* Permalink */
-.borderDark > div:last-child a:first-child {
-    background: var(--border);
-    color: var(--icon);
-}
-.borderDark > div:last-child a:first-child:hover {
-    background: var(--accent-dimmest);
-}
-/* - - - - - - - - - - - - - - -*\Helpful Review\*- - - - - - - - - - - - - - - */
-.page-common .js-review-btn-helpful .js-vote-review-button {
-    background: var(--content-dim);
-    color: var(--text-lnk) !important;
-}
-.page-common .js-review-btn-helpful .js-vote-review-button:hover {
-    background: var(--border);
-    color: var(--text-lnk-hov);
-}
-/*------------------------------*\REVIEWS @Page-Nav\*------------------------------*/
-.borderDark ~ div[style="float:right;"], #horiznav_nav div[style="float:right;"] {
-	background: var(--content-dim);
-}
-/*------------------------------*\REVIEWS @Most-Helpful\*------------------------------*/
-/*------------------------------*\REVIEWS @Write\*------------------------------*/
-/* Headers */
-/* Seen Episodes */
-.page-review #seeneps {
-    background: var(--content-dim) !important;
-}
-/* Rate */
-.page-review .score_top {
-    font-weight: normal;
-}
-.page-review .review_score_over {
-    color: var(--accent);
-}
-.page-review .review_scoreoff {
-    background: var(--content-dim);
-    color: var(--text);
-}
-.page-review .review_scoreon {
-    background: var(--border);
-    color: var(--text-lnk-hov);
-}
-/* Writing */
-.page-review .textarea {
-    resize: vertical;
-}
-/* RECOMMENDATIONS */
-#myanimelist h2 {
-    background: var(--border);
-    color: var(--text-heading);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-/* Recommendations */
-.spaceit.borderClass table {
-    background: var(--content-dim);
-}
-.spaceit.borderClass > .lightLink .lightLink {
-    background: var(--content-dim);
-    color: var(--text-lnk) !important;
-    text-transform: capitalize;
-}
-.spaceit.borderClass > .lightLink .lightLink:hover {
-    background: var(--border);
-    color: var(--text-lnk-hov);
-}
-/* Page Navigation */
-#horiznav_nav div[style="float: right;"] .bgColor1, div[style="padding: 0 20px;"] > .spaceit:last-child .bgColor1 {
-	background: var(--content-dim);
-}
-/*------------------------------*\RECOMMENDATIONS @Top-Users\*------------------------------*/
-/* Left Section */
-/* Right Section */
-/* CLUBS */
-/* Unsorted */
-.club-list .table-data td .new {
-    background: var(--notif);
-}
-.club-list .table-data:nth-of-type(odd) td {
-    background: none;
-}
-.club-list .table-data:nth-of-type(odd) {
-    background: var(--content-dim);
-}
-.club-list .table-data *:not(a) {
-    color: var(--text-dim) !important;
-}
-/*------------------------------*\CLUBS @SPLIT-LEFT\*------------------------------*/
-/* Club Blurb */
-/* Club Forum */
-/* Club Member Box/Club Picture Box */
-.club-information-header ~ table:not(#forumTopics) tbody tr td {
-    opacity: 1;
-}
-.club-information-header ~ table:not(#forumTopics) tbody tr td:hover {
-    opacity: 0.7;
-}
-/* Club Member Box */
-/* Club Picture Box */
-/* Add Comment Box */
-/* */
-/*------------------------------*\CLUBS @SPLIT-RIGHT\*------------------------------*/
-/* Club Links */
-.page-common #profileRows:before {
-    content: "";
-    background: var(--border);
-    color: var(--text);
-    letter-spacing: 0.05em;
-}
-#myanimelist #profileRows a, td:nth-child(2) .normal_header + a[href="#"] {
-    background: var(--content-dim);
-    color: var(--text-lnk) !important;
-}
-#myanimelist #profileRows a:hover, td:nth-child(2) .normal_header + a[href="#"]:hover {
-    background: var(--accent-dim);
-    color: var(--text-heading);
-}
-/* Club Messages */
-/* Join Club */
-/* VERSION ONE.page-common #profileRows a, .page-common .profileRows a {
-border-color: var(--border) !important;
-color: var(--text-lnk) !important;
-}
-.page-common #profileRows a:hover, .page-common .profileRows a:hover {
-background: var(--accent-dim);
-color: var(--text-heading);
-}
+
+
+
+
+
+
+/* 
+##########################################################################################                         
+
+
+HEADER LIGHT GREY       
+
+
+##########################################################################################     
 */
-/* Club Admins & Officers */
-/* Anime Relations */
-#profileRows ~ .borderClass:nth-of-type(odd) {
-    background: var(--content-dim);
+
+
+.page-common #nav>li>ul>li>a:hover 
+{
+	background: var(--header-light-grey) !important;
 }
-/*------------------------------*\CLUBS @Split-Comments\*------------------------------*/
-/* Submit Form */
-td.borderClass > div > div[style="margin: 10px 0px;"] textarea {
-	background: var(--content-dim);
-	border-color: var(--border);
+
+body.index .widget-container .widget.my_statistics table td:nth-child(1){
+	color: var(--header-light-grey) !important;
 }
-td.borderClass > div > div[style="margin: 10px 0px;"] div[style="margin-top: 3px;"] input {
-	background: var(--accent);
-}
-div[id^="comment"] {
-    background: none !important;
-    word-break: break-word;
-}
-div[id^="comment"] tr {
-    background: none !important;
-}
-div[id^="comment"] td:nth-child(1) img {
-    border-color: var(--border);
-}
-/* Comment Headers */
-div[id^="comment"] td:nth-child(2) > div:first-child {
-    background: linear-gradient(to right, var(--border) 0, var(--content-dim) 150px);
-}
-div[id^="comment"] td:nth-child(2) > div:first-child a {
-    font-weight: bold;
-}
-div[id^="comment"] td:nth-child(2) > div:first-child small span {
-    color: var(--text-dimmer);
-}
-/* Delete Button */
-div[id^="comment"] td:nth-child(2) > div ~ div[style="margin-top: 10px;"]:last-of-type a {
-	color: var(--text-dim);
-}
-div[id^="comment"] td:nth-child(2) > div ~ div[style="margin-top: 10px;"]:last-of-type a:hover { background: var(--border); }
-/*------------------------------*\CLUBS @REPORT-BUTTON\*------------------------------*/
-#content > div.spaceit {
-    right: 0;
-}
-#content > div.spaceit a {
-    font-weight: bold;
-}
-#content > div.spaceit a:hover {
-    background: var(--accent-dimmest);
-}
-/* !CLUB-PICTURES */
-#content > .borderClass {
-    background: var(--border);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-#content > .borderClass span a {
-    letter-spacing: 0;
-}
-/* PRIVATE MESSAGES */
-/* INBOX */
-/* Row */
-.message.unread {
-    background: var(--content-dim);
-}
-.message.read * {
-    opacity: 0.8
-}
-.message > .mym {
-    background: none !important;
-    border-color: var(--border);
-}
-.message .mym_subject > a.subject-link .text, .message.read .mym_subject > a.subject-link .text, .message.read .mym_date, .message .mym_date {
-    color: var(--text-dim) !important;
-}
-.message.read a {
-    color: var(--text-lnk) !important;
-}
-.message.read a:hover {
-    color: var(--text-lnk-hov) !important;
-}
-.pmessage-message-history .date, .pmessage-message-history .name, .pmessage-message-history .subject {
-    color: var(--text-dim);
-}
-/* MESSAGE */
-.pmessage-message-history .date {
-    background: var(--content-dim);
-}
-.pmessage-message-history .name {
-    /* background: linear-gradient(to right, var(--accent), var(--accent-dimmest));
+
+/* 
+##########################################################################################                         
+
+
+HEADER MID GREY       
+
+Used for header dropdown menus.
+
+##########################################################################################     
 */
-    background: linear-gradient(to right, var(--border) 0, var(--content-dim) 150px);
+
+
+.page-common #header-menu .header-menu-login .btn-login:hover,
+.page-common #header-menu .header-profile .header-profile-link:hover,
+.page-common #nav li a:hover,
+.page-common #nav li.hover a.non-link,
+.page-common #nav li:hover,
+.page-common #nav>li>ul>li>a,
+.page-common #nav>li>ul>li>a,
+.page-common #searchBar.searchBar #topSearchButon:not(.notActive):hover,
+.page-common #searchBar.searchBar #topSearchValue:focus ,
+.page-common .header-list .header-list-dropdown ul li a:hover,
+.page-common .header-list .header-list-dropdown ul li a:hover,
+.page-common .header-list .header-list-dropdown ul li a:hover, 
+.page-common .header-notification-view-all a:hover,
+.page-common .header-profile .header-profile-dropdown ul li a:hover,
+.user-profile .user-function .icon-user-function.icon-comment.disabled, 
+.user-profile .user-function .icon-user-function.icon-message.disabled, 
+.user-profile .user-function .icon-user-function.icon-request.disabled, 
+.user-profile .user-function .icon-user-function.icon-remove.disabled, 
+.user-profile .user-function .icon-user-function.icon-gift.disabled 
+{
+	background-color: var(--header-mid-grey) !important;
 }
-/* !NEWS */
-.news-list .comment-list .text, .news-list .news-unit .text, body.news .news-container .content {
-    color: var(--text);
-    font-family: var(--fontset-basic);
+
+
+/* 
+##########################################################################################                         
+
+
+MAL DEFAULT BLUE    
+
+Used for many buttons and headers.
+
+##########################################################################################     
+*/
+
+.membership .about-membership .plan .plan-monthly .button, 
+.membership .about-membership .plan .plan-annually .button, 
+.membership .about-membership .plan .plan-gift .button,
+#myanimelist .inputButton:not(:disabled),
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large.btn-anime-watch-status.notinmylist,
+.btn-rect-grey1,
+.forum .forum-header,
+.icon-about-recommendations,
+.membership .membership-payment .text-payment-policy::-webkit-scrollbar-thumb,
+.page-common #menu,
+.page-common .btn-form-submit,
+.page-common .forum-topic-sort,
+.page-common .pagination .link+.link,
+.page-common .pagination .link,
+.page-common .topic-edit-outer .topic-edit-bottom button.mal-btn.secondary,
+.page-forum .forum-topic-message .message-header,
+.top-ranking-table .title .button-preview,
+.user-profile .user-button .btn-profile-submit,
+.user-profile .user-function .icon-user-function.icon-comment, 
+.user-profile .user-function .icon-user-function.icon-gift,
+.user-profile .user-function .icon-user-function.icon-message, 
+.user-profile .user-function .icon-user-function.icon-remove, 
+.user-profile .user-function .icon-user-function.icon-request, 
+.user-status-block .btn-user-status-add-list,
+.watch .video-menu-category .btn-category.on, 
+a.left-info-block-broadcast-button,
+a.mal-btn.pressed, 
+a.mal-btn:active,
+body::-webkit-scrollbar-thumb:hover,
+button.mal-btn.pressed,
+div.topic-reply-box div.mal-btn-toolbar button.mal-btn.secondary.outline.js-topic-reply-cancel,
+div.topic-reply-box div.mal-btn-toolbar button.mal-btn.primary.outline.js-topic-reply-preview,
+button.mal-btn.primary.js-topic-reply,
+button.mal-btn.primary.js-topic-reply-start,
+button.mal-btn.primary.outline.js-topic-reply-preview,
+button.mal-btn.primary.outline.js-topic-reply-preview,
+button.mal-btn.secondary.outline.btn-recaptcha-submit,
+button.mal-btn.secondary.outline.js-topic-reply-cancel,
+button.mal-btn.secondary.outline.js-topic-reply-cancel,
+button.mal-btn.secondary.outline.noborder.js-topic-bbcode,
+button.mal-btn.secondary.outline.noborder.js-topic-top,
+button.mal-btn:active, 
+button.mal-btn:hover, 
+html::-webkit-scrollbar-thumb:hover 
+{
+	background: var(--default-blue) !important;
 }
-body.news .content-left {
-    border-right: 3px solid var(--border);
+
+.page-common #topSearchResultList 
+{
+	border-color: var(--default-blue) !important;
 }
-body.news h2 {
-    color: var(--text-heading);
+
+
+
+
+
+
+
+/* 
+##########################################################################################                         
+
+
+DARK BLUE      
+
+
+##########################################################################################     
+*/
+
+
+.page-common .topic-edit-outer .topic-edit-bottom button.mal-btn.secondary.pressed,
+.page-common .topic-edit-outer .topic-edit-bottom button.mal-btn.secondary:active,
+.page-common .topic-edit-outer .topic-edit-bottom button.mal-btn.secondary:hover,
+button.mal-btn.primary.js-topic-reply-start.pressed,
+button.mal-btn.primary.js-topic-reply-start.pressed:active,
+button.mal-btn.primary.js-topic-reply-start.pressed:hover,
+button.mal-btn.primary.js-topic-reply.pressed,
+button.mal-btn.primary.js-topic-reply:active,
+button.mal-btn.primary.js-topic-reply:hover,
+button.mal-btn.primary.outline.js-topic-reply-preview.pressed,
+button.mal-btn.primary.outline.js-topic-reply-preview:active,
+button.mal-btn.primary.outline.js-topic-reply-preview:hover,
+button.mal-btn.secondary.outline.btn-recaptcha-submit.pressed,
+button.mal-btn.secondary.outline.btn-recaptcha-submit:active,
+button.mal-btn.secondary.outline.btn-recaptcha-submit:hover,
+button.mal-btn.secondary.outline.js-topic-reply-cancel.pressed,
+button.mal-btn.secondary.outline.js-topic-reply-cancel:active,
+button.mal-btn.secondary.outline.js-topic-reply-cancel:hover,
+button.mal-btn.secondary.outline.noborder.js-topic-bbcode.pressed,
+button.mal-btn.secondary.outline.noborder.js-topic-bbcode:active,
+button.mal-btn.secondary.outline.noborder.js-topic-bbcode:hover,
+button.mal-btn.secondary.outline.noborder.js-topic-top.pressed,
+button.mal-btn.secondary.outline.noborder.js-topic-top:active,
+button.mal-btn.secondary.outline.noborder.js-topic-top:hover 
+{
+	background: var(--dark-blue) !important;
 }
-/* NEWS LIST */
-.news-list .comment-list .title, .news-list .news-unit .title {
-    background: var(--content-dim);
+
+
+
+
+
+/* 
+##########################################################################################                         
+
+
+GREY BLUE
+
+
+##########################################################################################     
+*/
+
+
+
+body::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb 
+{
+	background: var(--grey-blue) !important;
 }
-/* ARTICLE - HEADER BAR & TITLE */
-body.news .news-container .title {
-    background: var(--content-dim);
+
+.navi-seasonal .horiznav-nav-seasonal .btn-seasonal .btn-type:hover, 
+.navi-seasonal .horiznav-nav-seasonal .btn-seasonal .btn-type.on,
+.page-common #horiznav_nav ul li .horiznav_active 
+{
+	background-color: var(--grey-blue) !important;
 }
-body.news .news-container .title a {
-    color: var(--text-heading);
+
+
+
+/* 
+##########################################################################################                         
+
+
+IMPORTANT COLOR
+
+A red used for some important sections.
+
+##########################################################################################     
+*/
+
+.icon-team-title.community_moderator,
+.icon-team-title.administrator, 
+.icon-team-title.lead_administrator, 
+.icon-team-title.anime_db_administrator, 
+.icon-team-title.manga_db_administrator, 
+.icon-team-title.community_administrator, 
+.icon-team-title.database_administrator, 
+.icon-team-title.content_administrator,
+.icon-team-title.forum_moderator,
+.icon-team-title.site_administrator, 
+.page-forum .forum-topic-message .message-wrapper .icon-team-title,
+.review-element .thumbbody .body .bottom-navi .menu .menu-block 
+{
+	background-color: var(--important-red) !important;
 }
-body.news .news-container .news-info-block {
-    background: var(--content-dim);
+
+
+
+.mal-alert.danger {
+	color: var(--important-red) !important;
 }
-/* ARTICLE - Social */
-body.news .news-container .news-info-block .sns-unit .icon-social {
-    background-image: var(--img-socials);
-    /* /img/sp/common/sprite_icon_social2.png */
-    background-size: 300px 60px;
+
+
+
+
+
+
+/* 
+##########################################################################################                         
+
+
+BORDER  
+
+A dark grey outlining many parts of the site.
+
+##########################################################################################     
+*/
+
+#advancedSearchResultList .list .image,
+#dialog,
+#myanimelist .codetext,
+#myanimelist .news-list .comment-list .quotetext,
+#myanimelist .news-list .tags .tags-inner-attributes,
+#myanimelist .news-list .tags-inner .tag,
+#myanimelist .quotetext .button.expand_quote,
+#myanimelist .quotetext,
+#myanimelist .spoiler .button,
+#myanimelist [class$="-ranking-table"] td,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large:hover,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large:hover,
+#myanimelist a.button_add:not(.Lightbox_AddEdit):hover,
+#myanimelist a.button_edit:not(.Lightbox_AddEdit):hover,
+#myanimelist input,
+#myanimelist textarea,
+#quickadd input,
+.anime-manga-search .genre-link .genre-list .genre-name-link,
+.anime-manga-search .genre-link .genre-list .genre-name-link,
+.anime-manga-search .normal_header,
+.forum .forum-board,
+.forum .forum-header,
+.forum .forum-side-block .forum-side-list .forum-post,
+.forum .forum-side-block .header,
+.navi-seasonal .horiznav-nav-seasonal .btn-seasonal .btn-type,
+.navi-seasonal .horiznav-nav-seasonal,
+.navi-seasonal .horiznav_nav ul li a,
+.navi-seasonal .horiznav_nav ul li a.navtab,
+.ownlist_style_theme .customize-content-left .header,
+.ownlist_style_theme .customize-content-left h2.theme-custom-header,
+.ownlist_style_theme .customize-content-left h3.theme-custom-header,
+.ownlist_style_theme .customize-content-left h3.theme-custom-header,
+.page-common #advancedSearchResultList,
+.page-common #content,
+.page-common #header-menu>.border:before,
+.page-common #horiznav_nav,
+.page-common .badresult,
+.page-common .bgbdrContainer,
+.page-common .borderClass,
+.page-common .border_solid,
+.page-common .border_top,
+.page-common .content-container .container-left,
+.page-common .goodresult,
+.page-common .h1,
+.page-common .header-list .header-list-dropdown ul li a,
+.page-common .header-profile .header-profile-dropdown ul li a,
+.page-common .normal_header,
+.page-common .normal_header,
+.page-common .pagination .link+.link,
+.page-common .quickadd-content .btn-status-add:hover,
+.page-common .successQuery,
+.page-common .textarea,
+.page-common table.forum-topics tr td,
+.page-forum .forum-topic-message .message-wrapper .content,
+.page-forum .forum-topic-message .message-wrapper .profile,
+.page-forum .sig,
+.page-forum .sig-container,
+.page-forum [class^="forum_boardrow"],
+.profile .content-container .container-right h2,
+.profile .content-container .container-right h5,
+.profile .content-container .container-right h5,
+.root *  ,
+.root .modal-content,
+.season .seasonal-sort-order-block,
+.seasonal-anime-list .seasonal-anime .genres .genre,
+.seasonal-anime-list .seasonal-anime .genres,
+.seasonal-anime-list .seasonal-anime .information,
+.seasonal-anime-list .seasonal-anime .properties .property,
+.seasonal-anime-list .seasonal-anime,
+.user-profile .user-function .icon-user-function.disabled,
+.user-profile .user-function .icon-user-function:not(.disabled),
+.user-profile .user-status.border-top,
+.wrapper>div>div *:not(img),
+a.mal-btn.small:hover,
+blockquote,
+body.index .ranking-digest .ranking-header,
+body.index .widget .widget-header,
+body.notification #myanimelist #content .left-column,
+body.notification .notification-header,
+body.notification .notification-item,
+code, 
+h1.term-header1
+{
+	border-color: var(--border) !important;
 }
-body.news .news-container .news-info-block .sns-unit .icon-social.icon-facebook {
-    background-position: 0 0;
+
+.club-list .table-data td 
+{
+	border: var(--border) !important;
 }
-body.news .news-container .news-info-block .sns-unit .icon-social.icon-twitter {
-    background-position: -30px 0;
+
+
+#advancedSearchResultList .list.focus,
+#advancedSearchResultList .list.separator,
+#fancybox-outer,
+#myanimelist .club-list .btn-club-join,
+#myanimelist .spoiler>.spoiler_content[style*="ck"]>.button,
+#myanimelist [class$="-ranking-table"] .table-header td,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large:hover,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large:hover,
+#myanimelist a.button_add:not(.Lightbox_AddEdit):hover,
+#myanimelist a.button_edit:not(.Lightbox_AddEdit):hover,
+.anime-detail-header-stats .stats-block .score:before,
+.js-ignore-topic-button,
+.navi-seasonal.fixed,
+.page-common #horiznav_nav ul li a:hover,
+.page-common .breadcrumb div a,
+.page-common .quickadd-content .btn-status-add:hover,
+.seasonal-anime-list .seasonal-anime .information,
+.seasonal-anime-list .seasonal-anime .prodsrc,
+body.notification .notificaiton-category-nav a .counter.zero,
+body.notification .notification-item-layout .fa-check:hover,
+body::-webkit-scrollbar-thumb
+{
+	background-color: var(--border) !important;
 }
-body.news .news-container .news-info-block .sns-unit .icon-social.icon-google {
-    background-position: -60px 0;
+
+#myanimelist .inputButton,
+#quickadd .inputButton,
+.page-common .inputButton.btn-middle:active,
+.page-common.ownlist_style_theme .inputButton
+{
+	color: var(--border) !important;
 }
-body.news .news-container .news-info-block .sns-unit .icon-social.icon-reddit {
-    background-position: -90px 0;
+
+
+/* 
+##########################################################################################                         
+
+
+TEXT WHITE 
+
+The default white for a lot of the text on the site.
+
+##########################################################################################     
+*/
+
+.page-common .fn-grey5,
+.initialize-tutorial,
+.membership .about-membership .plan .plan-monthly .plan-name, 
+.membership .about-membership .plan .plan-annually .plan-name, 
+.membership .about-membership .plan .plan-gift .plan-name,
+.membership .about-membership .about-extras .about-extras-content .text,
+.membership .about-membership .about-extras .about-extras-content .header,
+.membership .about-membership .btn-subscription,
+.membership .about-membership .plan .plan-monthly .button, 
+.membership .about-membership .plan .plan-annually .button, 
+.membership .about-membership .plan .plan-gift .button,
+#advancedSearch .fw-b.mt24,
+#advancedSearchResultList .list .name,
+#advancedSearchResultList .list.list-bottom a,
+#advancedSearchResultList .list.separator span,
+#broadcast-block > a,
+#content > div.membership-manager *,
+#fancybox-inner,
+#myanimelist .actions .action-button,
+#myanimelist .actions .result,
+#myanimelist .inputButton,
+#myanimelist .inputButton:not(:disabled),
+#myanimelist .inputButton:not(:disabled),
+#myanimelist .news-list .comment-list .quotetext,
+#myanimelist .news-list .tags-inner .tag,
+#myanimelist [class$="-ranking-table"] .text,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large,
+#myanimelist input,
+#myanimelist textarea,
+#myanimelist-layout[data-v-2ac6c46e] .form-control ,
+#myinfo_score,
+#myinfo_status,
+#quickadd input,
+#topSearchResultList .list.list-bottom a,
+#topSearchResultList .list.separator span,
+#widget-episode-video .widget-slide .btn-anime.episode .link a,
+#widget-promotional-video .widget-slide .btn-anime.episode .link a, 
+.anime-character .anime-character-sort-order-block.language *, 
+.anime-character .anime-character-sort-order-block.sort *, 
+.anime-character .btn-show-sort, .manga-character .btn-show-sort,
+.anime-character .manga-character-sort-order-block.language *, 
+.anime-character .manga-character-sort-order-block.sort *, 
+.anime-detail-header-stats .stats-block *,
+.anime-detail-header-stats .stats-block .score:before,
+.anime-manga-search .normal_header,
+.any_status strong,
+.btn-rect-grey1,
+.c-tabCard__heading,
+.characters-favorites-ranking-table tr.ranking-list .favorites,
+.club-list .table-data td .informantion,
+.club-search-form-search .select option,
+.club-search-form-search .select,
+.detail-page-featured-article .news-list .news-unit .news-unit-right .text,
+.fab, .fa-brands,
+.footer-container[data-v-29d78cd1] a,
+.forum .forum-header,
+.forum .forum-search-side .forum-search-select,
+.forum .forum-side-block .header,
+.forum-table-header .normal_header>a,
+.forum-table-header .normal_header>a,
+.icon-team-title.review_recommendation_moderator,
+.icon-top-ranking-page .prev, .icon-top-ranking-page .next,
+.icon-top-ranking-page .prev:visited, .icon-top-ranking-page .next:visited,
+.intro ,
+.introduction,
+.l-header-login .is-user[data-v-6b23fb0a] a,
+.manga-character .anime-character-sort-order-block.language *, 
+.manga-character .anime-character-sort-order-block.sort *, 
+.manga-character .manga-character-sort-order-block.language *,
+.manga-character .manga-character-sort-order-block.sort *,
+.membership .membership-payment .btn-supporter-policy,
+.membership .membership-payment .payment-subscribe-form .form-table .title.alignLeft,
+.membership .membership-payment:not(.modal-payment-method)>section>.form-table .title.alignLeft, 
+.message.read .mym_subject > a.subject-link .text,
+.mym_subject > a.subject-link *,
+.mym_subject > a.subject-link .text *,
+.mym_subject > a.subject-link .text,
+.news-list .comment-list .text,
+.news.featured .featured-search-side .featured-search-input-submit,
+.notification_settings .notification-setting-content .settings-notification *,
+.ownlist_style #new-style .info,
+.ownlist_style_theme .customize-content-left .header,
+.ownlist_style_theme .customize-content-left h2.theme-custom-header,
+.ownlist_style_theme .customize-content-left h3.theme-custom-header,
+.p-product[data-v-63792898],
+.page-advertising .ad-contents .ad-text-head3,
+.page-advertising .ad-contents .ad-text-head3,
+.page-common #footer-block .footer-link a,
+.page-common #footer-block .footer-recommended .icon-recommended,
+.page-common #header-menu .header-menu-login .btn-login,
+.page-common #header-menu .header-menu-login .btn-mal-service,
+.page-common #header-menu .header-menu-login .btn-mal-service:hover,
+.page-common #header-menu .header-menu-login .btn-signup,
+.page-common #header-menu .header-message-button.has-unread:after,
+.page-common #header-menu .header-notification-button.has-unread:after,
+.page-common #header-menu .header-profile .header-profile-link,
+.page-common #horiznav_nav ul li .horiznav_active,
+.page-common #horiznav_nav ul li .horiznav_active:hover,
+.page-common #searchBar.searchBar #topSearchButon,
+.page-common .badresult,
+.page-common .btn-form-submit,
+.page-common .di-ib,
+.page-common .fn-grey6,
+.page-common .goodresult,
+.page-common .h1,
+.page-common .h1,
+.page-common .h2,
+.page-common .h3,
+.page-common .h4,
+.page-common .h5,
+.page-common .h6,
+.page-common .header-list .header-list-dropdown ul li a,
+.page-common .header-notification-dropdown-inner h3 .mark-all,
+.page-common .header-notification-dropdown-inner h3 a,
+.page-common .header-notification-dropdown-inner h3,
+.page-common .header-notification-item .inner:not(.is-read) .is-read,
+.page-common .header-notification-item-header .category,
+.page-common .header-notification-item.new,
+.page-common .header-profile .header-profile-dropdown ul li a,
+.page-common .hovertitle,
+.page-common .hovertitle:hover,
+.page-common .icon-about-recommendations:after,
+.page-common .icon-about-recommendations:after,
+.page-common .inputtext #text,
+.page-common .inputtext *,
+.page-common .inputtext,
+.page-common .normal_header .floatRightHeader,
+.page-common .normal_header,
+.page-common .pagination .link,
+.page-common .pagination .link-blue-box,
+.page-common .spaceit_pad,
+.page-common .textarea,
+.page-common .topic-edit-outer .topic-edit-bottom button.mal-btn.secondary,
+.page-common a.button_add.button_add:hover,
+.page-common a.button_add.button_edit:hover,
+.page-common a.button_edit.button_add:hover,
+.page-common a.button_edit.button_edit:hover,
+.page-common h1,
+.page-common h2,
+.page-common h3,
+.page-common h4,
+.page-common h5,
+.page-common h6,
+.page-common.ownlist_style_theme .inputButton,
+.page-forum .forum-topic-message .message-header,
+.page-forum .forum_locheader,
+.page-forum .forum_postusername a:hover,
+.page-support #myanimelist #content h3,
+.page-support #myanimelist #content h4,
+.page-support #myanimelist #content li,
+.page-support #myanimelist #content p,
+.people-favorites-ranking-table tr.ranking-list .birthday,
+.people-favorites-ranking-table tr.ranking-list .favorites,
+.pmessage-message-history .date, 
+.pmessage-message-history .name, 
+.pmessage-message-history .subject,
+.profile .content-container .container-right h2,
+.profile .content-container .container-right h5,
+.profile .content-container .user-comments h2 .floatRightHeader,
+.review-element .thumbbody .body .bottom-navi .icon-reaction,
+.review-element .thumbbody .body .rating,
+.review-element .thumbbody .body .reaction-box .btn-reaction,
+.root .modal-container,
+.sceditor-button div:before,
+.stacks .stacks-detail .list-anime-list .seasonal-anime .info,
+.top-ranking-table .title .button-preview,
+.user-profile .user-button .btn-profile-submit,
+.user-status-block *,
+.user-status-block .form-user-episode,
+.user-status-block .form-user-score,
+.user-status-block .form-user-status ,
+.watch .video-menu-category .btn-category.on, 
+a.left-info-block-broadcast-button #text .page-common a,
+a.left-info-block-broadcast-button *,
+a.left-info-block-broadcast-button,
+a.subject-link .text,
+blockquote cite,
+body.apiconfig .btn-create, body.apiconfig .btn-edit,
+body.index .ranking-digest .ranking-header,
+body.index .widget .widget-header,
+body.index .widget .widget-header>span,
+body.index .widget-container .widget .widget-header,
+body.news .columnist-side-block .header,
+body.news .menu-category .btn-edit-tags,
+body.news .news-container .content,
+body.news .news-side-block .header, body.news .featured-side-block .header,
+body.news .tag-side-block .header,
+body.notification #myanimelist .notification-item-layout .fa,
+body.notification .notificaiton-category-nav a .counter.zero,
+body.notification .notification-header .right-menu,
+body.notification .notification-header,
+body.page_account_setting a.btn,
+body:not(.ownlist),
+button.mal-btn.primary.js-topic-reply,
+button.mal-btn.primary.js-topic-reply-start,
+button.mal-btn.primary.js-topic-reply-start.pressed,
+button.mal-btn.primary.js-topic-reply-start.pressed:active,
+button.mal-btn.primary.js-topic-reply-start.pressed:hover,
+button.mal-btn.primary.js-topic-reply.pressed,
+button.mal-btn.primary.js-topic-reply:active,
+button.mal-btn.primary.js-topic-reply:hover,
+button.mal-btn.primary.outline.js-topic-reply-preview,
+button.mal-btn.primary.outline.js-topic-reply-preview.pressed,
+button.mal-btn.primary.outline.js-topic-reply-preview:active,
+button.mal-btn.primary.outline.js-topic-reply-preview:hover,
+button.mal-btn.secondary.outline.btn-recaptcha-submit,
+button.mal-btn.secondary.outline.js-topic-reply-cancel,
+button.mal-btn.secondary.outline.js-topic-reply-cancel.pressed,
+button.mal-btn.secondary.outline.js-topic-reply-cancel:active,
+button.mal-btn.secondary.outline.js-topic-reply-cancel:hover,
+button.mal-btn.secondary.outline.noborder.js-topic-bbcode,
+button.mal-btn.secondary.outline.noborder.js-topic-bbcode.pressed,
+button.mal-btn.secondary.outline.noborder.js-topic-bbcode:active,
+button.mal-btn.secondary.outline.noborder.js-topic-bbcode:hover,
+button.mal-btn.secondary.outline.noborder.js-topic-top,
+button.mal-btn.secondary.outline.noborder.js-topic-top.pressed,
+button.mal-btn.secondary.outline.noborder.js-topic-top:active,
+button.mal-btn.secondary.outline.noborder.js-topic-top:hover, 
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6
+{
+	color: var(--text-white) !important;
 }
-body.news .news-container .news-info-block .sns-unit .icon-social.icon-tumblr {
-    background-position: -120px 0;
+
+body,
+code:before,
+html,
+p,
+table
+{
+	color: var(--text-white);
 }
-/* ARTICLE - BODY */
-.news-list .comment-list, .news-list .news-unit {
-    border-color: var(--border);
-    font-family: var(--fontset-basic);
+
+.page-common .header-list .header-list-dropdown, 
+.page-common .header-profile .header-profile-dropdown 
+{
+	border-color: var(--text-white) !important;
 }
-/* ARTICLE FOOTER */
-body.news .news-container .tags {
-    background: var(--content-dim);
+
+
+/* 
+##########################################################################################                         
+
+
+TEXT WHITE BRIGHT
+
+A brighter white than the default text.
+
+##########################################################################################     
+*/
+
+ .icon-team-title.content_administrator, 
+ .icon-team-title.database_administrator, 
+ .icon-team-title.forum_moderator, 
+ .icon-team-title.site_administrator, 
+ .page-forum .forum-topic-message .message-wrapper .icon-team-title,
+.icon-team-title.administrator, 
+.icon-team-title.anime_db_administrator, 
+.icon-team-title.community_administrator, 
+.icon-team-title.community_moderator,
+.icon-team-title.content_administrator,
+.icon-team-title.database_administrator, 
+.icon-team-title.forum_moderator,
+.icon-team-title.lead_administrator,
+.icon-team-title.manga_db_administrator, 
+.icon-team-title.site_administrator, 
+.mym_subject > a.subject-link .text,
+.page-common #nav>li>.non-link,
+.video-block .video-list.episode a 
+{
+	color: var(--text-white-bright) !important;
 }
-/* COMMENTS */
-.news-list .comment-list:nth-of-type(even) {
-    background: var(--content-dim);
+
+
+/* 
+##########################################################################################                         
+
+
+TEXT LIGHT GREY
+
+
+##########################################################################################     
+*/
+
+.membership .about-membership .about-no-ads .text,
+#advancedSearch .fw-b.mt24 a,
+#advancedSearchResultList .list .extra-info,
+#dialog > tbody > tr > td > div.mb4.fw-b.fn-grey6 *,
+#dialog > tbody > tr > td > div.mb4.fw-b.fn-grey6,
+#myanimelist .news-list .comment-list .quotetext,
+#myanimelist .quotetext .button.expand_quote,
+#myanimelist .quotetext, 
+#myanimelist .spoiler .button,
+#myanimelist a.button_add:not(.Lightbox_AddEdit),
+#myanimelist a.button_edit:not(.Lightbox_AddEdit),
+#topSearchResultList .list .name,
+.ace_gutter-cell,
+.alternating-thumbnails-a .logoDiv a span,
+.alternating-thumbnails-a .trc_rbox_header,
+.anime-detail-header-stats .stats-block .score:after,
+.anime-manga-search .normal_header .floatRightHeader,
+.featured-article-body p,
+.featured-pickup .featured-pickup-unit .text,
+.forum .forum-header a,
+.forum .forum-side-block .header a,
+.message.read .mym_date,
+.navi-seasonal .horiznav-nav-seasonal .btn-seasonal .btn-type,
+.navi-seasonal .horiznav_nav ul li a,
+.navi-seasonal .horiznav_nav ul li a.navtab,
+.news-list .comment-list .text, 
+.news-list .news-unit .text,
+.news-list .news-unit .text p,
+.ownlist_style #new-style .info,
+.ownlist_style_theme .customize-content-left,
+.page-common #nav ul a,
+.page-common #nav ul a,
+.page-common #searchBar.searchBar #topSearchText,
+.page-common #searchBar.searchBar #topSearchValue,
+.page-common .fn-grey3,
+.page-common .fn-grey6,
+.page-common .header-notification-item>.inner.is-read .header-notification-item-content.friend_request .message, 
+.page-common .header-notification-item>.inner.is-read .header-notification-item-content.profile_comment .message,
+.page-common .hoverinfo .dark_text,
+.page-common .hoverinfo,
+.page-common .normal_header a,
+.page-common .quickadd-content .btn-status-add,
+.page-common .reviews_p,
+.page-common .spaceit,
+.page-common .user-profile h4 a,
+.page-common a.button_add.button_add.dropped, 
+.page-common a.button_add.button_edit.dropped,
+.page-common a.button_edit.button_add.dropped, 
+.page-common a.button_edit.button_edit.dropped,
+.page-forum .forum_postusername a,
+.page-forum .forum_postusername a:visited,
+.profile .content-container .container-right h2.mb12 .floatRightHeader,
+.profile .content-container .container-right h5 a,
+.profile .content-container .user-comments h2 .floatRightHeader a,
+.ranking-company .company-favorites-ranking-table tr.ranking-list .favorites,
+.ranking-company .company-favorites-ranking-table tr.ranking-list .numofanime, 
+.ranking-digest .ranking-header .btn-view_more,
+.review-element .thumbbody .body *,
+.review-element .thumbbody .body .notice,
+.review-element .thumbbody .body .tags .tag.preliminary span,
+.user-profile .user-compatability-graph .bar-outer .bar-outer-negative,
+.user-profile .user-function .icon-user-function.icon-comment i.fas, 
+.user-profile .user-function .icon-user-function.icon-comment.disabled i.fas, 
+.user-profile .user-function .icon-user-function.icon-gift i.fas,
+.user-profile .user-function .icon-user-function.icon-gift.disabled i.fas,
+.user-profile .user-function .icon-user-function.icon-message i.fas, 
+.user-profile .user-function .icon-user-function.icon-message.disabled i.fas, 
+.user-profile .user-function .icon-user-function.icon-remove i.fas, 
+.user-profile .user-function .icon-user-function.icon-remove.disabled i.fas, 
+.user-profile .user-function .icon-user-function.icon-request i.fas, 
+.user-profile .user-function .icon-user-function.icon-request.disabled i.fas,
+.widget.featured .news-list.widget .news-unit .text, .widget.news .news-list.widget .news-unit .text,
+body.index .widget .widget-header>span a,
+body.index .widget-container .widget .widget-header,
+body.index .widget-container .widget .widget-header,
+body.index .widget-container .widget.reviews.left .textReadability,
+body.news .menu-category .btn-category.selected,
+body.news .news-container .content,
+body.news .news-container .summary,
+body.news .tag-side-block .tag-cloud .tag,
+body.notification .notification-header .right-menu .item .page-common .header-notification-item .inner:not(.is-read),
+button.mal-btn.outline.pressed,
+div.header-notification-item-header 
+{
+	color: var(--text-light-grey) !important;
 }
-/* RIGHT CONTAINER */
-body.news .news-side-block .header, body.news .featured-side-block .header {
-    border-color: var(--border);
-    color: var(--text-heading);
+
+.js-ignore-topic-button:before 
+{
+	background: var(--text-light-grey) !important;
 }
-body.news .news-side-block .news-list .news, body.news .news-side-block .news-list .featured, body.news .news-side-block .featured-list .news, body.news .news-side-block .featured-list .featured, body.news .featured-side-block .news-list .news, body.news .featured-side-block .news-list .featured, body.news .featured-side-block .featured-list .news, body.news .featured-side-block .featured-list .featured {
-    border-color: var(--border);
+
+
+
+/* 
+##########################################################################################                         
+
+
+TEXT MEDIUM GREY
+
+
+##########################################################################################     
+*/
+
+
+#advancedSearchResultList .list .media-type,
+#myanimelist [class$="-ranking-table"] .title .link,
+#topSearchResultList .list .extra-info,
+.forum .forum-board,
+.mal-navbar .info,
+.message.read .mym_date,
+.news-list .news-unit .text,
+.page-common .dark_text,
+.page-common .dark_text:hover,
+.page-common .dark_text:visited,
+.page-common .di-ib,
+.page-common .fn-grey1,
+.page-common .fn-grey6,
+.page-common .header-notification-item-header .time,
+.page-common .is-read .header-notification-item-header .category,
+.page-common .lightLink,
+.page-common .lightLink:active,
+.page-common .lightLink:link,
+.page-common .lightLink:visited,
+.page-common a.button_add.button_add.completed, 
+.page-common a.button_add.button_edit.completed, 
+.page-common a.button_edit.button_add.completed, 
+.page-common a.button_edit.button_edit.completed,
+.seasonal-anime-list .seasonal-anime .genres .genre a,
+.seasonal-anime-list .seasonal-anime .information>div 
+{
+	color: var(--text-med-grey) !important;
 }
-/* !BLOG */
-#content > div > .borderClass:last-of-type {
-clear: both;
+
+
+/* 
+##########################################################################################                         
+
+
+TEXT DARK GREY
+
+
+##########################################################################################     
+*/
+
+#topSearchResultList .list .media-type,
+.forum .forum-side-block .forum-side-list .forum-post .information .comment,
+.ownlist_style_theme .customize-content-left h2.theme-custom-header,
+.page-common .fn-grey2,
+.page-common .fn-grey5,
+.page-common .header-notification-dropdown-inner h3 .mark-all.disabled,
+.page-common .header-notification-item .inner.is-read ,
+.page-common .is-read .header-notification-item-header .time,
+body.notification .notification-header .right-menu .item.disabled,
+body.notification .notification-header .right-menu .item.disabled,
+body.notification .notification-item-layout .time,
+input:disabled,
+input:disabled,
+myanimelist .inputButton:disabled,
+textarea:disabled 
+{
+	color: var(--text-dark-grey) !important;
 }
-.blog_detail_content_wrapper {
-    color: var(--text);
+
+
+/* 
+##########################################################################################                         
+
+
+TEXT LINK 
+
+A blue for links.
+
+##########################################################################################     
+*/
+
+div.pmessage-select.js-pmessage-select a,
+#advancedSearchResultList .list.list-bottom.focus a,
+#myanimelist-layout[data-v-2ac6c46e] .btn-link,
+#myanimelist-layout[data-v-2ac6c46e] a, 
+#topSearchResultList .list.list-bottom.focus a, 
+.anime-detail-header-stats .stats-block .information-block a,
+.club-list .btn-club-join,
+.forum .forum-search-side .forum-search-input-submit,
+.message.read .mym_actions > a,
+.message.read .mym_subject .subject-link,
+.message.read .mym_user > a,
+.page-common #horiznav_nav ul li a ,
+.page-common #profileRows a, 
+.page-common #profileRows a, .page-common .profileRows a,
+.page-common .fn-blue1,
+.page-common .goodresult a:active,
+.page-common .goodresult a:link,
+.page-common .goodresult a:visited,
+.page-common .header-notification-item-list a,
+.page-common a,
+.page-common a:visited,
+.page-forum .topic-poll .topic-poll-result .topic-poll-option .vote .topic-poll-button,
+.review-element .thumbbody .body .reaction-box .btn-reaction:hover,
+.review-element .thumbbody .body .reaction-box .btn-showall,
+.stacks .btn-new-stack,
+.user-profile .user-status li.link *,
+.user-status-block .form-user-episode a,
+.user-status-block .form-user-score a,
+.user-status-block .form-user-status a,
+.user-status-block .form-user-status a,
+body.index .widget-container .widget.friend_list_updates .footer .btn-settings,
+body.index .widget-container .widget.friend_list_updates .footer .link-more,
+body.news .menu-category .btn-edit-tags,
+body.news .tag-side-block .tag-cloud .tag,
+button.mal-btn.small,
+li.link * 
+{
+	color: var(--text-link) !important;
 }
-/* END */
-/* ===============================================!FOOTER=============================================== */
-footer {
-    box-shadow: var(--page-shadow);
+
+
+
+/* 
+##########################################################################################                         
+
+TEXT LINK ON HOVER 
+
+Slightly brighter than the default text link blue.
+
+##########################################################################################     
+*/
+
+#myanimelist .club-list .btn-club-join:hover,
+#myanimelist .news-list .tags-inner>.tag:hover,
+#myanimelist a.Lightbox_AddEdit.btn-addEdit-large:hover,
+#myanimelist a.button_add:not(.Lightbox_AddEdit):hover,
+#myanimelist a.button_add:not(.Lightbox_AddEdit):hover,
+#myanimelist a.button_edit:not(.Lightbox_AddEdit):hover,
+#myanimelist a.button_edit:not(.Lightbox_AddEdit):hover,
+#quickadd .inputButton:not(:disabled):hover,
+.anime-detail-header-stats .stats-block .information-block a:hover,
+.page-common #horiznav_nav ul li a:hover,
+.page-common .btn-form-submit:not(:disabled):hover,
+.page-common .goodresult a:hover,
+.page-common .header-notification-item-list a:hover,
+.page-common .quickadd-content .btn-status-add:hover,
+.page-common .quickadd-content .btn-status-add:hover,
+.page-common .watch-state-icon.watched,
+.page-common a.fn-blue1:hover,
+.page-common a:hover,
+.page-common.ownlist_style_theme .inputButton:hover,
+.root button:hover,
+.top-ranking-table .title .button-preview:hover,
+.user-profile .user-status li.link:hover *,
+a.left-info-block-broadcast-button:hover,
+body.news .menu-category .btn-edit-tags:hover,
+body.news .tag-side-block .tag-cloud .tag:hover,
+button.mal-btn.small:hover 
+{
+	color: var(--text-link-hover) !important;
 }
-.page-common #footer-block {
-    background-color: var(--content) !important;
+
+
+
+
+
+
+
+
+
+/* 
+##########################################################################################    
+
+
+SPECIFIC SETTINGS
+
+Some selectors here are adjustments for very specific parts of the site, or they wouldn't accept var codes. Other codes help with ease of reading on dark mode.
+
+
+##########################################################################################     
+*/
+
+
+ 
+/* HEADER LOGO 
+You can change out the header logo here. 
+*/
+ .page-common #headerSmall {
+     background-image: url(/images/mal-logo-xsmall.png?v=1634263200);
 }
-.page-common #footer-block .footer-link a {
-    color: var(--text-heading);
+
+
+/* ADD/EDIT BUTTONS ON HOME PAGE 
+https://myanimelist.net/
+*/
+ .page-common a.button_add.button_add.reading, .page-common a.button_add.button_add.watching, .page-common a.button_add.button_edit.reading, .page-common a.button_add.button_edit.watching, .page-common a.button_edit.button_add.reading, .page-common a.button_edit.button_add.watching, .page-common a.button_edit.button_edit.reading, .page-common a.button_edit.button_edit.watching{
+     background-color: #2db039 !important;
+     color: #f7f0f0 !important;
 }
-/* First Div */
-.page-common #footer-block .footer-link-block {
-    background: none;
+ .page-common a.button_add.button_add.completed, .page-common a.button_add.button_edit.completed, .page-common a.button_edit.button_add.completed, .page-common a.button_edit.button_edit.completed {
+     background-color: #26448f !important;
+     color: #d9d9d9 !important;
 }
-.page-common #footer-block .footer-link-block:after {
-    content: "";
-    background: linear-gradient(to right, rgba(var(--accent-rgb), 0), rgba(var(--accent-rgb), 1), rgba(var(--accent-rgb), 0));
+ .page-common a.button_add.button_add.on-hold, .page-common a.button_add.button_edit.on-hold, .page-common a.button_edit.button_add.on-hold, .page-common a.button_edit.button_edit.on-hold {
+     background-color: #f1c83e !important;
+     color: black !important;
 }
-.page-common #footer-block .footer-link {
-    border-color: var(--accent-dim) !important;
+ .page-common a.button_add.button_add.dropped, .page-common a.button_add.button_edit.dropped, .page-common a.button_edit.button_add.dropped, .page-common a.button_edit.button_edit.dropped {
+     background-color: #a12f31 !important;
+     color: #d9d9d9 !important;
 }
-/* Second Div */
-.page-common #footer-block .footer-social-media:before {
-    background: var(--accent-dim);
+ .page-common a.button_add.button_add.plantoread, .page-common a.button_add.button_add.plantowatch, .page-common a.button_add.button_edit.plantoread, .page-common a.button_add.button_edit.plantowatch, .page-common a.button_edit.button_add.plantoread, .page-common a.button_edit.button_add.plantowatch, .page-common a.button_edit.button_edit.plantoread, .page-common a.button_edit.button_edit.plantowatch {
+     background-color: #c3c3c3 !important;
+     color: #202020 !important;
 }
-.page-common #footer-block .footer-social-media .icon-sns {
-    background-image: var(--img-socials-alt);
-    /*/
-images/footer/footer-icon-sns.png?v=150421001*/
+ .page-common a.button_add.button_add, .page-common a.button_add.button_edit, .page-common a.button_edit.button_add, .page-common a.button_edit.button_edit{
+     color: #7faaea !important;
 }
-.page-common #footer-block .footer-recommended .icon-recommended {
-    color: var(--text-heading);
+
+
+/* SEPARATOR COLOR ON DROP-DOWN MENUS 
+https://myanimelist.net/anime/1 
+*/
+ .page-common .incrementalSearchResultList .list.separator {
+     background: #0071df !important;
 }
-.page-common #footer-block div:after, .page-common #footer-block #copyright {
-    color: var(--accent) !important;
+/* RECOMMENDATIONS TEXT 
+A gold color for recommendation text within reviews. https://myanimelist.net/anime/1 
+*/
+ .review-element .thumbbody .body .tags .tag.recommended *, .review-element .thumbbody .body .tags .tag.recommended {
+     color: #e6d161 !important;
 }
-#copyright:after {
-    content: "MAL Dark Mode by ShaggyZE| Version 0.0.5";
+/* GUIDELINES AND RULES STICKIES BACKGROUND 
+https://myanimelist.net/forum/?board=14 
+*/
+ .page-forum .forum_board_row_rules{
+  background-color: rgba(255, 55, 66, .17) !important;
+}
+/* OTHER STICKIES BACKGROUND COLOR 
+https://myanimelist.net/forum/?board=14 
+*/
+ .page-forum .forum_board_row_sticky{
+  background-color: rgba(57, 175, 238, .09) !important;
+}
+/* GUIDELINES AND RULES STICKIES TEXT
+https://myanimelist.net/forum/?board=14 
+*/
+ .page-forum .forum_board_row_rules a{
+     color: #6ea7fff5 !important;
+}
+/* OTHER STICKY TOPICS TEXT
+https://myanimelist.net/forum/?board=14 
+*/
+ .page-forum .forum_board_row_sticky a{
+   color: #90bcfffa !important;
+}
+/* BBCODE QUOTE BOX BACKGROUND 
+*/
+ #myanimelist .quotetext, #myanimelist .news-list .comment-list .quotetext {
+     background: rgba(6, 4, 4, .2) !important;
+}
+/* BBCODE CODE BOX BACKGROUND 
+*/
+ #myanimelist .codetext {
+     background:#202020 !important;
+}
+/* BBCODE CODEBOXES TEXT
+*/
+ #myanimelist .codetext , .page-common .header-notification-item-content, .postnum a, .postnum {
+     color: #9bb1bb !important;
+}
+
+/* OTHERS 
+*/
+ .icon-watch-pv2 .malicon.malicon-movie-pv {
+     background:#202020 !important;
+}
+ .page-common a.button_add.button_add, .page-common a.button_add.button_edit, .page-common a.button_edit.button_add, .page-common a.button_edit.button_edit {
+     background-color:#404040 !important;
+}
+ .message.read .mym_subject > a.subject-link span.text {
+     color: #BFBFBF !important;
+}
+ .page-common .breadcrumb span {
+     background: #262626;
+}
+ .page-common .hoverinfo, .page-common .breadcrumb span {
+     background-color: #262626;
+}
+ .page-common .breadcrumb span {
+     background: #222215;
+}
+ .page-common .hoverinfo {
+     background: #1A1A1A;
+     border: #e1dfdf 2px solid;
+}
+ div.sceditor-grip {
+     background-image: url(https://imgur.com/h9lnqJS.png) !important;
+     background-size: 100% !important;
+     background-position: top left !important;
+     height: 20px !important;
+     width: 20px !important;
+     z-index: 3 !important;
+     opacity: .3;
+}
+ .watch-video .video-list .info-container {
+     background-image: url(/images/image_box_shadow_bottom.png?v=1634263200), url(/images/image_box_shadow_bottom.png?v=1634263200);
+}
+ .user-profile .user-compatability-graph .bar-outer .bar-outer-positive {
+     background-color: rgba(255, 119, 0, .72);
+}
+div.topic-reply-box div.mal-btn-toolbar button.mal-btn.secondary.outline.js-topic-reply-cancel,
+div.topic-reply-box div.mal-btn-toolbar button.mal-btn.primary.outline.js-topic-reply-preview{
+background-color: #2e51a2 !important;  
+ color: #DBDBDB !important;;
+}
+.message.unread a,
+.message.unread span.mym_date{
+	color: #6e8bfffa !important
+}
+div.topic-reply-box div.mal-btn-toolbar button.mal-btn.secondary.outline.js-topic-reply-cancel:hover,
+div.topic-reply-box div.mal-btn-toolbar button.mal-btn.primary.outline.js-topic-reply-preview:hover{
+background-color:  #1d3366 !important;
+}
+ .page-forum .forum_boardrow1 {
+     background-color: transparent;
+}
+ .review-element .thumbbody .body .reaction-box, .anime-detail-header-stats .stats-block:before, .forum .forum-board .topics li, .page-common .header-notification-item a.background {
+     background-color: transparent !important;
+     -webkit-box-shadow: none;
+     box-shadow: none;
+}
+ body:not(.ownlist), .navi-seasonal.fixed:after {
+     background-image: none;
+}
+ body:not(.ownlist) {
+     background-image: none;
+}
+ body.placeholder::before {
+     position: absolute;
+}
+ .page-common .userimg {
+     opacity: .9;
+}
+ .header .header-title, .review-element .thumbbody .body .tags .tag.recommended, .review-element .thumbbody .body .tags .tag.recommended * {
+     opacity: .8;
+}
+ .page-common #headerSmall>a.link-mal-logo:hover {
+     opacity: 1;
+}
+ div.sceditor-grip:hover {
+     opacity: .7;
+}
+ .oped-video-button .oped-video-button-gray, .oped-preview-button-gray {
+     filter: opacity(49%) !important;
+}
+ .page-common .header-profile-button {
+     -webkit-box-shadow: none !important;
+}
+ .review-element .thumbbody .thumb {
+     padding-right: 10px !important;
+     margin-right: 0px !important;
+}
+ .js-truncate-outer .btn-truncate {
+     opacity: .2;
+}
+.message.unread span.mym_date,
+.message.read .mym_date,
+.private-message-content .message.selected > .mym,
+.message.unread a.subject-link .text{
+filter: invert(1);	
+}
+
+
+  VERSION.10 {
+    chrome: site;
+}
+
+
+#advanced-options ,  body  {
+    background-color:  var(--bg) !important;
+}
+#advanced-options .filter-widget select,  #advanced-options .filter-widget.airing-status select,  #advanced-options .filter-widget.airing-status select,  #advanced-options .filter-widget.publishing-status select,  #advanced-options .filter-widget.publishing-status select,  #advanced-options .filter-widget.title input[type=text],  #advanced-options select,  .list-container,  .list-table .list-table-header .header-title  {
+    background-color:  var(--table1) !important;
+}
+.list-table > tbody:nth-of-type(2n+1)  {
+    background-color:  var(--table2) !important;
+}
+body:not(.ownlist),  .list-block  {
+    background-color:  var(--table3) ;
+}
+.list-menu-float .icon-menu,  .status-menu-container  {
+    background-color:  var(--table3) !important;
+}
+#fancybox-outer,  .ownlist_anime_update #advanced-button .toggle-button,  .ownlist_manga_update #advanced-button .toggle-button,  .ownlist_anime_update #advanced-button,  .ownlist_manga_update #advanced-button,  textarea  {
+    background-color:  var(--table5) !important;
+}
+.list-table .list-table-data .tags .edit,  .list-unit .list-stats  {
+    color:  var(--text-white);
+}
+#advanced-options .filter-widget select,  #advanced-options .filter-widget.airing-status select,  #advanced-options .filter-widget.airing-status select,  #advanced-options .filter-widget.publishing-status select,  #advanced-options .filter-widget.publishing-status select,  #advanced-options .filter-widget.title input[type=text],  #advanced-options .filter-widget.title input[type=text],  #advanced-options select,  #advanced-options,  .header .header-menu *,  #header-menu-button,  .header .header-menu a,  .list-table .list-table-data .data,  .list-table .list-table-data .data.tags textarea,  .list-table .more-info .more-content,  .list-unit .list-status-title .stats *,  .list-unit .list-status-title .stats a,  .list-unit .list-status-title .text  {
+    color:  var(--text-white) !important;
+}
+.list-table .list-table-data .data a  {
+    color:  var(--text-link-list);
+}
+.list-table .list-table-header .header-title .link.sort:hover,  .list-table .list-table-data .data a:hover  {
+    color:  var(--text-link-hover) !important;
+}
+.icon-watch2 .malicon.malicon-movie-episode,  .icon-watch2 .malicon.malicon-movie-pv,  .icon-watch2 .malicon.malicon-streaming,  .icon-watch-pv2 .malicon.malicon-movie-episode,  .icon-watch-pv2 .malicon.malicon-movie-pv,  .icon-watch-pv2 .malicon.malicon-streaming,  .list-table .more-info .more-content a,  .list-table .list-table-header .header-title,  .list-table .list-table-header .header-title .link.sort,  .list-table .list-table-header .header-title.image a,  .status-menu-container .status-menu .status-button,  .status-menu-container .status-menu .status-button.on  {
+    color:  var(--text-link-list) !important;
+}
+.list-menu-float .icon-menu svg.icon  {
+    fill:  var(--text-link-list) !important;
+}
+.list-menu-float  {
+    border:  transparent 1px solid;
+}
+body  {
+    background-attachment:  fixed;
+}
+.list-table,  .list-container,  .list-table .list-table-header .header-title,  .list-menu-float,  .list-table .list-table-data .data  {
+    border:  0 transparent solid !important;
+}
+.status-menu-container  {
+    border:  none !important;
+}
+  VERSION.10 {
+    chrome: list;
 }

@@ -2,13 +2,13 @@ document.body.onload = function() {
     chrome.storage.sync.get("newWidth", function(items) {
         if (!chrome.runtime.error) {
             console.log(items);
-            document.documentElement.style.setProperty("--ptwidth", items.newWidth + "px");
+            document.documentElement.style.setProperty("--piwidth", items.newWidth + "px");
         }
     });
     chrome.storage.sync.get("colorChanger", function(items) {
         if (!chrome.runtime.error) {
             console.log(items);
-            document.documentElement.style.setProperty("--page", items.colorChanger);
+            document.documentElement.style.setProperty("--bg", items.colorChanger);
         }
     });
 }
@@ -20,15 +20,15 @@ $(document).ready(function() {
         if (request.todo === "newWidth") {
             // pull the width data from the message
             const newWidth = request.newWidth;
-            // set the style attribute of :root to override the MAIN.css value for --ptwidth
-            document.documentElement.style.setProperty("--ptwidth", newWidth + "px");
+            // set the style attribute of :root to override the MAIN.css value for --piwidth
+            document.documentElement.style.setProperty("--piwidth", newWidth + "px");
             // send a response to avoid errors in popup.js
             sendResponse("newWidth");
         } else if (request.todo === "colorChanger") {
             // pull the colorChanger data from the message
             const colorChanger = request.colorChanger;
             // set the style attribute of :root to override the MAIN.css value for --page
-            document.documentElement.style.setProperty("--page", colorChanger);
+            document.documentElement.style.setProperty("--bg", colorChanger);
             // send a response to avoid errors in popup.js
             sendResponse("colorChanger");
         }
